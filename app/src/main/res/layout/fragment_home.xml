@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.cxe.nfcmonopoly20.logic.ViewModel" />
+            type="com.cxe.nfcmonopoly20.logic.AppViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

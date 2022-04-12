@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cxe.nfcmonopoly20.databinding.FragmentHomePlayerListItemBinding
 import com.cxe.nfcmonopoly20.logic.player.Player
 
-class PlayerListAdapter(private val playerList: List<Player>) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
+class PlayerListAdapter(private val playerList: MutableList<Player>) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
 
     class PlayerListViewHolder(
         private val binding: FragmentHomePlayerListItemBinding
@@ -25,6 +25,12 @@ class PlayerListAdapter(private val playerList: List<Player>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: PlayerListViewHolder, position: Int) {
         holder.bind(playerList[position])
+
+        binding.playerDeleteBtn.setOnClickListener {
+            playerList.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, playerList.size)
+        }
     }
 
     override fun getItemCount(): Int = playerList.size

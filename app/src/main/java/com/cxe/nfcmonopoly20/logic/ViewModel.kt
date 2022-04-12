@@ -6,7 +6,7 @@ import com.cxe.nfcmonopoly20.logic.player.Player
 
 const val STARTING_MONEY = 1500
 const val STARTING_MONEY_MEGA = 2500
-class ViewModel: ViewModel() {
+class AppViewModel: ViewModel() {
 
 //    object ViewModel {
 //
