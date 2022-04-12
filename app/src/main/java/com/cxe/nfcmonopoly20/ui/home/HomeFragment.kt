@@ -41,18 +41,24 @@ class HomeFragment : Fragment() {
         val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
 
         // Fill up the player list
-        viewModel.playerList.add(Player("Christos", CardId.YELLOW_CARD, startingMoney))
-        viewModel.playerList.add(Player("Fakontis", CardId.GREEN_CARD, startingMoney))
-        viewModel.playerList.add(Player("Panagiotis", CardId.BLUE_CARD, startingMoney))
+        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD, startingMoney))
+        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD, startingMoney))
+        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD, startingMoney))
 
         // RecyclerView
         val recyclerView = binding.recyclerviewHome
-        val recyclerViewAdapter = PlayerListAdapter(viewModel.playerList)
+        val recyclerViewAdapter = PlayerListAdapter(viewModel.playerList) {
+
+        }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
         binding.startBtn.setOnClickListener {
-            Toast.makeText(context, "PlayerList size: ${viewModel.playerList.size}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "PlayerList size: ${viewModel.playerList.size}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

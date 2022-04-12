@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cxe.nfcmonopoly20.databinding.FragmentHomePlayerListItemBinding
 import com.cxe.nfcmonopoly20.logic.player.Player
 
-class PlayerListAdapter(private val playerList: MutableList<Player>) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
+class PlayerListAdapter(
+    private val playerList: MutableList<Player>,
+    private val onEdit: (Int) -> Unit
+    ) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
 
     class PlayerListViewHolder(
         private val binding: FragmentHomePlayerListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(player: Player) {
+        fun bind(player: Player, position: Int) {
             binding.player = player
         }
     }
@@ -24,12 +27,18 @@ class PlayerListAdapter(private val playerList: MutableList<Player>) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: PlayerListViewHolder, position: Int) {
-        holder.bind(playerList[position])
+        holder.bind(playerList[position], position)
 
+        // Player Delete Button
         binding.playerDeleteBtn.setOnClickListener {
             playerList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, playerList.size)
+        }
+
+        // Player Edit Button
+        binding.playerEditBtn.setOnClickListener {
+            onEdit(position)
         }
     }
 
