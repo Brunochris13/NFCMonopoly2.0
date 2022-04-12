@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NFC Monopoly 2.0</string>
+    <string name="default_string">Default</string>
+
+<!--Navigation-->
+    <string name="home_fragment">Home Fragment</string>
+
+<!--Home Fragment-->
+    <string name="start_btn">Start</string>
+    <string name="mega_switch">Mega</string>
+    <string name="edit_player_btn">Edit Player Name</string>
+    <string name="delete_player_btn">Delete Player</string>
+
+</resources>
