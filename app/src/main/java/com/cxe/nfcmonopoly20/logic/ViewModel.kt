@@ -4,12 +4,13 @@ import androidx.lifecycle.ViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 
+const val STARTING_MONEY = 1500
+const val STARTING_MONEY_MEGA = 2500
 class ViewModel: ViewModel() {
 
-    object ViewModel {
-        const val STARTING_MONEY = 1500
-        const val STARTING_MONEY_MEGA = 2500
-    }
+//    object ViewModel {
+//
+//    }
 
     var mega: Boolean = false
 

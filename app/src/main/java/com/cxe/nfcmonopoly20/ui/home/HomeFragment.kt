@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cxe.nfcmonopoly20.databinding.FragmentHomeBinding
+import com.cxe.nfcmonopoly20.logic.STARTING_MONEY
+import com.cxe.nfcmonopoly20.logic.STARTING_MONEY_MEGA
 import com.cxe.nfcmonopoly20.logic.ViewModel
+import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.logic.player.Player
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +36,13 @@ class HomeFragment : Fragment() {
 
         // ViewModel Creation
         binding.viewModel = viewModel
+
+        val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
+
+        // Fill up the player list
+        viewModel.playerList.add(Player("Christos", CardId.YELLOW_CARD, startingMoney))
+        viewModel.playerList.add(Player("Fakontis", CardId.GREEN_CARD, startingMoney))
+        viewModel.playerList.add(Player("Panagiotis", CardId.BLUE_CARD, startingMoney))
 
         // RecyclerView
         val recyclerView = binding.recyclerviewHome
