@@ -10,5 +10,7 @@
     <string name="mega_switch">Mega</string>
     <string name="edit_player_btn">Edit Player Name</string>
     <string name="delete_player_btn">Delete Player</string>
+    <string name="new_player_name">New Player Name</string>
+    <string name="save_btn">Save</string>
 
 </resources>

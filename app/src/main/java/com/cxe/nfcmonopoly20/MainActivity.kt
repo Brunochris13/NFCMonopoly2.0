@@ -76,7 +76,12 @@ class MainActivity : AppCompatActivity() {
             val currentFragment = navHostFragment.childFragmentManager.primaryNavigationFragment
 
             // Send the Message and Fragment to the ViewModel
-            viewModel.handleNfcIntent(msg, currentFragment!!)
+            val toastMsg = viewModel.handleNfcIntent(msg, currentFragment!!)
+
+            if (toastMsg != null) {
+                Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show()
+                Log.i(LOG_TAG, toastMsg)
+            }
         }
     }
 
