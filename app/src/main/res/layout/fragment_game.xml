@@ -37,7 +37,6 @@
             android:id="@+id/game_player_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/luxury_tax_btn"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
