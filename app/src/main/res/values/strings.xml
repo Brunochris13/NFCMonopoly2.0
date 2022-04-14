@@ -13,6 +13,7 @@
     <string name="delete_player_btn">Delete Player</string>
     <string name="new_player_name">New Player Name</string>
     <string name="save_btn">Save</string>
+    <string name="not_enough_players">Need at least 2 Players</string>
 
 <!--Game Fragment-->
     <string name="go_btn">Go</string>

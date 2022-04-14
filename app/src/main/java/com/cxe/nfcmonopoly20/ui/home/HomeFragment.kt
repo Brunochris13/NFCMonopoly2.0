@@ -66,17 +66,28 @@ class HomeFragment : Fragment() {
 
         // Start Button
         binding.startBtn.setOnClickListener {
-            // Set Mega Status
-            viewModel.mega = binding.megaSwitch.isChecked
 
-            // Set the starting money for all Players
-            val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
-            for (player in viewModel.playerList) {
-                player.money = startingMoney
+            // Check if we have 2 or more players
+            if (viewModel.playerList.size < 2) {
+                Toast.makeText(
+                    context,
+                    resources.getString(R.string.not_enough_players),
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.i(LOG_TAG, resources.getString(R.string.not_enough_players))
+            } else {
+                // Set Mega Status
+                viewModel.mega = binding.megaSwitch.isChecked
+
+                // Set the starting money for all Players
+                val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
+                for (player in viewModel.playerList) {
+                    player.money = startingMoney
+                }
+
+                // Navigate to GameFragment
+                findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
             }
-
-            // Navigate to GameFragment
-            findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
         }
     }
 
