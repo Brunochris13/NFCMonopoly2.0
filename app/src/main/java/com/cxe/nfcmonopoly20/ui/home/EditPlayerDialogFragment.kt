@@ -89,7 +89,8 @@ class EditPlayerDialogFragment : DialogFragment() {
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
 
-        onDismissListener()
+        if (this::onDismissListener.isInitialized)
+            onDismissListener()
     }
 
     override fun onDestroyView() {
