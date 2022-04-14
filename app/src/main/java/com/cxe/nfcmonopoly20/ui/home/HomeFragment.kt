@@ -16,11 +16,10 @@ import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 
+// Constants
+private const val LOG_TAG = "HomeFragment"
+private const val EDIT_PLAYER_DIALOG_TAG = "edit_player_dialog_tag"
 class HomeFragment : Fragment() {
-
-    // Constants
-    private val LOG_TAG = "HomeFragment"
-    private val DIALOG_TAG = "dialog_tag"
 
     // Binding
     private var _binding: FragmentHomeBinding? = null
@@ -135,7 +134,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        dialog.show(parentFragmentManager, DIALOG_TAG)
+        dialog.show(parentFragmentManager, EDIT_PLAYER_DIALOG_TAG)
     }
 
     override fun onDestroyView() {

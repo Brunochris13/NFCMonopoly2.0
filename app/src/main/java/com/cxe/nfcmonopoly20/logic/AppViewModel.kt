@@ -8,10 +8,15 @@ import com.cxe.nfcmonopoly20.logic.player.Player
 // Constants
 const val STARTING_MONEY = 1500
 const val STARTING_MONEY_MEGA = 2500
+const val GO_AMOUNT = 200
+const val PRISON_AMOUNT = 50
+const val LUXURY_TAX_AMOUNT = 100
+const val INCOME_TAX_AMOUNT = 200
 const val CARD_ID_TAG = "cardIdTag"
 const val PLAYER_NAME_TAG = "playerNameTag"
 
 private const val LOG_TAG = "AppViewModel"
+
 class AppViewModel : ViewModel() {
 
     var mega: Boolean = false
@@ -41,8 +46,12 @@ class AppViewModel : ViewModel() {
         }
     }
 
+    fun playerPay(cardId: CardId, amount: Int) = playerMap[cardId]?.pay(amount)
+
+    fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
+
     fun isCardId(msg: String): Boolean {
-        return cardIds.any {it.name == msg}
+        return cardIds.any { it.name == msg }
     }
 
     fun isProperty(msg: String): Boolean {

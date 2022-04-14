@@ -1,5 +1,6 @@
 package com.cxe.nfcmonopoly20
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
@@ -20,6 +21,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.cxe.nfcmonopoly20.databinding.ActivityMainBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.nfcparser.NdefMessageParser
+import com.cxe.nfcmonopoly20.ui.game.GameFragment
 import com.cxe.nfcmonopoly20.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -78,6 +80,8 @@ class MainActivity : AppCompatActivity() {
 
             if (currentFragment is HomeFragment) {
                 currentFragment.onNewIntent(msg)
+            } else if (currentFragment is GameFragment) {
+                currentFragment.onNewIntent(msg)
             }
         }
     }
@@ -112,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         return records[0]
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun enableForegroundDispatch(activity: AppCompatActivity, adapter: NfcAdapter?) {
         val intent = Intent(activity.applicationContext, activity.javaClass)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP

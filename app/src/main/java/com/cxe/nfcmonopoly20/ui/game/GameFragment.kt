@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
+import com.cxe.nfcmonopoly20.logic.GO_AMOUNT
 
+private const val NFC_TAP_DIALOG_TAG = "nfc_tap_dialog_tag"
 class GameFragment : Fragment() {
 
     // Binding
@@ -23,6 +25,9 @@ class GameFragment : Fragment() {
 
     // ViewModel
     private val viewModel: AppViewModel by activityViewModels()
+
+    // Dialogs
+    private lateinit var nfcTapCardDialog: NfcTapCardDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +61,12 @@ class GameFragment : Fragment() {
         val recyclerViewAdapter = GamePlayerListAdapter(viewModel.playerList)
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
+
+        // Go Button
+        binding.goBtn.setOnClickListener {
+            nfcTapCardDialog = NfcTapCardDialogFragment(resources.getString(R.string.go_btn), GO_AMOUNT, false)
+            nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -84,6 +95,12 @@ class GameFragment : Fragment() {
         }
         val alertDialog = builder.create()
         alertDialog.show()
+    }
+
+    fun onNewIntent(msg: String) {
+        if (nfcTapCardDialog.dialog!!.isShowing) {
+            nfcTapCardDialog.onNewIntent(msg)
+        }
     }
 
     override fun onDestroyView() {
