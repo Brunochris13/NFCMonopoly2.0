@@ -20,6 +20,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.cxe.nfcmonopoly20.databinding.ActivityMainBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.nfcparser.NdefMessageParser
+import com.cxe.nfcmonopoly20.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,12 +76,8 @@ class MainActivity : AppCompatActivity() {
             // Get current Fragment
             val currentFragment = navHostFragment.childFragmentManager.primaryNavigationFragment
 
-            // Send the Message and Fragment to the ViewModel
-            val toastMsg = viewModel.handleNfcIntent(msg, currentFragment!!)
-
-            if (toastMsg != null) {
-                Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show()
-                Log.i(LOG_TAG, toastMsg)
+            if (currentFragment is HomeFragment) {
+                currentFragment.onNewIntent(msg)
             }
         }
     }
@@ -117,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun enableForegroundDispatch(activity: AppCompatActivity, adapter: NfcAdapter?) {
         val intent = Intent(activity.applicationContext, activity.javaClass)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(activity.applicationContext, 0, intent, 0)
         val filters = arrayOfNulls<IntentFilter>(1)
         val techList = arrayOf<Array<String>>()
