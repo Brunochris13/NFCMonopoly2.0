@@ -3,7 +3,8 @@
     <string name="default_string">Default</string>
 
 <!--Navigation-->
-    <string name="home_fragment">Players Setup</string>
+    <string name="home_fragment_title">Players Setup</string>
+    <string name="game_fragment_title">Game</string>
 
 <!--Home Fragment-->
     <string name="start_btn">Start</string>

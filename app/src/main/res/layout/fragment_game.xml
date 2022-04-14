@@ -97,7 +97,6 @@
             android:backgroundTint="@color/green"
             android:text="@string/go_btn"
             android:textSize="26sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline1" />
