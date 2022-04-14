@@ -13,4 +13,13 @@
     <string name="new_player_name">New Player Name</string>
     <string name="save_btn">Save</string>
 
+<!--Game Fragment-->
+    <string name="go_btn">Go</string>
+    <string name="pay_prison_btn">Pay Prison\n<font color='#A01818'>€50</font></string>
+    <string name="luxury_tax_btn">Luxury Tax\n<font color='#A01818'>€100</font></string>
+    <string name="income_tax_btn">Income Tax\n<font color='#A01818'>€200</font></string>
+    <string name="pay_btn">Pay</string>
+    <string name="trade_btn">Trade</string>
+    <string name="collect_btn">Collect</string>
+
 </resources>

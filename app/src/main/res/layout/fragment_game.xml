@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.game.GameFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/game_player_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/luxury_tax_btn"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/pay_prison_btn"
+            style="@style/game_fragment_btn.secondary"
+            android:text="@string/pay_prison_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/luxury_tax_btn"
+            app:layout_constraintStart_toStartOf="@+id/guideline1" />
+
+        <Button
+            android:id="@+id/luxury_tax_btn"
+            style="@style/game_fragment_btn.secondary"
+            android:layout_marginBottom="16dp"
+            android:text="@string/luxury_tax_btn"
+            app:layout_constraintBottom_toTopOf="@+id/trade_btn"
+            app:layout_constraintEnd_toStartOf="@+id/income_tax_btn"
+            app:layout_constraintStart_toEndOf="@+id/pay_prison_btn" />
+
+        <Button
+            android:id="@+id/income_tax_btn"
+            style="@style/game_fragment_btn.secondary"
+            android:text="@string/income_tax_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/luxury_tax_btn"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+        <Button
+            android:id="@+id/pay_btn"
+            style="@style/game_fragment_btn.primary"
+            android:text="@string/pay_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/trade_btn"
+            app:layout_constraintStart_toStartOf="@+id/guideline1" />
+
+        <Button
+            android:id="@+id/trade_btn"
+            style="@style/game_fragment_btn.primary"
+            android:layout_marginBottom="16dp"
+            android:text="@string/trade_btn"
+            app:layout_constraintBottom_toTopOf="@+id/go_btn"
+            app:layout_constraintEnd_toStartOf="@+id/collect_btn"
+            app:layout_constraintStart_toEndOf="@+id/pay_btn" />
+
+        <Button
+            android:id="@+id/collect_btn"
+            style="@style/game_fragment_btn.primary"
+            android:text="@string/collect_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/trade_btn"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+        <Button
+            android:id="@+id/go_btn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/go_btn"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
