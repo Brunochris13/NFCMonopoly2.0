@@ -10,7 +10,6 @@ import com.cxe.nfcmonopoly20.logic.player.Player
 class PlayerListAdapter(
     private val playerList: MutableList<Player>,
     private val playerMap: MutableMap<CardId, Player>,
-//    private val onEdit: (Int) -> Unit
     ) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
 
     class PlayerListViewHolder(

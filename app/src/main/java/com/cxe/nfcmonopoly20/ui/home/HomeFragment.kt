@@ -44,12 +44,10 @@ class HomeFragment : Fragment() {
         // ViewModel Creation
         binding.viewModel = viewModel
 
-        val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
-
         // Fill up the player list
-        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD, startingMoney))
-        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD, startingMoney))
-        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD, startingMoney))
+        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD))
+        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD))
+        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD))
 
         // RecyclerView
         val recyclerView = binding.recyclerviewHome
@@ -68,6 +66,16 @@ class HomeFragment : Fragment() {
 
         // Start Button
         binding.startBtn.setOnClickListener {
+            // Set Mega Status
+            viewModel.mega = binding.megaSwitch.isChecked
+
+            // Set the starting money for all Players
+            val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
+            for (player in viewModel.playerList) {
+                player.money = startingMoney
+            }
+
+            // Navigate to GameFragment
             findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
         }
     }

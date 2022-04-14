@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentHomePlayerEditBinding
-import com.cxe.nfcmonopoly20.logic.*
+import com.cxe.nfcmonopoly20.logic.AppViewModel
+import com.cxe.nfcmonopoly20.logic.CARD_ID_TAG
+import com.cxe.nfcmonopoly20.logic.PLAYER_NAME_TAG
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 
@@ -73,8 +75,7 @@ class EditPlayerDialogFragment : DialogFragment() {
             } else {
                 // New Player
                 if (newPlayer) {
-                    val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
-                    val player = Player(playerName, cardId as CardId, startingMoney)
+                    val player = Player(playerName, cardId as CardId)
                     viewModel.addPlayer(player)
                 } else { // Existing Player
                     val player = viewModel.playerMap[cardId as CardId]

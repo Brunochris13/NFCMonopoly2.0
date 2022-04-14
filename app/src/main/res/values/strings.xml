@@ -22,5 +22,6 @@
     <string name="pay_btn">Pay</string>
     <string name="trade_btn">Trade</string>
     <string name="collect_btn">Collect</string>
+    <string name="money_btn">Euro Symbol</string>
 
 </resources>

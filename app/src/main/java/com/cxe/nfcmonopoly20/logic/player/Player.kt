@@ -2,7 +2,8 @@ package com.cxe.nfcmonopoly20.logic.player
 
 import com.cxe.nfcmonopoly20.logic.property.Property
 
-class Player(var name: String, val cardId: CardId, val money: Int) {
+class Player(var name: String, val cardId: CardId) {
 
+    var money: Int = 0
     val properties = mutableListOf<Property>()
 }
