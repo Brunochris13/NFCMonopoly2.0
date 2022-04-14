@@ -21,7 +21,7 @@ class AppViewModel : ViewModel() {
 
     var freeParking: Int = 0
 
-    val cardIds = CardId.values()
+    private val cardIds = CardId.values()
 
     fun addPlayer(player: Player) {
         if (!playerMap.containsKey(player.cardId)) {
@@ -49,5 +49,11 @@ class AppViewModel : ViewModel() {
         return false
     }
 
+    fun resetGame() {
+        playerList.clear()
+        playerMap.clear()
+        freeParking = 0
+        // TODO: Clear Properties
+    }
 
 }

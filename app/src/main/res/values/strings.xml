@@ -23,6 +23,12 @@
     <string name="pay_btn">Pay</string>
     <string name="trade_btn">Trade</string>
     <string name="collect_btn">Collect</string>
-    <string name="money_btn">Euro Symbol</string>
+
+<!--Exit Dialog-->
+    <string name="exit_dialog_title">Confirmation</string>
+    <string name="exit_dialog_message">Are you sure you want to exit?</string>
+    <string name="exit_dialog_positive">Yes</string>
+    <string name="exit_dialog_negative">No</string>
+
 
 </resources>
