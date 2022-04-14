@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentHomeBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
@@ -64,12 +66,9 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
+        // Start Button
         binding.startBtn.setOnClickListener {
-            Toast.makeText(
-                context,
-                "PlayerList size: ${viewModel.playerList.size}",
-                Toast.LENGTH_SHORT
-            ).show()
+            findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
         }
     }
 
