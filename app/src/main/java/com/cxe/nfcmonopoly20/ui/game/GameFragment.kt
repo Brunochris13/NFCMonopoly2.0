@@ -52,7 +52,6 @@ class GameFragment : Fragment() {
                     exitDialog()
                 }
             }
-
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             onBackPressedCallback
