@@ -18,8 +18,11 @@
 <!--Game Fragment-->
     <string name="go_btn">Go</string>
     <string name="pay_prison_btn">Pay Prison\n<font color='#A01818'>€50</font></string>
+    <string name="pay_prison">Pay Prison</string>
     <string name="luxury_tax_btn">Luxury Tax\n<font color='#A01818'>€100</font></string>
+    <string name="luxury_tax">Luxury Tax</string>
     <string name="income_tax_btn">Income Tax\n<font color='#A01818'>€200</font></string>
+    <string name="income_tax">Income Tax</string>
     <string name="pay_btn">Pay</string>
     <string name="trade_btn">Trade</string>
     <string name="collect_btn">Collect</string>

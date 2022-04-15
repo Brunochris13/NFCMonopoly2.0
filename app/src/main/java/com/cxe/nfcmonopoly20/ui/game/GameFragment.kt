@@ -17,10 +17,12 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.GO_AMOUNT
+import com.cxe.nfcmonopoly20.logic.PRISON_AMOUNT
 import com.cxe.nfcmonopoly20.logic.player.CardId
 
 private const val LOG_TAG = "GameFragment"
 private const val NFC_TAP_DIALOG_TAG = "nfc_tap_dialog_tag"
+
 class GameFragment : Fragment() {
 
     // Binding
@@ -69,9 +71,20 @@ class GameFragment : Fragment() {
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
+        // Pay Prison Button
+        binding.payPrisonBtn.setOnClickListener {
+            nfcTapCardDialog = NfcTapCardDialogFragment(
+                resources.getString(R.string.pay_prison),
+                PRISON_AMOUNT,
+                true
+            )
+            nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
+        }
+
         // Go Button
         binding.goBtn.setOnClickListener {
-            nfcTapCardDialog = NfcTapCardDialogFragment(resources.getString(R.string.go_btn), GO_AMOUNT, false)
+            nfcTapCardDialog =
+                NfcTapCardDialogFragment(resources.getString(R.string.go_btn), GO_AMOUNT, false)
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
     }
@@ -105,7 +118,10 @@ class GameFragment : Fragment() {
     }
 
     fun onNewIntent(msg: String) {
-        if ((this::nfcTapCardDialog.isInitialized) && (nfcTapCardDialog.dialog!!.isShowing)) {
+        if ((this::nfcTapCardDialog.isInitialized) &&
+            (nfcTapCardDialog.dialog != null) &&
+            (nfcTapCardDialog.dialog!!.isShowing)
+        ) {
             if (viewModel.isCardId(msg)) {
                 val cardId = CardId.valueOf(msg)
 
