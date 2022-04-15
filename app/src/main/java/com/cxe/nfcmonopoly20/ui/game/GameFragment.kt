@@ -15,9 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
-import com.cxe.nfcmonopoly20.logic.AppViewModel
-import com.cxe.nfcmonopoly20.logic.GO_AMOUNT
-import com.cxe.nfcmonopoly20.logic.PRISON_AMOUNT
+import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
 
 private const val LOG_TAG = "GameFragment"
@@ -76,6 +74,26 @@ class GameFragment : Fragment() {
             nfcTapCardDialog = NfcTapCardDialogFragment(
                 resources.getString(R.string.pay_prison),
                 PRISON_AMOUNT,
+                true
+            )
+            nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
+        }
+
+        // Luxury Tax Button
+        binding.luxuryTaxBtn.setOnClickListener {
+            nfcTapCardDialog = NfcTapCardDialogFragment(
+                resources.getString(R.string.luxury_tax),
+                LUXURY_TAX_AMOUNT,
+                true
+            )
+            nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
+        }
+
+        // Income Tax Button
+        binding.incomeTaxBtn.setOnClickListener {
+            nfcTapCardDialog = NfcTapCardDialogFragment(
+                resources.getString(R.string.income_tax),
+                INCOME_TAX_AMOUNT,
                 true
             )
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
