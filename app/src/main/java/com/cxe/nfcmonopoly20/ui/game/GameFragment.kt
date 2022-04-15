@@ -105,6 +105,14 @@ class GameFragment : Fragment() {
             bankOrFreeParkingDialog.show(parentFragmentManager, BANK_OR_FREE_PARKING_DIALOG_TAG)
         }
 
+        // Trade Button
+
+        // Collect Button
+        binding.collectBtn.setOnClickListener {
+            val bankOrFreeParkingDialog = BankOrFreeParkingDialogFragment(false)
+            bankOrFreeParkingDialog.show(parentFragmentManager, BANK_OR_FREE_PARKING_DIALOG_TAG)
+        }
+
         // Go Button
         binding.goBtn.setOnClickListener {
             nfcTapCardDialog =

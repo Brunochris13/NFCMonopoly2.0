@@ -78,12 +78,12 @@ class NfcTapCardDialogFragment(
             return
         }
 
-        // Player Pays or Collects
-        if (pay) viewModel.playerPay(cardId, amount) else viewModel.playerCollect(cardId, amount)
-
         // Free Parking
         if (freeParking) {
             if (pay) viewModel.payFreeParking(cardId, amount) else viewModel.collectFreeParking(cardId)
+        } else {
+            // Player Pays or Collects
+            if (pay) viewModel.playerPay(cardId, amount) else viewModel.playerCollect(cardId, amount)
         }
 
         dismiss()

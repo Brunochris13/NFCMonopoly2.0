@@ -10,6 +10,7 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBankOrFreeParkingBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.CUSTOM_AMOUNT_DIALOG_TAG
+import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
 
 class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment() {
 
@@ -54,9 +55,22 @@ class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment
         // Free Parking Button
         binding.freeParkingButton.setOnClickListener {
             dismiss()
+
             val title = resources.getString(R.string.free_parking_icon)
-            val customAmountDialog = CustomAmountDialogFragment(title, pay)
-            customAmountDialog.show(parentFragmentManager, CUSTOM_AMOUNT_DIALOG_TAG)
+
+            // Paying money to Free Parking
+            if (pay) {
+                val customAmountDialog = CustomAmountDialogFragment(title, pay, freeParking = true)
+                customAmountDialog.show(parentFragmentManager, CUSTOM_AMOUNT_DIALOG_TAG)
+            } else { // Collecting money from Free Parking
+                val nfcTapCardDialog = NfcTapCardDialogFragment(
+                    title,
+                    viewModel.freeParking,
+                    pay,
+                    freeParking = true
+                )
+                nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
+            }
         }
     }
 
