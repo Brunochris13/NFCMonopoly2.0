@@ -33,5 +33,13 @@
     <string name="exit_dialog_positive">Yes</string>
     <string name="exit_dialog_negative">No</string>
 
+<!--Bank or Free Parking Dialog-->
+    <string name="bank_icon">Bank</string>
+    <string name="free_parking_icon">Free Parking</string>
+    <string name="pay">Pay</string>
+    <string name="collect">Collect</string>
+
+<!--Custom Amount Dialog-->
+    <string name="amount">Amount</string>
 
 </resources>

@@ -17,9 +17,10 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.ui.game.dialog.BankOrFreeParkingDialogFragment
+import com.cxe.nfcmonopoly20.ui.game.dialog.NfcTapCardDialogFragment
 
 private const val LOG_TAG = "GameFragment"
-private const val NFC_TAP_DIALOG_TAG = "nfc_tap_dialog_tag"
 
 class GameFragment : Fragment() {
 
@@ -99,6 +100,12 @@ class GameFragment : Fragment() {
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
 
+        // Pay Button
+        binding.payBtn.setOnClickListener {
+            val bankOrFreeParkingDialog = BankOrFreeParkingDialogFragment(true)
+            bankOrFreeParkingDialog.show(parentFragmentManager, BANK_OR_FREE_PARKING_DIALOG_TAG)
+        }
+
         // Go Button
         binding.goBtn.setOnClickListener {
             nfcTapCardDialog =
@@ -136,14 +143,25 @@ class GameFragment : Fragment() {
     }
 
     fun onNewIntent(msg: String) {
-        if ((this::nfcTapCardDialog.isInitialized) &&
-            (nfcTapCardDialog.dialog != null) &&
-            (nfcTapCardDialog.dialog!!.isShowing)
-        ) {
+
+        val fragments = parentFragmentManager.fragments
+
+//        if ((this::nfcTapCardDialog.isInitialized) &&
+//            (nfcTapCardDialog.dialog != null) &&
+//            (nfcTapCardDialog.dialog!!.isShowing)
+//        )
+        // Check if NfcTapCardDialog is active
+        val nfcTapCardDialogFragment = fragments.firstOrNull {fragment -> fragment is NfcTapCardDialogFragment }
+        if (nfcTapCardDialogFragment != null) {
+            // Cast fragment
+            nfcTapCardDialogFragment as NfcTapCardDialogFragment
+
+            // Check if it is a Debit card
             if (viewModel.isCardId(msg)) {
                 val cardId = CardId.valueOf(msg)
 
-                nfcTapCardDialog.onNewIntent(cardId)
+//                nfcTapCardDialog.onNewIntent(cardId)
+                nfcTapCardDialogFragment.onNewIntent(cardId)
 
                 // Update RecyclerView
                 val player = viewModel.playerMap[cardId]
