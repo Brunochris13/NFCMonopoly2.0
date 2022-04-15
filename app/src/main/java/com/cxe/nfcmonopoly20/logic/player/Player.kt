@@ -5,6 +5,8 @@ import com.cxe.nfcmonopoly20.logic.property.Property
 class Player(var name: String, val cardId: CardId) {
 
     var money: Int = 0
+    var moneyShown = true
+
     val properties = mutableListOf<Property>()
 
     fun pay(amount: Int) {

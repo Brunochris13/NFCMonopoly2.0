@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.R
@@ -71,28 +70,16 @@ class NfcTapCardDialogFragment(
         dialog?.window?.attributes = layoutParams
     }
 
-    fun onNewIntent(msg: String) {
-        // Check if it is a Debit card
-        if (viewModel.isCardId(msg)) {
-            val cardId = CardId.valueOf(msg)
-
-            // Check if player exists with this cardId
-            if (!viewModel.playerMap.containsKey(cardId)) {
-                Log.e(LOG_TAG, "Player does not exist with this cardId")
-                return
-            }
-
-            // Player Pays or Collects
-            if (pay) viewModel.playerPay(cardId, amount) else viewModel.playerCollect(cardId, amount)
-
-            val player = viewModel.playerMap[cardId]
-            Toast.makeText(context, "${player?.name}: ${player?.money}", Toast.LENGTH_SHORT).show()
-
-            dismiss()
-
-        } else {
-            Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
-            Log.i(LOG_TAG, "Wrong Card")
+    fun onNewIntent(cardId: CardId) {
+        // Check if player exists with this cardId
+        if (!viewModel.playerMap.containsKey(cardId)) {
+            Log.e(LOG_TAG, "Player does not exist with this cardId")
+            return
         }
+
+        // Player Pays or Collects
+        if (pay) viewModel.playerPay(cardId, amount) else viewModel.playerCollect(cardId, amount)
+
+        dismiss()
     }
 }

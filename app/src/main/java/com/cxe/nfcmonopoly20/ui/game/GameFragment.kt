@@ -2,10 +2,12 @@ package com.cxe.nfcmonopoly20.ui.game
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,7 +17,9 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.GO_AMOUNT
+import com.cxe.nfcmonopoly20.logic.player.CardId
 
+private const val LOG_TAG = "GameFragment"
 private const val NFC_TAP_DIALOG_TAG = "nfc_tap_dialog_tag"
 class GameFragment : Fragment() {
 
@@ -25,6 +29,9 @@ class GameFragment : Fragment() {
 
     // ViewModel
     private val viewModel: AppViewModel by activityViewModels()
+
+    // RecyclerViewAdapter
+    private lateinit var recyclerViewAdapter: GamePlayerListAdapter
 
     // Dialogs
     private lateinit var nfcTapCardDialog: NfcTapCardDialogFragment
@@ -58,7 +65,7 @@ class GameFragment : Fragment() {
 
         // Recyclerview
         val recyclerView = binding.gamePlayerList
-        val recyclerViewAdapter = GamePlayerListAdapter(viewModel.playerList)
+        this.recyclerViewAdapter = GamePlayerListAdapter(viewModel.playerList)
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
@@ -98,8 +105,20 @@ class GameFragment : Fragment() {
     }
 
     fun onNewIntent(msg: String) {
-        if (nfcTapCardDialog.dialog!!.isShowing) {
-            nfcTapCardDialog.onNewIntent(msg)
+        if ((this::nfcTapCardDialog.isInitialized) && (nfcTapCardDialog.dialog!!.isShowing)) {
+            if (viewModel.isCardId(msg)) {
+                val cardId = CardId.valueOf(msg)
+
+                nfcTapCardDialog.onNewIntent(cardId)
+
+                // Update RecyclerView
+                val player = viewModel.playerMap[cardId]
+                if (player!!.moneyShown)
+                    recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+            } else {
+                Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
+                Log.i(LOG_TAG, "Wrong Card")
+            }
         }
     }
 

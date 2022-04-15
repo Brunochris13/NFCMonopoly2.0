@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePlayerListItemBinding
 import com.cxe.nfcmonopoly20.logic.player.Player
 
-class GamePlayerListAdapter(private val playerList: List<Player>) :
+class GamePlayerListAdapter(private val playerList: MutableList<Player>) :
     RecyclerView.Adapter<GamePlayerListAdapter.PlayerListViewHolder>() {
 
-    class PlayerListViewHolder(
+    inner class PlayerListViewHolder(
         private val binding: FragmentGamePlayerListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
@@ -19,17 +19,20 @@ class GamePlayerListAdapter(private val playerList: List<Player>) :
 
             // Money Button
             with(binding.playerMoney) {
-                if (text == "") {
+                if (player.moneyShown) {
                     text = "€${player.money}"
                 }
                 setOnClickListener {
-                    text = if (text == "") {
+                    text = if (!player.moneyShown) {
                         "€${player.money}"
                     } else {
                         ""
                     }
+                    player.moneyShown = !player.moneyShown
                 }
             }
+
+            binding.executePendingBindings()
         }
     }
 

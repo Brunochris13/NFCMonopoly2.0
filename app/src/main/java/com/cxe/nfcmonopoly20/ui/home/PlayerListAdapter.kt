@@ -12,7 +12,7 @@ class PlayerListAdapter(
     private val playerMap: MutableMap<CardId, Player>,
     ) : RecyclerView.Adapter<PlayerListAdapter.PlayerListViewHolder>() {
 
-    class PlayerListViewHolder(
+    inner class PlayerListViewHolder(
         private val binding: FragmentHomePlayerListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player: Player) {
