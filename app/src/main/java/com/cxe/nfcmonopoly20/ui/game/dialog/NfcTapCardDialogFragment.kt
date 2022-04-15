@@ -19,7 +19,8 @@ private const val LOG_TAG = "NfcTapCardDialogFragment"
 class NfcTapCardDialogFragment(
     private val message: String,
     private val amount: Int,
-    private val pay: Boolean
+    private val pay: Boolean,
+    private val freeParking: Boolean = false
 ) :
     DialogFragment() {
 
@@ -79,6 +80,11 @@ class NfcTapCardDialogFragment(
 
         // Player Pays or Collects
         if (pay) viewModel.playerPay(cardId, amount) else viewModel.playerCollect(cardId, amount)
+
+        // Free Parking
+        if (freeParking) {
+            if (pay) viewModel.payFreeParking(cardId, amount) else viewModel.collectFreeParking(cardId)
+        }
 
         dismiss()
     }

@@ -54,6 +54,16 @@ class AppViewModel : ViewModel() {
 
     fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
 
+    fun payFreeParking(card: CardId, amount: Int) {
+        playerPay(card, amount)
+        freeParking += amount
+    }
+
+    fun collectFreeParking(cardId: CardId) {
+        playerCollect(cardId, freeParking)
+        freeParking = 0
+    }
+
     fun isCardId(msg: String): Boolean {
         return cardIds.any { it.name == msg }
     }

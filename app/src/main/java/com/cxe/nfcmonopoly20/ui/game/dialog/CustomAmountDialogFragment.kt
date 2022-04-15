@@ -11,7 +11,11 @@ import com.cxe.nfcmonopoly20.databinding.FragmentGameCustomAmountBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
 
-class CustomAmountDialogFragment(private val title: String, private val pay: Boolean) :
+class CustomAmountDialogFragment(
+    private val title: String,
+    private val pay: Boolean,
+    private val freeParking: Boolean = false
+) :
     DialogFragment() {
 
     // Binding
@@ -54,7 +58,8 @@ class CustomAmountDialogFragment(private val title: String, private val pay: Boo
             val nfcTapCardDialog = NfcTapCardDialogFragment(
                 title,
                 amount,
-                pay
+                pay,
+                freeParking
             )
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }

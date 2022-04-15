@@ -53,7 +53,10 @@ class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment
 
         // Free Parking Button
         binding.freeParkingButton.setOnClickListener {
-
+            dismiss()
+            val title = resources.getString(R.string.free_parking_icon)
+            val customAmountDialog = CustomAmountDialogFragment(title, pay)
+            customAmountDialog.show(parentFragmentManager, CUSTOM_AMOUNT_DIALOG_TAG)
         }
     }
 
