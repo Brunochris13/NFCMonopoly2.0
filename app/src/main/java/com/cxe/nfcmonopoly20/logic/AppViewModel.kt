@@ -51,9 +51,6 @@ class AppViewModel : ViewModel() {
     private var _utilityProperties = mutableListOf<UtilityProperty>()
     val utilityProperties = _utilityProperties
 
-    // General
-    private val cardIds = CardId.values()
-
     // Functions
     // =========
 
@@ -118,11 +115,13 @@ class AppViewModel : ViewModel() {
 
     // General Functions
     fun isCardId(msg: String): Boolean {
+        val cardIds = CardId.values()
         return cardIds.any { it.name == msg }
     }
 
     fun isProperty(msg: String): Boolean {
-        return false
+        val propertyIds = PropertyId.values()
+        return propertyIds.any {it.name == msg}
     }
 
     fun resetGame() {
