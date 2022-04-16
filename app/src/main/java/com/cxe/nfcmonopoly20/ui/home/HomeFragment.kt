@@ -12,13 +12,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentHomeBinding
+import com.cxe.nfcmonopoly20.getJsonDataFromAsset
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
+import com.cxe.nfcmonopoly20.logic.property.PropertyId
+import com.cxe.nfcmonopoly20.logic.property.StationProperty
+import com.cxe.nfcmonopoly20.logic.property.UtilityProperty
+import org.json.JSONObject
 
 // Constants
 private const val LOG_TAG = "HomeFragment"
 private const val EDIT_PLAYER_DIALOG_TAG = "edit_player_dialog_tag"
+
 class HomeFragment : Fragment() {
 
     // Binding
@@ -84,6 +91,9 @@ class HomeFragment : Fragment() {
                     player.money = startingMoney
                 }
 
+                // Read Properties from JSON
+                createProperties()
+
                 // Navigate to GameFragment
                 findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
             }
@@ -135,6 +145,89 @@ class HomeFragment : Fragment() {
         }
 
         dialog.show(parentFragmentManager, EDIT_PLAYER_DIALOG_TAG)
+    }
+
+    private fun createProperties() {
+        // Read JSON file from Assets
+        val jsonFile = if (viewModel.mega) "mega_properties.json" else "properties.json"
+        val jsonFileString = getJsonDataFromAsset(requireContext(), jsonFile)
+
+        // Check if file was read from Assets
+        if (jsonFileString != null) {
+            val jsonArrayObject = JSONObject(jsonFileString)
+            val jsonArray = jsonArrayObject.getJSONArray("Properties")
+
+            for (i in 0 until jsonArray.length()) {
+                val jsonObject = jsonArray.getJSONObject(i)
+
+                // General Property Attributes
+                val propertyId = PropertyId.valueOf(jsonObject.getString("PropertyID"))
+                val name = jsonObject.getString("Name")
+                val price = jsonObject.getInt("Price")
+                val rentJsonArray = jsonObject.getJSONArray("Rent")
+                val rent = IntArray(rentJsonArray.length())
+                for (j in 0 until rentJsonArray.length()) {
+                    rent[j] = rentJsonArray.getInt(j)
+                }
+                val mortgagedValue = jsonObject.getInt("MortgagedValue")
+
+                val property = when (jsonObject.getString("PropertyType")) {
+                    "ColorProperty" -> {
+                        val color =
+                            ColorProperty.PropertyColors.valueOf(jsonObject.getString("Color"))
+                        val housePrice = jsonObject.getInt("HousePurchasePrice")
+                        val colorSetPropertyAmount = jsonObject.getInt("ColorSetPropertyAmount")
+                        // Create ColorProperty
+                        ColorProperty(
+                            propertyId,
+                            name,
+                            price,
+                            rent,
+                            mortgagedValue,
+                            color,
+                            housePrice,
+                            colorSetPropertyAmount
+                        )
+                    }
+                    "StationProperty" -> {
+                        // Create StationProperty
+                        StationProperty(
+                            propertyId,
+                            name,
+                            price,
+                            rent,
+                            mortgagedValue
+                        )
+                    }
+                    "UtilityProperty" -> {
+                        val utilityType = UtilityProperty.UtilityType.valueOf(jsonObject.getString("UtilityType"))
+                        // Create Utility Property
+                        UtilityProperty(
+                            propertyId,
+                            name,
+                            price,
+                            rent,
+                            mortgagedValue,
+                            utilityType
+                        )
+                    }
+                    else -> null
+                }
+
+                // Check if property is not null
+                if (property != null) {
+                    viewModel.addProperty(property)
+                } else {
+                    Log.e(LOG_TAG, "$name property returned null")
+                }
+            }
+
+        } else {
+            Log.e(LOG_TAG, "Could not read $jsonFile from assets")
+        }
+
+        Toast.makeText(context, "Properties added", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onDestroyView() {

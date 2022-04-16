@@ -7,10 +7,15 @@ class StationProperty(
     id: PropertyId,
     name: String,
     price: Int,
-    rent: Array<Int>,
+    rent: IntArray,
     mortgagedValue: Int
 ) : Property(id, name, price, rent, mortgagedValue) {
 
     // Mega Edition Only
     var depot = false
+
+    override fun reset() {
+        super.reset()
+        depot = false
+    }
 }

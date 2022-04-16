@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
+import com.cxe.nfcmonopoly20.logic.property.*
 
 // Constants
 const val STARTING_MONEY = 1500
@@ -23,15 +24,40 @@ private const val LOG_TAG = "AppViewModel"
 
 class AppViewModel : ViewModel() {
 
+    // Mega Edition
     var mega: Boolean = false
 
+    // Player
     val playerList = mutableListOf<Player>()
     val playerMap = mutableMapOf<CardId, Player>()
 
+    // Free Parking
     var freeParking: Int = 0
 
+    // Properties
+    // All Properties
+    private var _properties = mutableMapOf<PropertyId, Property>()
+    val properties = _properties
+
+    // Color Properties
+    private var _colorProperties = mutableMapOf<ColorProperty.PropertyColors, MutableList<ColorProperty>>()
+    val colorProperties = _colorProperties
+
+    // Station Properties
+    private var _stationProperties = mutableListOf<StationProperty>()
+    val stationProperties = _stationProperties
+
+    // Utility Properties
+    private var _utilityProperties = mutableListOf<UtilityProperty>()
+    val utilityProperties = _utilityProperties
+
+    // General
     private val cardIds = CardId.values()
 
+    // Functions
+    // =========
+
+    // Player Functions
     fun addPlayer(player: Player) {
         if (!playerMap.containsKey(player.cardId)) {
             playerMap[player.cardId] = player
@@ -43,6 +69,7 @@ class AppViewModel : ViewModel() {
 
     fun deletePlayer(player: Player) {
         if (!playerMap.containsKey(player.cardId)) {
+            player.reset()
             playerMap.remove(player.cardId)
             playerList.remove(player)
         } else {
@@ -54,6 +81,7 @@ class AppViewModel : ViewModel() {
 
     fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
 
+    // Free Parking Functions
     fun payFreeParking(card: CardId, amount: Int) {
         playerPay(card, amount)
         freeParking += amount
@@ -64,6 +92,31 @@ class AppViewModel : ViewModel() {
         freeParking = 0
     }
 
+    // Property Functions
+    fun addProperty(property: Property) {
+        // Check if Property is already added
+        if (properties.containsKey(property.id)) {
+            Log.e(LOG_TAG, "Property ${property.name} already exists")
+            return
+        }
+
+        // Add Property to the Property List
+        properties[property.id] = property
+
+        when (property) {
+            is ColorProperty -> { // ColorProperty
+                colorProperties[property.color]?.add(property)
+            }
+            is StationProperty -> { // Station Property
+                stationProperties.add(property)
+            }
+            is UtilityProperty -> { // Utility Property
+                utilityProperties.add(property)
+            }
+        }
+    }
+
+    // General Functions
     fun isCardId(msg: String): Boolean {
         return cardIds.any { it.name == msg }
     }
@@ -73,10 +126,22 @@ class AppViewModel : ViewModel() {
     }
 
     fun resetGame() {
+        // Players
+        for (player in playerList)
+            player.reset()
         playerList.clear()
         playerMap.clear()
+
+        // Free Parking
         freeParking = 0
-        // TODO: Clear Properties
+
+        // Properties
+        for (property in properties.values)
+            property.reset()
+        properties.clear()
+        colorProperties.clear()
+        stationProperties.clear()
+        utilityProperties.clear()
     }
 
 }

@@ -4,7 +4,7 @@ class ColorProperty(
     id: PropertyId,
     name: String,
     price: Int,
-    rent: Array<Int>,
+    rent: IntArray,
     mortgagedValue: Int,
     val color: PropertyColors,
     val housePrice: Int,
@@ -25,6 +25,12 @@ class ColorProperty(
         YELLOW,
         GREEN,
         BLUE
+    }
+
+    override fun reset() {
+        super.reset()
+        set = false
+        megaSet = false
     }
 
 }

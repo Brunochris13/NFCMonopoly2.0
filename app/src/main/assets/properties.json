@@ -13,10 +13,10 @@
         250
       ],
       "MortgagedValue": 30,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "BROWN",
       "HousePurchasePrice": 50,
-      "ColorPropertyCount": 2
+      "ColorSetPropertyAmount": 2
     },
     {
       "PropertyID": "COLOR_BROWN_2",
@@ -31,10 +31,10 @@
         450
       ],
       "MortgagedValue": 30,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "BROWN",
       "HousePurchasePrice": 50,
-      "ColorPropertyCount": 2
+      "ColorSetPropertyAmount": 2
     },
     {
       "PropertyID": "COLOR_LIGHT_BLUE_1",
@@ -49,10 +49,10 @@
         550
       ],
       "MortgagedValue": 50,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "LIGHT_BLUE",
       "HousePurchasePrice": 50,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_LIGHT_BLUE_2",
@@ -67,10 +67,10 @@
         550
       ],
       "MortgagedValue": 50,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "LIGHT_BLUE",
       "HousePurchasePrice": 50,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_LIGHT_BLUE_3",
@@ -85,10 +85,10 @@
         600
       ],
       "MortgagedValue": 60,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "LIGHT_BLUE",
       "HousePurchasePrice": 50,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_PINK_1",
@@ -103,10 +103,10 @@
         750
       ],
       "MortgagedValue": 70,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "PINK",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_PINK_2",
@@ -121,10 +121,10 @@
         750
       ],
       "MortgagedValue": 70,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "PINK",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_PINK_3",
@@ -139,10 +139,10 @@
         900
       ],
       "MortgagedValue": 80,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "PINK",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_ORANGE_1",
@@ -157,10 +157,10 @@
         950
       ],
       "MortgagedValue": 90,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "ORANGE",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_ORANGE_2",
@@ -175,10 +175,10 @@
         950
       ],
       "MortgagedValue": 90,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "ORANGE",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_ORANGE_3",
@@ -193,10 +193,10 @@
         1000
       ],
       "MortgagedValue": 100,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "ORANGE",
       "HousePurchasePrice": 100,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_RED_1",
@@ -211,10 +211,10 @@
         1050
       ],
       "MortgagedValue": 110,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "RED",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_RED_2",
@@ -229,10 +229,10 @@
         1050
       ],
       "MortgagedValue": 110,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "RED",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_RED_3",
@@ -247,10 +247,10 @@
         1100
       ],
       "MortgagedValue": 120,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "RED",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_YELLOW_1",
@@ -265,10 +265,10 @@
         1150
       ],
       "MortgagedValue": 130,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "YELLOW",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_YELLOW_2",
@@ -283,10 +283,10 @@
         1150
       ],
       "MortgagedValue": 130,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "YELLOW",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_YELLOW_3",
@@ -301,10 +301,10 @@
         1200
       ],
       "MortgagedValue": 140,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "YELLOW",
       "HousePurchasePrice": 150,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_GREEN_1",
@@ -319,10 +319,10 @@
         1275
       ],
       "MortgagedValue": 150,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "GREEN",
       "HousePurchasePrice": 200,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_GREEN_2",
@@ -337,10 +337,10 @@
         1275
       ],
       "MortgagedValue": 150,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "GREEN",
       "HousePurchasePrice": 200,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_GREEN_3",
@@ -355,10 +355,10 @@
         1400
       ],
       "MortgagedValue": 160,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "GREEN",
       "HousePurchasePrice": 200,
-      "ColorPropertyCount": 3
+      "ColorSetPropertyAmount": 3
     },
     {
       "PropertyID": "COLOR_BLUE_1",
@@ -373,10 +373,10 @@
         1500
       ],
       "MortgagedValue": 175,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "BLUE",
       "HousePurchasePrice": 200,
-      "ColorPropertyCount": 2
+      "ColorSetPropertyAmount": 2
     },
     {
       "PropertyID": "COLOR_BLUE_2",
@@ -391,10 +391,10 @@
         2000
       ],
       "MortgagedValue": 200,
-      "Type": "ColorProperty",
+      "PropertyType": "ColorProperty",
       "Color": "BLUE",
       "HousePurchasePrice": 200,
-      "ColorPropertyCount": 2
+      "ColorSetPropertyAmount": 2
     },
     {
       "PropertyID": "UTILITY_ELECTRICITY",
@@ -405,7 +405,7 @@
         10
       ],
       "MortgagedValue": 75,
-      "Type": "UtilityProperty",
+      "PropertyType": "UtilityProperty",
       "UtilityType": "ELECTRICITY"
     },
     {
@@ -417,7 +417,7 @@
         10
       ],
       "MortgagedValue": 75,
-      "Type": "UtilityProperty",
+      "PropertyType": "UtilityProperty",
       "UtilityType": "WATER"
     },
     {
@@ -431,7 +431,7 @@
         200
       ],
       "MortgagedValue": 100,
-      "Type": "StationProperty"
+      "PropertyType": "StationProperty"
     },
     {
       "PropertyID": "STATION_2",
@@ -444,7 +444,7 @@
         200
       ],
       "MortgagedValue": 100,
-      "Type": "StationProperty"
+      "PropertyType": "StationProperty"
     },
     {
       "PropertyID": "STATION_3",
@@ -457,7 +457,7 @@
         200
       ],
       "MortgagedValue": 100,
-      "Type": "StationProperty"
+      "PropertyType": "StationProperty"
     },
     {
       "PropertyID": "STATION_4",
@@ -470,7 +470,7 @@
         200
       ],
       "MortgagedValue": 100,
-      "Type": "StationProperty"
+      "PropertyType": "StationProperty"
     }
   ]
 }

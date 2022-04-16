@@ -16,4 +16,10 @@ class Player(var name: String, val cardId: CardId) {
     fun collect(amount: Int) {
         money += amount
     }
+
+    fun reset() {
+        for (property in properties)
+            property.reset()
+        properties.clear()
+    }
 }

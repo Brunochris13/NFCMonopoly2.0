@@ -8,7 +8,7 @@ abstract class Property(
     val id: PropertyId,
     val name: String,
     val price: Int,
-    val rent: Array<Int>,
+    val rent: IntArray,
     val mortgagedValue: Int
 ) {
 
@@ -33,11 +33,10 @@ abstract class Property(
             Log.e(LOG_TAG, "Tried to decrease rent level, less than 0. currentRentLevel = $currentRentLevel")
     }
 
-    fun reset() {
+    open fun reset() {
         _currentRentLevel = 0
         mortgaged = false
         playerId = null
     }
-
 
 }
