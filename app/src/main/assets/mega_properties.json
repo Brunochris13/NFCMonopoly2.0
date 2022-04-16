@@ -1,0 +1,665 @@
+{
+  "Properties": [
+    {
+      "PropertyID": "COLOR_BROWN_1",
+      "Name": "OLD KENT ROAD",
+      "Price": 60,
+      "Rent": [
+        2,
+        10,
+        30,
+        90,
+        160,
+        250,
+        750
+      ],
+      "MortgagedValue": 30,
+      "Type": "ColorProperty",
+      "Color": "BROWN",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "COLOR_BROWN_2",
+      "Name": "WHITECHAPEL",
+      "Price": 60,
+      "Rent": [
+        4,
+        20,
+        60,
+        180,
+        320,
+        450,
+        950
+      ],
+      "MortgagedValue": 30,
+      "Type": "ColorProperty",
+      "Color": "BROWN",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "COLOR_BROWN_3",
+      "Name": "ELEPHANT & CASTLE",
+      "Price": 60,
+      "Rent": [
+        4,
+        20,
+        60,
+        180,
+        320,
+        450,
+        950
+      ],
+      "MortgagedValue": 30,
+      "Type": "ColorProperty",
+      "Color": "BROWN",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "COLOR_LIGHT_BLUE_1",
+      "Name": "THE ANGEL ISLINGTON",
+      "Price": 100,
+      "Rent": [
+        6,
+        30,
+        90,
+        270,
+        400,
+        550,
+        1050
+      ],
+      "MortgagedValue": 50,
+      "Type": "ColorProperty",
+      "Color": "LIGHT_BLUE",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_LIGHT_BLUE_2",
+      "Name": "EUSTON ROAD",
+      "Price": 100,
+      "Rent": [
+        6,
+        30,
+        90,
+        270,
+        400,
+        550,
+        1050
+      ],
+      "MortgagedValue": 50,
+      "Type": "ColorProperty",
+      "Color": "LIGHT_BLUE",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_LIGHT_BLUE_3",
+      "Name": "PENTONVILLE",
+      "Price": 120,
+      "Rent": [
+        8,
+        40,
+        100,
+        300,
+        450,
+        600,
+        1100
+      ],
+      "MortgagedValue": 60,
+      "Type": "ColorProperty",
+      "Color": "LIGHT_BLUE",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_LIGHT_BLUE_4",
+      "Name": "EDGWARE ROAD",
+      "Price": 120,
+      "Rent": [
+        8,
+        40,
+        100,
+        300,
+        450,
+        600,
+        1100
+      ],
+      "MortgagedValue": 60,
+      "Type": "ColorProperty",
+      "Color": "LIGHT_BLUE",
+      "HousePurchasePrice": 50,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_PINK_1",
+      "Name": "PALL MALL",
+      "Price": 140,
+      "Rent": [
+        10,
+        50,
+        150,
+        450,
+        625,
+        750,
+        1250
+      ],
+      "MortgagedValue": 70,
+      "Type": "ColorProperty",
+      "Color": "PINK",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_PINK_2",
+      "Name": "WHITEHALL",
+      "Price": 140,
+      "Rent": [
+        10,
+        50,
+        150,
+        450,
+        625,
+        750,
+        1250
+      ],
+      "MortgagedValue": 70,
+      "Type": "ColorProperty",
+      "Color": "PINK",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_PINK_3",
+      "Name": "NORTHUMBERLAND AVENUE",
+      "Price": 160,
+      "Rent": [
+        12,
+        60,
+        180,
+        500,
+        700,
+        900,
+        1400
+      ],
+      "MortgagedValue": 80,
+      "Type": "ColorProperty",
+      "Color": "PINK",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_PINK_4",
+      "Name": "DOWNING STREET",
+      "Price": 160,
+      "Rent": [
+        12,
+        60,
+        180,
+        500,
+        700,
+        900,
+        1400
+      ],
+      "MortgagedValue": 80,
+      "Type": "ColorProperty",
+      "Color": "PINK",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_ORANGE_1",
+      "Name": "BOW STREET",
+      "Price": 180,
+      "Rent": [
+        14,
+        70,
+        200,
+        550,
+        750,
+        950,
+        1450
+      ],
+      "MortgagedValue": 90,
+      "Type": "ColorProperty",
+      "Color": "ORANGE",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_ORANGE_2",
+      "Name": "MARLBOROUGH STREET",
+      "Price": 180,
+      "Rent": [
+        14,
+        70,
+        200,
+        550,
+        750,
+        950,
+        1450
+      ],
+      "MortgagedValue": 90,
+      "Type": "ColorProperty",
+      "Color": "ORANGE",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_ORANGE_3",
+      "Name": "VINE STREET",
+      "Price": 200,
+      "Rent": [
+        16,
+        80,
+        220,
+        600,
+        800,
+        1000,
+        1500
+      ],
+      "MortgagedValue": 100,
+      "Type": "ColorProperty",
+      "Color": "ORANGE",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_ORANGE_4",
+      "Name": "HIGH HOLBORN",
+      "Price": 200,
+      "Rent": [
+        16,
+        80,
+        220,
+        600,
+        800,
+        1000,
+        1500
+      ],
+      "MortgagedValue": 100,
+      "Type": "ColorProperty",
+      "Color": "ORANGE",
+      "HousePurchasePrice": 100,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_RED_1",
+      "Name": "STRAND",
+      "Price": 220,
+      "Rent": [
+        18,
+        90,
+        250,
+        700,
+        875,
+        1050,
+        2050
+      ],
+      "MortgagedValue": 110,
+      "Type": "ColorProperty",
+      "Color": "RED",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_RED_2",
+      "Name": "FLEET STREET",
+      "Price": 220,
+      "Rent": [
+        18,
+        90,
+        250,
+        700,
+        875,
+        1050,
+        2050
+      ],
+      "MortgagedValue": 110,
+      "Type": "ColorProperty",
+      "Color": "RED",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_RED_3",
+      "Name": "TRAFALGAR SQUARE",
+      "Price": 240,
+      "Rent": [
+        20,
+        100,
+        300,
+        750,
+        925,
+        1100,
+        2100
+      ],
+      "MortgagedValue": 120,
+      "Type": "ColorProperty",
+      "Color": "RED",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_RED_4",
+      "Name": "ALDWYCH",
+      "Price": 240,
+      "Rent": [
+        20,
+        100,
+        300,
+        750,
+        925,
+        1100,
+        2100
+      ],
+      "MortgagedValue": 120,
+      "Type": "ColorProperty",
+      "Color": "RED",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_YELLOW_1",
+      "Name": "LEICESTER SQUARE",
+      "Price": 260,
+      "Rent": [
+        22,
+        110,
+        330,
+        800,
+        975,
+        1150,
+        2150
+      ],
+      "MortgagedValue": 130,
+      "Type": "ColorProperty",
+      "Color": "YELLOW",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_YELLOW_2",
+      "Name": "COVENTRY STREET",
+      "Price": 260,
+      "Rent": [
+        22,
+        110,
+        330,
+        800,
+        975,
+        1150,
+        2150
+      ],
+      "MortgagedValue": 130,
+      "Type": "ColorProperty",
+      "Color": "YELLOW",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_YELLOW_3",
+      "Name": "PICCADILLY",
+      "Price": 280,
+      "Rent": [
+        24,
+        120,
+        360,
+        850,
+        1025,
+        1200,
+        2200
+      ],
+      "MortgagedValue": 140,
+      "Type": "ColorProperty",
+      "Color": "YELLOW",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_YELLOW_4",
+      "Name": "SHAFTESBURY AVENUE",
+      "Price": 280,
+      "Rent": [
+        24,
+        120,
+        360,
+        850,
+        1025,
+        1200,
+        2200
+      ],
+      "MortgagedValue": 140,
+      "Type": "ColorProperty",
+      "Color": "YELLOW",
+      "HousePurchasePrice": 150,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_GREEN_1",
+      "Name": "REGENT STREET",
+      "Price": 300,
+      "Rent": [
+        26,
+        130,
+        390,
+        900,
+        1100,
+        1275,
+        2275
+      ],
+      "MortgagedValue": 150,
+      "Type": "ColorProperty",
+      "Color": "GREEN",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_GREEN_2",
+      "Name": "OXFORD STREET",
+      "Price": 300,
+      "Rent": [
+        26,
+        130,
+        390,
+        900,
+        1100,
+        1275,
+        2275
+      ],
+      "MortgagedValue": 150,
+      "Type": "ColorProperty",
+      "Color": "GREEN",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_GREEN_3",
+      "Name": "BOND STREET",
+      "Price": 320,
+      "Rent": [
+        28,
+        150,
+        450,
+        1000,
+        1200,
+        1400,
+        2400
+      ],
+      "MortgagedValue": 160,
+      "Type": "ColorProperty",
+      "Color": "GREEN",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_GREEN_4",
+      "Name": "SAVILE ROW",
+      "Price": 320,
+      "Rent": [
+        28,
+        150,
+        450,
+        1000,
+        1200,
+        1400,
+        2400
+      ],
+      "MortgagedValue": 160,
+      "Type": "ColorProperty",
+      "Color": "GREEN",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 4
+    },
+    {
+      "PropertyID": "COLOR_BLUE_1",
+      "Name": "PARK LANE",
+      "Price": 350,
+      "Rent": [
+        35,
+        175,
+        500,
+        1100,
+        1300,
+        1500,
+        2500
+      ],
+      "MortgagedValue": 175,
+      "Type": "ColorProperty",
+      "Color": "BLUE",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "COLOR_BLUE_2",
+      "Name": "MAYFAIR",
+      "Price": 350,
+      "Rent": [
+        35,
+        175,
+        500,
+        1100,
+        1300,
+        1500,
+        2500
+      ],
+      "MortgagedValue": 175,
+      "Type": "ColorProperty",
+      "Color": "BLUE",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "COLOR_BLUE_3",
+      "Name": "KNIGHTSBRIDGE",
+      "Price": 400,
+      "Rent": [
+        50,
+        200,
+        600,
+        1400,
+        1700,
+        2000,
+        3000
+      ],
+      "MortgagedValue": 200,
+      "Type": "ColorProperty",
+      "Color": "BLUE",
+      "HousePurchasePrice": 200,
+      "ColorPropertyCount": 3
+    },
+    {
+      "PropertyID": "UTILITY_GAS",
+      "Name": "GAS COMPANY",
+      "Price": 150,
+      "Rent": [
+        4,
+        10,
+        20
+      ],
+      "MortgagedValue": 75,
+      "Type": "UtilityProperty",
+      "UtilityType": "GAS"
+    },
+    {
+      "PropertyID": "UTILITY_ELECTRICITY",
+      "Name": "ELECTRIC COMPANY",
+      "Price": 150,
+      "Rent": [
+        4,
+        10,
+        20
+      ],
+      "MortgagedValue": 75,
+      "Type": "UtilityProperty",
+      "UtilityType": "ELECTRICITY"
+    },
+    {
+      "PropertyID": "UTILITY_WATER",
+      "Name": "WATER WORKS",
+      "Price": 150,
+      "Rent": [
+        4,
+        10,
+        20
+      ],
+      "MortgagedValue": 75,
+      "Type": "UtilityProperty",
+      "UtilityType": "WATER"
+    },
+    {
+      "PropertyID": "STATION_1",
+      "Name": "KING'S CROSS STATION",
+      "Price": 200,
+      "Rent": [
+        25,
+        50,
+        100,
+        200
+      ],
+      "MortgagedValue": 100,
+      "Type": "StationProperty"
+    },
+    {
+      "PropertyID": "STATION_2",
+      "Name": "MARYLEBONE STATION",
+      "Price": 200,
+      "Rent": [
+        25,
+        50,
+        100,
+        200
+      ],
+      "MortgagedValue": 100,
+      "Type": "StationProperty"
+    },
+    {
+      "PropertyID": "STATION_3",
+      "Name": "FENCHURCH STREET STATION",
+      "Price": 200,
+      "Rent": [
+        25,
+        50,
+        100,
+        200
+      ],
+      "MortgagedValue": 100,
+      "Type": "StationProperty"
+    },
+    {
+      "PropertyID": "STATION_4",
+      "Name": "LIVERPOOL STREET STATION",
+      "Price": 200,
+      "Rent": [
+        25,
+        50,
+        100,
+        200
+      ],
+      "MortgagedValue": 100,
+      "Type": "StationProperty"
+    }
+  ]
+}

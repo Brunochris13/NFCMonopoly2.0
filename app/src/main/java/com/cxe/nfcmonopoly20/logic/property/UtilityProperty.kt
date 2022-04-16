@@ -1,0 +1,18 @@
+package com.cxe.nfcmonopoly20.logic.property
+
+class UtilityProperty(
+    id: PropertyId,
+    name: String,
+    price: Int,
+    rent: Array<Int>,
+    mortgagedValue: Int,
+    val utilityType: UtilityType
+    ) : Property(id, name, price, rent, mortgagedValue) {
+
+
+    enum class UtilityType {
+        ELECTRICITY,
+        WATER,
+        GAS
+    }
+}
