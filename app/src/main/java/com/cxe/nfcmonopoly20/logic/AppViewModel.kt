@@ -85,6 +85,12 @@ class AppViewModel : ViewModel() {
         playerMap[cardId]?.properties?.add(property)
     }
 
+    fun playerPaysRent(cardId: CardId, property: Property) {
+        val rent = property.getRent(property.currentRentLevel)
+        playerPay(cardId, rent)
+        playerCollect(property.playerId!!, rent)
+    }
+
     // Free Parking Functions
     fun payFreeParking(card: CardId, amount: Int) {
         playerPay(card, amount)

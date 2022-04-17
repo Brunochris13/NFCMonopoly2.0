@@ -1,9 +1,11 @@
 package com.cxe.nfcmonopoly20.ui.dialog
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
@@ -11,6 +13,8 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.*
+
+private const val LOG_TAG = "PropertyDialogFragment"
 
 class PropertyDialogFragment(private val property: Property) : DialogFragment() {
 
@@ -81,9 +85,23 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
             // Player buys Property
             viewModel.playerBuyProperty(cardId, property)
 
+            // Add affected Players
             players.add(viewModel.playerMap[cardId]!!)
         } else {
+            // Player pays Rent to another Player
 
+            // Check if this player owns the Property
+            if (cardId == property.playerId) {
+                Toast.makeText(context, "You own it!", Toast.LENGTH_SHORT).show()
+                Log.i(LOG_TAG, "Player tried to pay rent to themselves")
+                return listOf()
+            }
+
+            viewModel.playerPaysRent(cardId, property)
+
+            // Add affected Players
+            players.add(viewModel.playerMap[cardId]!!)
+            players.add(viewModel.playerMap[property.playerId]!!)
         }
 
         dismiss()
