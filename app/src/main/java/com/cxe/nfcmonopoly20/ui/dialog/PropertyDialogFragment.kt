@@ -10,6 +10,8 @@ import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.Property
+import com.cxe.nfcmonopoly20.logic.property.StationProperty
+import com.cxe.nfcmonopoly20.logic.property.UtilityProperty
 
 class PropertyDialogFragment(private val property: Property) : DialogFragment() {
 
@@ -28,7 +30,8 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGamePropertyDialogBinding.inflate(inflater, container, false)
+        //_binding = FragmentGamePropertyDialogBinding.inflate(inflater, container, false)
+        _binding = FragmentGamePropertyDialogBinding.inflate(layoutInflater)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -39,7 +42,28 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.colorProperty = property as ColorProperty?
+        when (property) {
+            // Color Property
+            is ColorProperty -> {
+                // Set colorProperty of binding
+                binding.colorProperty = property
+
+                // Make the Color Property layout visible
+                binding.colorPropertyLayout.root.visibility = View.VISIBLE
+            }
+            // Station Property
+            is StationProperty -> {
+                // Set stationProperty of binding
+                binding.stationProperty = property
+
+                // Make the Station Property layout visible
+                binding.stationPropertyLayout.root.visibility = View.VISIBLE
+            }
+            // Utility Property
+            is UtilityProperty -> {
+
+            }
+        }
 
     }
 }

@@ -29,7 +29,7 @@
                 android:layout_height="50dp"
                 android:background="@{PropertyColorToResourcesConverter.convert(context, colorProperty.color)}"
                 android:foreground="@drawable/property_border"
-                android:text="@string/default_string"
+                android:text="@{colorProperty.name}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

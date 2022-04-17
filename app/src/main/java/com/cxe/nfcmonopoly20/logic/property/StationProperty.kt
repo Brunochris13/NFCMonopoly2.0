@@ -14,6 +14,12 @@ class StationProperty(
     // Mega Edition Only
     var depot = false
 
+    override fun getRent(level: Int): Int {
+        val rent = super.getRent(level)
+        // If Station Property has a depot, then the rent is Double
+        return if (depot) rent * 2 else rent
+    }
+
     override fun reset() {
         super.reset()
         depot = false

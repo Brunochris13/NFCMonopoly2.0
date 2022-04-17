@@ -51,4 +51,10 @@
     <string name="house_4">4 Houses</string>
     <string name="hotel">Hotel</string>
 
+    <string name="train_icon">Train Icon</string>
+    <string name="station_1">1 Station</string>
+    <string name="station_2">2 Stations</string>
+    <string name="station_3">3 Stations</string>
+    <string name="station_4">4 Stations</string>
+
 </resources>

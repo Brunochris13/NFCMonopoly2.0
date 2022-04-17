@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="colorProperty"
             type="com.cxe.nfcmonopoly20.logic.property.ColorProperty" />
+
+        <variable
+            name="stationProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.StationProperty" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,13 +19,27 @@
 
 
         <include
+            android:id="@+id/color_property_layout"
             layout="@layout/color_property"
-            app:colorProperty = "@{colorProperty}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:colorProperty="@{colorProperty}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/station_property_layout"
+            layout="@layout/station_property"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:stationProperty="@{stationProperty}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
