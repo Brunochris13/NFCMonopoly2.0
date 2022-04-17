@@ -62,15 +62,6 @@ class NfcTapCardDialogFragment(
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        // Set Layout width
-        val layoutParams = dialog?.window?.attributes
-        layoutParams?.width = 800 //400dp
-        dialog?.window?.attributes = layoutParams
-    }
-
     fun onNewIntent(cardId: CardId) {
         // Check if player exists with this cardId
         if (!viewModel.playerMap.containsKey(cardId)) {

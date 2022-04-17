@@ -73,13 +73,4 @@ class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment
             }
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        // Set Layout width
-        val layoutParams = dialog?.window?.attributes
-        layoutParams?.width = 800 //400dp
-        dialog?.window?.attributes = layoutParams
-    }
 }

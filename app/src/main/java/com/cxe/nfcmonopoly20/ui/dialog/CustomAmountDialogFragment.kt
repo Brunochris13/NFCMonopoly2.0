@@ -64,13 +64,4 @@ class CustomAmountDialogFragment(
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        // Set Layout width
-        val layoutParams = dialog?.window?.attributes
-        layoutParams?.width = 800 //500dp
-        dialog?.window?.attributes = layoutParams
-    }
 }
