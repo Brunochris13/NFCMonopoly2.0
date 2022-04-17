@@ -11,6 +11,10 @@
         <variable
             name="stationProperty"
             type="com.cxe.nfcmonopoly20.logic.property.StationProperty" />
+
+        <variable
+            name="utilityProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.UtilityProperty" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,5 +45,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:stationProperty="@{stationProperty}" />
+
+        <include
+            android:id="@+id/utility_property_layout"
+            layout="@layout/utility_property"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:utilityProperty="@{utilityProperty}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

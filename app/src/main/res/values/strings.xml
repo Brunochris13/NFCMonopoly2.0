@@ -57,4 +57,12 @@
     <string name="station_3">3 Stations</string>
     <string name="station_4">4 Stations</string>
 
+    <string name="utility_icon">Utility Icon</string>
+    <string name="utility_1">1 Utility</string>
+    <string name="utility_1_amount">Dice x 4</string>
+    <string name="utility_2">2 Utilities</string>
+    <string name="utility_2_amount">Dice x 10</string>
+    <string name="utility_3">3 Utilities</string>
+    <string name="utility_3_amount">Dice x 20</string>
+
 </resources>

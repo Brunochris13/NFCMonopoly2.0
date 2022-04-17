@@ -14,12 +14,13 @@
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_custom_amount.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_nfc_card_tap.xml" value="0.1" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_player_list_item.xml" value="0.4" />
-        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_property_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_property_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_edit.xml" value="0.1" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_list_item.xml" value="0.4" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_second.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/station_property.xml" value="0.25" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/utility_property.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/xml/nfc_tech_list.xml" value="0.22056159420289856" />
       </map>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="utilityProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.UtilityProperty" />
+
+        <import type="com.cxe.nfcmonopoly20.util.UtilityTypeToDrawable"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/property_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/property_layout">
+
+            <ImageView
+                android:id="@+id/utility_image"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/utility_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@{UtilityTypeToDrawable.convert(context, utilityProperty.utilityType)}" />
+
+            <TextView
+                android:id="@+id/utility_title"
+                style="@style/property_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{utilityProperty.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/utility_image" />
+
+            <TextView
+                android:id="@+id/utility1"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/utility_1"
+                app:layout_constraintBottom_toTopOf="@+id/utility2"
+                app:layout_constraintEnd_toStartOf="@+id/utility1_amount"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/utility_title" />
+
+            <TextView
+                android:id="@+id/utility1_amount"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/utility_1_amount"
+                app:layout_constraintBottom_toTopOf="@+id/utility2_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/utility1"
+                app:layout_constraintTop_toBottomOf="@+id/utility_title" />
+
+            <TextView
+                android:id="@+id/utility2"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/utility_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/utility1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/utility1"
+                app:layout_constraintTop_toBottomOf="@+id/utility1" />
+
+            <TextView
+                android:id="@+id/utility2_amount"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/utility_2_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/utility1_amount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/utility1_amount"
+                app:layout_constraintTop_toBottomOf="@+id/utility1_amount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

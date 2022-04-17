@@ -8,10 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
-import com.cxe.nfcmonopoly20.logic.property.ColorProperty
-import com.cxe.nfcmonopoly20.logic.property.Property
-import com.cxe.nfcmonopoly20.logic.property.StationProperty
-import com.cxe.nfcmonopoly20.logic.property.UtilityProperty
+import com.cxe.nfcmonopoly20.logic.property.*
 
 class PropertyDialogFragment(private val property: Property) : DialogFragment() {
 
@@ -42,6 +39,10 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.colorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
+        binding.stationProperty = viewModel.stationProperties[0]
+        binding.utilityProperty = viewModel.utilityProperties[0]
+
         when (property) {
             // Color Property
             is ColorProperty -> {
@@ -61,7 +62,11 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
             }
             // Utility Property
             is UtilityProperty -> {
+                // Set stationProperty of binding
+                binding.utilityProperty = property
 
+                // Make the Station Property layout visible
+                binding.utilityPropertyLayout.root.visibility = View.VISIBLE
             }
         }
 
