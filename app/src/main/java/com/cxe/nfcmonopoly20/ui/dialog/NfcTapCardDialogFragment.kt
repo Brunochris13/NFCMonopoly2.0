@@ -2,7 +2,6 @@ package com.cxe.nfcmonopoly20.ui.dialog
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,12 +62,6 @@ class NfcTapCardDialogFragment(
     }
 
     fun onNewIntent(cardId: CardId) {
-        // Check if player exists with this cardId
-        if (!viewModel.playerMap.containsKey(cardId)) {
-            Log.e(LOG_TAG, "Player does not exist with this cardId")
-            return
-        }
-
         // Free Parking
         if (freeParking) {
             if (pay) viewModel.payFreeParking(cardId, amount) else viewModel.collectFreeParking(cardId)

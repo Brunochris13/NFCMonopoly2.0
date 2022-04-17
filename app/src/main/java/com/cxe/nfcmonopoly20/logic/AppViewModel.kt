@@ -79,6 +79,12 @@ class AppViewModel : ViewModel() {
 
     fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
 
+    fun playerBuyProperty(cardId: CardId, property: Property) {
+        playerPay(cardId, property.price)
+        property.playerId = cardId
+        playerMap[cardId]?.properties?.add(property)
+    }
+
     // Free Parking Functions
     fun payFreeParking(card: CardId, amount: Int) {
         playerPay(card, amount)

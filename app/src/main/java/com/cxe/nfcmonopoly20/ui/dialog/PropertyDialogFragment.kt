@@ -8,6 +8,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
+import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.*
 
 class PropertyDialogFragment(private val property: Property) : DialogFragment() {
@@ -69,6 +71,23 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
                 binding.utilityPropertyLayout.root.visibility = View.VISIBLE
             }
         }
+    }
 
+    fun onNewIntent(cardId: CardId): List<Player> {
+        val players = mutableListOf<Player>()
+
+        // Check if Property belongs to a Player
+        if (property.playerId == null) {
+            // Player buys Property
+            viewModel.playerBuyProperty(cardId, property)
+
+            players.add(viewModel.playerMap[cardId]!!)
+        } else {
+
+        }
+
+        dismiss()
+
+        return players
     }
 }

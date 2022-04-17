@@ -155,7 +155,7 @@ class GameFragment : Fragment() {
 
         val fragments = parentFragmentManager.fragments
 
-        // Check if NfcTapCardDialog is active
+        // Check if NfcTapCardDialog is shown
         val nfcTapCardDialogFragment = fragments.firstOrNull {fragment -> fragment is NfcTapCardDialogFragment }
         if (nfcTapCardDialogFragment != null) {
             // Cast fragment
@@ -165,13 +165,43 @@ class GameFragment : Fragment() {
             if (viewModel.isCardId(msg)) {
                 val cardId = CardId.valueOf(msg)
 
-//                nfcTapCardDialog.onNewIntent(cardId)
+                // Check if Player exists with this debit card
+                if (!playerExists(cardId))
+                    return
+
                 nfcTapCardDialogFragment.onNewIntent(cardId)
 
                 // Update RecyclerView
                 val player = viewModel.playerMap[cardId]
                 if (player!!.moneyShown)
                     recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+            } else {
+                Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
+                Log.i(LOG_TAG, "Wrong Card")
+            }
+            return
+        }
+
+        // Check if PropertyDialog is shown
+        val propertyDialogFragment = fragments.firstOrNull {fragment -> fragment is PropertyDialogFragment}
+        if (propertyDialogFragment != null) {
+            // Cast fragment
+            propertyDialogFragment as PropertyDialogFragment
+
+            // Check if its is a Debit card
+            if (viewModel.isCardId(msg)) {
+                val cardId = CardId.valueOf(msg)
+
+                // Check if Player exists with this debit card
+                if (!playerExists(cardId))
+                    return
+
+                // Update RecyclerView
+                val players = propertyDialogFragment.onNewIntent(cardId)
+                for (player in players) {
+                    if (player.moneyShown)
+                        recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+                }
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Wrong Card")
@@ -193,7 +223,18 @@ class GameFragment : Fragment() {
             } else {
                 Log.e(LOG_TAG, "Property is null, propertyId = $propertyId")
             }
+            return
         }
+    }
+
+    private fun playerExists(cardId: CardId): Boolean {
+        // Check if player exists with this cardId
+        return if (!viewModel.playerMap.containsKey(cardId)) {
+            Toast.makeText(context, "Player does not exist with this card", Toast.LENGTH_SHORT).show()
+            Log.e(LOG_TAG, "Player does not exist with this cardId, cardId = $cardId")
+            false
+        } else
+            true
     }
 
     override fun onDestroyView() {
