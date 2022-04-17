@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="game_fragment_btn">
         <item name="android:layout_width">110dp</item>
         <item name="android:layout_height">70dp</item>
@@ -24,5 +25,32 @@
         <item name="android:gravity">center</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">-1dp</item>
+    </style>
+
+    <style name="property_cardview">
+        <item name="android:foreground">@drawable/property_border</item>
+    </style>
+
+    <style name="property_layout">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">400dp</item>
+    </style>
+
+    <style name="property_title">
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="property_details">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">110dp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

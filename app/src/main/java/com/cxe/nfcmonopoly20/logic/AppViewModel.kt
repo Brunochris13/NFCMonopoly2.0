@@ -19,6 +19,7 @@ const val PLAYER_NAME_TAG = "playerNameTag"
 const val NFC_TAP_DIALOG_TAG = "nfc_tap_dialog_tag"
 const val CUSTOM_AMOUNT_DIALOG_TAG = "custom_amount_dialog_tag"
 const val BANK_OR_FREE_PARKING_DIALOG_TAG = "bank_or_free_parking_dialog_tag"
+const val PROPERTY_DIALOG_TAG = "property_dialog_tag"
 
 private const val LOG_TAG = "AppViewModel"
 

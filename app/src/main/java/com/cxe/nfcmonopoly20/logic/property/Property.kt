@@ -19,6 +19,17 @@ abstract class Property(
     private var _currentRentLevel = 0
     val currentRentLevel = _currentRentLevel
 
+    open fun getRent(level: Int): Int {
+        // Check if level index is out of bounds
+        return if ((level < 0) || (level >= rent.size)) {
+            Log.e(LOG_TAG, "level is out of bounds, level = $level and rent.size = ${rent.size}")
+            0
+        } else
+            rent[level]
+    }
+
+    fun getCurrentRent() = getRent(currentRentLevel)
+
     fun increaseRentLevel() {
         if (currentRentLevel < rent.size)
             _currentRentLevel++

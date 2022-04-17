@@ -27,6 +27,18 @@ class ColorProperty(
         BLUE
     }
 
+    override fun getRent(level: Int): Int {
+        // If Property is a Set
+        return if (level == 0 && set) {
+            super.getRent(level) * 2
+        } else
+            super.getRent(level)
+    }
+
+    fun getColorResource() {
+        
+    }
+
     override fun reset() {
         super.reset()
         set = false

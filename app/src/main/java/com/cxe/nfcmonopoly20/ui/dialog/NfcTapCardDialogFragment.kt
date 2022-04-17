@@ -1,4 +1,4 @@
-package com.cxe.nfcmonopoly20.ui.game.dialog
+package com.cxe.nfcmonopoly20.ui.dialog
 
 import android.annotation.SuppressLint
 import android.os.Bundle

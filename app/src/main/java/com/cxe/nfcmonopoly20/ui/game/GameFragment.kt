@@ -17,8 +17,10 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
-import com.cxe.nfcmonopoly20.ui.game.dialog.BankOrFreeParkingDialogFragment
-import com.cxe.nfcmonopoly20.ui.game.dialog.NfcTapCardDialogFragment
+import com.cxe.nfcmonopoly20.logic.property.PropertyId
+import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
+import com.cxe.nfcmonopoly20.ui.dialog.NfcTapCardDialogFragment
+import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
 
 private const val LOG_TAG = "GameFragment"
 
@@ -153,10 +155,6 @@ class GameFragment : Fragment() {
 
         val fragments = parentFragmentManager.fragments
 
-//        if ((this::nfcTapCardDialog.isInitialized) &&
-//            (nfcTapCardDialog.dialog != null) &&
-//            (nfcTapCardDialog.dialog!!.isShowing)
-//        )
         // Check if NfcTapCardDialog is active
         val nfcTapCardDialogFragment = fragments.firstOrNull {fragment -> fragment is NfcTapCardDialogFragment }
         if (nfcTapCardDialogFragment != null) {
@@ -177,6 +175,23 @@ class GameFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Wrong Card")
+            }
+            return
+        }
+
+        // Check if it is a Property Tag
+        if (viewModel.isProperty(msg)) {
+            // Get Property
+            val propertyId = PropertyId.valueOf(msg)
+            val property = viewModel.properties[propertyId]
+
+            // Check if Property is null
+            if (property != null) {
+                // Create the Property Dialog
+                val propertyDialog = PropertyDialogFragment(property)
+                propertyDialog.show(parentFragmentManager, PROPERTY_DIALOG_TAG)
+            } else {
+                Log.e(LOG_TAG, "Property is null, propertyId = $propertyId")
             }
         }
     }

@@ -5,13 +5,16 @@
       <map>
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_contactless.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_free_parking.xml" value="0.2555" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/property_border.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/activity_main.xml" value="0.22056159420289856" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/color_property.xml" value="0.264" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/content_main.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_bank_or_free_parking.xml" value="0.4" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_custom_amount.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_nfc_card_tap.xml" value="0.4" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_player_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_property_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_edit.xml" value="0.1" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_list_item.xml" value="0.4" />
