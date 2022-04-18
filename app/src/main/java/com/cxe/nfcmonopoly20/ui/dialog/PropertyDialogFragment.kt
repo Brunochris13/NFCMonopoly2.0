@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
 import com.cxe.nfcmonopoly20.logic.AUCTION_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.AppViewModel
@@ -82,11 +85,21 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
             }
             // Utility Property
             is UtilityProperty -> {
-                // Set stationProperty of binding
+                // Set utilityProperty of binding
                 binding.utilityProperty = property
 
-                // Make the Station Property layout visible
+                // Make the Utility Property layout visible
                 binding.utilityPropertyLayout.root.visibility = View.VISIBLE
+
+                // Check if the Property is owned by a Player
+                if (property.playerId != null) {
+                    binding.utilityDiceMenuCard.visibility = View.VISIBLE
+
+                    // Dice Menu
+                    val diceItems = (2..12).toList()
+                    val adapter = ArrayAdapter(requireContext(), R.layout.fragment_game_dice_list_item, diceItems)
+                    (binding.utilityDiceMenu.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+                }
             }
         }
     }
@@ -111,7 +124,13 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
                 return listOf()
             }
 
-            viewModel.playerPaysRent(cardId, property)
+            // Check if Property is a Utility Property
+            if (property is UtilityProperty) {
+                val diceValue: Int = Integer.parseInt(binding.utilityDiceMenu.editText?.text.toString())
+                viewModel.playerPaysRent(cardId, property, diceValue=diceValue)
+            } else {
+                viewModel.playerPaysRent(cardId, property)
+            }
 
             // Add affected Players
             players.add(viewModel.playerMap[cardId]!!)

@@ -227,8 +227,6 @@ class HomeFragment : Fragment() {
             Log.e(LOG_TAG, "Could not read $jsonFile from assets")
         }
 
-        Toast.makeText(context, "Properties added", Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onDestroyView() {

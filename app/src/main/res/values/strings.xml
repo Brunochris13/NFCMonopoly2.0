@@ -64,6 +64,7 @@
     <string name="utility_2_amount">Dice x 10</string>
     <string name="utility_3">3 Utilities</string>
     <string name="utility_3_amount">Dice x 20</string>
+    <string name="utility_dice">Dice</string>
 
     <string name="auction">Auction</string>
 

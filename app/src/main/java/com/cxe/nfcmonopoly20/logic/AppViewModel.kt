@@ -42,7 +42,8 @@ class AppViewModel : ViewModel() {
     val properties = _properties
 
     // Color Properties
-    private var _colorProperties = mutableMapOf<ColorProperty.PropertyColors, MutableList<ColorProperty>>()
+    private var _colorProperties =
+        mutableMapOf<ColorProperty.PropertyColors, MutableList<ColorProperty>>()
     val colorProperties = _colorProperties
 
     // Station Properties
@@ -86,8 +87,13 @@ class AppViewModel : ViewModel() {
         playerMap[cardId]?.properties?.add(property)
     }
 
-    fun playerPaysRent(cardId: CardId, property: Property) {
-        val rent = property.getRent(property.currentRentLevel)
+    fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) {
+        val rent = if (diceValue == null) {
+            property.getRent(property.currentRentLevel)
+        } else {
+            // Utility Property
+            property.getRent(property.currentRentLevel) * diceValue
+        }
         playerPay(cardId, rent)
         playerCollect(property.playerId!!, rent)
     }
@@ -135,7 +141,7 @@ class AppViewModel : ViewModel() {
 
     fun isProperty(msg: String): Boolean {
         val propertyIds = PropertyId.values()
-        return propertyIds.any {it.name == msg}
+        return propertyIds.any { it.name == msg }
     }
 
     fun resetGame() {
