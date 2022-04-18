@@ -97,7 +97,11 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
 
                     // Dice Menu
                     val diceItems = (2..12).toList()
-                    val adapter = ArrayAdapter(requireContext(), R.layout.fragment_game_dice_list_item, diceItems)
+                    val adapter = ArrayAdapter(
+                        requireContext(),
+                        R.layout.fragment_game_dice_list_item,
+                        diceItems
+                    )
                     (binding.utilityDiceMenu.editText as? AutoCompleteTextView)?.setAdapter(adapter)
                 }
             }
@@ -117,7 +121,11 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
 
             // Toast
             val player = viewModel.playerMap[cardId]
-            Toast.makeText(context, "${player?.name} bought ${property.name} for €${property.price}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "${player?.name} bought ${property.name} for €${property.price}",
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             // Player pays Rent to another Player
 
@@ -130,8 +138,9 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
 
             // Check if Property is a Utility Property
             if (property is UtilityProperty) {
-                val diceValue: Int = Integer.parseInt(binding.utilityDiceMenu.editText?.text.toString())
-                viewModel.playerPaysRent(cardId, property, diceValue=diceValue)
+                val diceValue: Int =
+                    Integer.parseInt(binding.utilityDiceMenu.editText?.text.toString())
+                viewModel.playerPaysRent(cardId, property, diceValue = diceValue)
             } else {
                 viewModel.playerPaysRent(cardId, property)
             }
@@ -143,11 +152,20 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
             players.add(otherPlayer!!)
 
             // Toast
-            Toast.makeText(context, "${player.name} paid rent of €${property.getRent(property.currentRentLevel)} to ${otherPlayer.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "${player.name} paid rent of €${property.getRent(property.currentRentLevel)} to ${otherPlayer.name}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         dismiss()
 
         return players
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

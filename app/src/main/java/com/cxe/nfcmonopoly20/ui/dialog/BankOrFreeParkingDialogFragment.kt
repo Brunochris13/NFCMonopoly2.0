@@ -73,4 +73,9 @@ class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment
             }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

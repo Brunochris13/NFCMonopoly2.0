@@ -59,4 +59,9 @@ class CustomAmountDialogFragment(
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -61,4 +61,9 @@ class AuctionDialogFragment(private val property: Property) : DialogFragment() {
 
         dismiss()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
