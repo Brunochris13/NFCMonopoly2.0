@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameCustomAmountBinding
-import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
 
 class CustomAmountDialogFragment(
@@ -21,9 +19,6 @@ class CustomAmountDialogFragment(
     // Binding
     private var _binding: FragmentGameCustomAmountBinding? = null
     private val binding get() = _binding!!
-
-    // ViewModel
-    private val viewModel: AppViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,7 +49,7 @@ class CustomAmountDialogFragment(
         // Button
         binding.customAmountBtn.setOnClickListener {
             dismiss()
-            val amount: Int = binding.amountEditText.text.toString().toInt()
+            val amount: Int = binding.amountEditText.editText?.text.toString().toInt()
             val nfcTapCardDialog = NfcTapCardDialogFragment(
                 title,
                 amount,
