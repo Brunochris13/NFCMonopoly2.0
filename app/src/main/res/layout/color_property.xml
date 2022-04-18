@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="colorProperty"
             type="com.cxe.nfcmonopoly20.logic.property.ColorProperty" />
 
         <import type="com.cxe.nfcmonopoly20.util.PropertyColorToResourcesConverter" />
+
+        <import type="android.graphics.Typeface" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -19,8 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            style="@style/property_layout">
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/property_layout">
 
             <TextView
                 android:id="@+id/property_title"
@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/rent"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 0) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_1house_textview"
                 app:layout_constraintEnd_toStartOf="@+id/rent_amount"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -53,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@{`€`+colorProperty.getRent(0)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 0) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_1house_amount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -64,6 +66,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@string/house_1"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_2houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_rent_textview"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -75,6 +78,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@{`€`+colorProperty.getRent(1)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_2houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_amount"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -86,6 +90,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@string/house_2"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_3houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_1house_textview"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -98,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@{`€`+colorProperty.getRent(2)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_3houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_1house_amount"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -109,6 +115,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@string/house_3"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 3) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_4houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_2houses_textview"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -120,6 +127,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@{`€`+colorProperty.getRent(3)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 3) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_4houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_2houses_amount"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -131,6 +139,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@string/house_4"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 4) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_hotel_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_3houses_textview"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -142,6 +151,7 @@
                 style="@style/property_details"
                 android:layout_height="wrap_content"
                 android:text="@{`€`+colorProperty.getRent(4)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 4) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_hotel_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_3houses_amount"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -154,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@string/hotel"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 5) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/color_4houses_textview"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -166,6 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@{`€`+colorProperty.getRent(5)}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 5) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/rent_4houses_amount"
                 app:layout_constraintHorizontal_bias="0.5"
