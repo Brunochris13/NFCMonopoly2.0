@@ -2,11 +2,11 @@
     <string name="app_name">NFC Monopoly 2.0</string>
     <string name="default_string">Default</string>
 
-<!--Navigation-->
+    <!--Navigation-->
     <string name="home_fragment_title">Players Setup</string>
     <string name="game_fragment_title">Game</string>
 
-<!--Home Fragment-->
+    <!--Home Fragment-->
     <string name="start_btn">Start</string>
     <string name="mega_switch">Mega</string>
     <string name="edit_player_btn">Edit Player Name</string>
@@ -15,7 +15,8 @@
     <string name="save_btn">Save</string>
     <string name="not_enough_players">Need at least 2 Players</string>
 
-<!--Game Fragment-->
+    <!--Game Fragment-->
+    <string name="game_fragment_label">Game</string>
     <string name="go_btn">Go</string>
     <string name="pay_prison_btn">Pay Prison\n<font color='#A01818'>€50</font></string>
     <string name="pay_prison">Pay Prison</string>
@@ -27,22 +28,22 @@
     <string name="trade_btn">Trade</string>
     <string name="collect_btn">Collect</string>
 
-<!--Exit Dialog-->
+    <!--Exit Dialog-->
     <string name="exit_dialog_title">Confirmation</string>
     <string name="exit_dialog_message">Are you sure you want to exit?</string>
     <string name="exit_dialog_positive">Yes</string>
     <string name="exit_dialog_negative">No</string>
 
-<!--Bank or Free Parking Dialog-->
+    <!--Bank or Free Parking Dialog-->
     <string name="bank_icon">Bank</string>
     <string name="free_parking_icon">Free Parking</string>
     <string name="pay">Pay</string>
     <string name="collect">Collect</string>
 
-<!--Custom Amount Dialog-->
+    <!--Custom Amount Dialog-->
     <string name="amount">Amount</string>
 
-<!--Property Dialogs-->
+    <!--Property Dialogs-->
     <string name="rent">Rent</string>
     <string name="set_rent">Set Rent</string>
     <string name="house_1">1 House</string>
@@ -67,5 +68,9 @@
     <string name="utility_dice">Dice</string>
 
     <string name="auction">Auction</string>
+
+<!--Player Fragment-->
+    <string name="player_fragment_label">Player</string>
+    <string name="give_up_btn">Give Up</string>
 
 </resources>

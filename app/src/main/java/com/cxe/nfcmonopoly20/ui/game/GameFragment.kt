@@ -22,6 +22,7 @@ import com.cxe.nfcmonopoly20.ui.dialog.AuctionDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.NfcTapCardDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
+import com.cxe.nfcmonopoly20.ui.player.PLAYER_TAG
 
 private const val LOG_TAG = "GameFragment"
 
@@ -68,7 +69,13 @@ class GameFragment : Fragment() {
 
         // Recyclerview
         val recyclerView = binding.gamePlayerList
-        this.recyclerViewAdapter = GamePlayerListAdapter(viewModel.playerList)
+        this.recyclerViewAdapter = GamePlayerListAdapter(viewModel.playerList) { position ->
+            // Clicking on Player's Name
+            val player = viewModel.playerList[position]
+            val bundle = Bundle()
+            bundle.putSerializable(PLAYER_TAG, player)
+            findNavController().navigate(R.id.action_GameFragment_to_playerFragment, bundle)
+        }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
@@ -157,7 +164,8 @@ class GameFragment : Fragment() {
         val fragments = parentFragmentManager.fragments
 
         // Check if NfcTapCardDialog is shown
-        val nfcTapCardDialogFragment = fragments.firstOrNull {fragment -> fragment is NfcTapCardDialogFragment }
+        val nfcTapCardDialogFragment =
+            fragments.firstOrNull { fragment -> fragment is NfcTapCardDialogFragment }
         if (nfcTapCardDialogFragment != null) {
             // Cast fragment
             nfcTapCardDialogFragment as NfcTapCardDialogFragment
@@ -184,7 +192,8 @@ class GameFragment : Fragment() {
         }
 
         // Check if PropertyDialog is shown
-        val propertyDialogFragment = fragments.firstOrNull {fragment -> fragment is PropertyDialogFragment}
+        val propertyDialogFragment =
+            fragments.firstOrNull { fragment -> fragment is PropertyDialogFragment }
         if (propertyDialogFragment != null) {
             // Cast fragment
             propertyDialogFragment as PropertyDialogFragment
@@ -211,7 +220,8 @@ class GameFragment : Fragment() {
         }
 
         // Check if AuctionDialog is shown
-        val auctionDialogFragment = fragments.firstOrNull {fragment -> fragment is AuctionDialogFragment}
+        val auctionDialogFragment =
+            fragments.firstOrNull { fragment -> fragment is AuctionDialogFragment }
         if (auctionDialogFragment != null) {
             // Cast fragment
             auctionDialogFragment as AuctionDialogFragment
@@ -258,7 +268,8 @@ class GameFragment : Fragment() {
     private fun playerExists(cardId: CardId): Boolean {
         // Check if player exists with this cardId
         return if (!viewModel.playerMap.containsKey(cardId)) {
-            Toast.makeText(context, "Player does not exist with this card", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Player does not exist with this card", Toast.LENGTH_SHORT)
+                .show()
             Log.e(LOG_TAG, "Player does not exist with this cardId, cardId = $cardId")
             false
         } else

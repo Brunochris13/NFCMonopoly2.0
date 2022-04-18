@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePlayerListItemBinding
 import com.cxe.nfcmonopoly20.logic.player.Player
 
-class GamePlayerListAdapter(private val playerList: MutableList<Player>) :
+class GamePlayerListAdapter(
+    private val playerList: MutableList<Player>,
+    private val onClickListener: (Int) -> Unit
+) :
     RecyclerView.Adapter<GamePlayerListAdapter.PlayerListViewHolder>() {
 
     inner class PlayerListViewHolder(
@@ -49,6 +52,10 @@ class GamePlayerListAdapter(private val playerList: MutableList<Player>) :
 
     override fun onBindViewHolder(holder: PlayerListViewHolder, position: Int) {
         holder.bind(playerList[position])
+
+        binding.playerName.setOnClickListener {
+            onClickListener(position)
+        }
     }
 
     override fun getItemCount(): Int = playerList.size

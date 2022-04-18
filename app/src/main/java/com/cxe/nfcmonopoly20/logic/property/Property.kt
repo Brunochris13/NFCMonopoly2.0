@@ -2,6 +2,7 @@ package com.cxe.nfcmonopoly20.logic.property
 
 import android.util.Log
 import com.cxe.nfcmonopoly20.logic.player.CardId
+import java.io.Serializable
 
 private const val LOG_TAG = "Property"
 abstract class Property(
@@ -10,7 +11,7 @@ abstract class Property(
     val price: Int,
     val rent: IntArray,
     val mortgagedValue: Int
-) {
+) : Serializable {
 
     var mortgaged = false
 
