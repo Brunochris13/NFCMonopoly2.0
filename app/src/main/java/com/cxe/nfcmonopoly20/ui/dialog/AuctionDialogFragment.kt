@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentGameAuctionLayoutBinding
@@ -53,6 +54,10 @@ class AuctionDialogFragment(private val property: Property) : DialogFragment() {
     fun onNewIntent(cardId: CardId) {
 
         viewModel.playerBuyProperty(cardId, property, amount = bid)
+
+        // Toast
+        val player = viewModel.playerMap[cardId]
+        Toast.makeText(context, "${player?.name} bought ${property.name} for €$bid", Toast.LENGTH_SHORT).show()
 
         dismiss()
     }

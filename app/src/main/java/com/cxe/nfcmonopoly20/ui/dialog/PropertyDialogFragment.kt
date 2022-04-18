@@ -114,6 +114,10 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
 
             // Add affected Players
             players.add(viewModel.playerMap[cardId]!!)
+
+            // Toast
+            val player = viewModel.playerMap[cardId]
+            Toast.makeText(context, "${player?.name} bought ${property.name} for €${property.price}", Toast.LENGTH_SHORT).show()
         } else {
             // Player pays Rent to another Player
 
@@ -133,8 +137,13 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
             }
 
             // Add affected Players
-            players.add(viewModel.playerMap[cardId]!!)
-            players.add(viewModel.playerMap[property.playerId]!!)
+            val player = viewModel.playerMap[cardId]
+            val otherPlayer = viewModel.playerMap[property.playerId]
+            players.add(player!!)
+            players.add(otherPlayer!!)
+
+            // Toast
+            Toast.makeText(context, "${player.name} paid rent of €${property.getRent(property.currentRentLevel)} to ${otherPlayer.name}", Toast.LENGTH_SHORT).show()
         }
 
         dismiss()
