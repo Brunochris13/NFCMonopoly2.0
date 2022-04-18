@@ -65,4 +65,6 @@
     <string name="utility_3">3 Utilities</string>
     <string name="utility_3_amount">Dice x 20</string>
 
+    <string name="auction">Auction</string>
+
 </resources>

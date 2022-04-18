@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
+import com.cxe.nfcmonopoly20.logic.AUCTION_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
@@ -33,8 +34,7 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        //_binding = FragmentGamePropertyDialogBinding.inflate(inflater, container, false)
-        _binding = FragmentGamePropertyDialogBinding.inflate(layoutInflater)
+        _binding = FragmentGamePropertyDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -45,9 +45,23 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Default Values
         binding.colorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
         binding.stationProperty = viewModel.stationProperties[0]
         binding.utilityProperty = viewModel.utilityProperties[0]
+
+        // Auction Button
+        if (property.playerId == null) {
+            binding.auctionBtn.visibility = View.VISIBLE
+
+            binding.auctionBtn.setOnClickListener {
+                dismiss()
+
+                // Go to the Auction Layout
+                val auctionDialog = AuctionDialogFragment(property)
+                auctionDialog.show(parentFragmentManager, AUCTION_DIALOG_TAG)
+            }
+        }
 
         when (property) {
             // Color Property

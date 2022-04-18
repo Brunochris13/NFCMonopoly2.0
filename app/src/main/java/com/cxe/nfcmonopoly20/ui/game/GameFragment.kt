@@ -18,6 +18,7 @@ import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
+import com.cxe.nfcmonopoly20.ui.dialog.AuctionDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.NfcTapCardDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
@@ -202,6 +203,33 @@ class GameFragment : Fragment() {
                     if (player.moneyShown)
                         recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
                 }
+            } else {
+                Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
+                Log.i(LOG_TAG, "Wrong Card")
+            }
+            return
+        }
+
+        // Check if AuctionDialog is shown
+        val auctionDialogFragment = fragments.firstOrNull {fragment -> fragment is AuctionDialogFragment}
+        if (auctionDialogFragment != null) {
+            // Cast fragment
+            auctionDialogFragment as AuctionDialogFragment
+
+            // Check if its is a Debit card
+            if (viewModel.isCardId(msg)) {
+                val cardId = CardId.valueOf(msg)
+
+                // Check if Player exists with this debit card
+                if (!playerExists(cardId))
+                    return
+
+                auctionDialogFragment.onNewIntent(cardId)
+
+                // Update RecyclerView
+                val player = viewModel.playerMap[cardId]
+                if (player!!.moneyShown)
+                    recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Wrong Card")
