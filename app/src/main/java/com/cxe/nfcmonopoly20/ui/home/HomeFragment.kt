@@ -20,6 +20,7 @@ import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.logic.property.StationProperty
 import com.cxe.nfcmonopoly20.logic.property.UtilityProperty
+import com.cxe.nfcmonopoly20.ui.dialog.EditPlayerDialogFragment
 import org.json.JSONObject
 
 // Constants

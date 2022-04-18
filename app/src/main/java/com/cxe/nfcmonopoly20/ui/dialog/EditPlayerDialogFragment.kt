@@ -1,4 +1,4 @@
-package com.cxe.nfcmonopoly20.ui.home
+package com.cxe.nfcmonopoly20.ui.dialog
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -58,27 +58,28 @@ class EditPlayerDialogFragment : DialogFragment() {
             return
         }
 
-        binding.cardIdTextview.text = cardId.toString()
+        // Set binding's cardId
+        binding.cardId = cardId as CardId?
 
-        if (prevName != null) {
+            if (prevName != null) {
             // Show Previous Player Name
-            binding.editTextPlayerName.setText(prevName)
+            binding.editTextPlayerName.editText?.setText(prevName)
 
             newPlayer = false
         }
 
         // Save button
         binding.saveNameButton.setOnClickListener {
-            val playerName = binding.editTextPlayerName.text.toString()
+            val playerName = binding.editTextPlayerName.editText?.text.toString()
             if (playerName == "") {
                 Toast.makeText(context, "Please enter name", Toast.LENGTH_SHORT).show()
             } else {
                 // New Player
                 if (newPlayer) {
-                    val player = Player(playerName, cardId as CardId)
+                    val player = Player(playerName, cardId)
                     viewModel.addPlayer(player)
                 } else { // Existing Player
-                    val player = viewModel.playerMap[cardId as CardId]
+                    val player = viewModel.playerMap[cardId]
                     player?.name = playerName
                 }
                 dismiss()
