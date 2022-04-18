@@ -12,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentPlayerBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.Player
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
+import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.util.CardIdToColor
 
 const val PLAYER_TAG = "player_tag"
@@ -33,10 +36,6 @@ class PlayerFragment : Fragment() {
 
     private lateinit var player: Player
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,8 +48,30 @@ class PlayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // TODO: Remove (Testing)
+        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
+            viewModel.playerBuyProperty(player.cardId, brownProperty)
+        for (stationProperty in viewModel.stationProperties)
+            viewModel.playerBuyProperty(player.cardId, stationProperty)
+        for (utilityProperty in viewModel.utilityProperties)
+            viewModel.playerBuyProperty(player.cardId, utilityProperty)
+
         // Bind Player
         binding.player = player
+
+        // RecyclerView
+        val recyclerView = binding.playerPropertyList
+        val defaultColorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
+        val defaultStationProperty = viewModel.stationProperties[0]
+        val defaultUtilityProperty = viewModel.utilityProperties[0]
+        val recyclerViewAdapter = PlayerPropertyListAdapter(
+            player.properties,
+            defaultColorProperty,
+            defaultStationProperty,
+            defaultUtilityProperty
+        )
+        recyclerView.adapter = recyclerViewAdapter
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 
         // Give Up Button
         binding.giveUpBtn.setOnClickListener {

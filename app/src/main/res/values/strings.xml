@@ -45,7 +45,6 @@
 
     <!--Property Dialogs-->
     <string name="rent">Rent</string>
-    <string name="set_rent">Set Rent</string>
     <string name="house_1">1 House</string>
     <string name="house_2">2 Houses</string>
     <string name="house_3">3 Houses</string>

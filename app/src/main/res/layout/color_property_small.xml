@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="colorProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.ColorProperty" />
+
+        <import type="com.cxe.nfcmonopoly20.util.PropertyColorToResourcesConverter" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/property_cardview_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/property_layout_small">
+
+            <TextView
+                android:id="@+id/property_title"
+                style="@style/property_title_small"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:background="@{PropertyColorToResourcesConverter.convert(context, colorProperty.color)}"
+                android:foreground="@drawable/property_border_small"
+                android:text="@{colorProperty.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/color_rent_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/rent"
+                app:layout_constraintBottom_toTopOf="@+id/color_1house_textview"
+                app:layout_constraintEnd_toStartOf="@+id/rent_amount"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/property_title" />
+
+            <TextView
+                android:id="@+id/rent_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@{`€`+colorProperty.getRent(0)}"
+                app:layout_constraintBottom_toTopOf="@+id/rent_1house_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/color_rent_textview"
+                app:layout_constraintTop_toBottomOf="@+id/property_title" />
+
+            <TextView
+                android:id="@+id/color_1house_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@string/house_1"
+                app:layout_constraintBottom_toTopOf="@+id/color_2houses_textview"
+                app:layout_constraintEnd_toEndOf="@+id/color_rent_textview"
+                app:layout_constraintStart_toStartOf="@+id/color_rent_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_rent_textview" />
+
+            <TextView
+                android:id="@+id/rent_1house_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+colorProperty.getRent(1)}"
+                app:layout_constraintBottom_toTopOf="@+id/rent_2houses_amount"
+                app:layout_constraintEnd_toEndOf="@+id/rent_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_amount" />
+
+            <TextView
+                android:id="@+id/color_2houses_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@string/house_2"
+                app:layout_constraintBottom_toTopOf="@+id/color_3houses_textview"
+                app:layout_constraintEnd_toEndOf="@+id/color_1house_textview"
+                app:layout_constraintStart_toStartOf="@+id/color_1house_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_1house_textview" />
+
+            <TextView
+                android:id="@+id/rent_2houses_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{`€`+colorProperty.getRent(2)}"
+                app:layout_constraintBottom_toTopOf="@+id/rent_3houses_amount"
+                app:layout_constraintEnd_toEndOf="@+id/rent_1house_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_1house_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_1house_amount" />
+
+            <TextView
+                android:id="@+id/color_3houses_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@string/house_3"
+                app:layout_constraintBottom_toTopOf="@+id/color_4houses_textview"
+                app:layout_constraintEnd_toEndOf="@+id/color_2houses_textview"
+                app:layout_constraintStart_toStartOf="@+id/color_2houses_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_2houses_textview" />
+
+            <TextView
+                android:id="@+id/rent_3houses_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+colorProperty.getRent(3)}"
+                app:layout_constraintBottom_toTopOf="@+id/rent_4houses_amount"
+                app:layout_constraintEnd_toEndOf="@+id/rent_2houses_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_2houses_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_2houses_amount" />
+
+            <TextView
+                android:id="@+id/color_4houses_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@string/house_4"
+                app:layout_constraintBottom_toTopOf="@+id/color_hotel_textview"
+                app:layout_constraintEnd_toEndOf="@+id/color_3houses_textview"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/color_3houses_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_3houses_textview" />
+
+            <TextView
+                android:id="@+id/rent_4houses_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+colorProperty.getRent(4)}"
+                app:layout_constraintBottom_toTopOf="@+id/rent_hotel_amount"
+                app:layout_constraintEnd_toEndOf="@+id/rent_3houses_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_3houses_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_3houses_amount" />
+
+            <TextView
+                android:id="@+id/color_hotel_textview"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="@string/hotel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/color_4houses_textview"
+                app:layout_constraintStart_toStartOf="@+id/color_4houses_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_4houses_textview" />
+
+            <TextView
+                android:id="@+id/rent_hotel_amount"
+                style="@style/property_details_small"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="@{`€`+colorProperty.getRent(5)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/rent_4houses_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_4houses_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_4houses_amount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

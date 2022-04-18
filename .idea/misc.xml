@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable-v24/property_border_small.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/button_circle.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_contactless.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_free_parking.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/property_border.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/color_property.xml" value="0.264" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/color_property_small.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/content_main.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_game_auction_layout.xml" value="0.264" />
@@ -22,6 +24,7 @@
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_edit.xml" value="0.4" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_home_player_list_item.xml" value="0.4" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_player.xml" value="0.22056159420289856" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_player_property_list_item.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/fragment_second.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/station_property.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/utility_property.xml" value="0.22056159420289856" />

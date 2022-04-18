@@ -82,9 +82,16 @@ class AppViewModel : ViewModel() {
     fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
 
     fun playerBuyProperty(cardId: CardId, property: Property, amount: Int = property.price) {
-        playerPay(cardId, amount)
-        property.playerId = cardId
-        playerMap[cardId]?.properties?.add(property)
+        if (property.playerId == null) {
+            playerPay(cardId, amount)
+            property.playerId = cardId
+            playerMap[cardId]?.properties?.add(property)
+        } else {
+            Log.e(
+                LOG_TAG,
+                "Player tried to buy property that is already owned by a Player, cardId = $cardId, property = ${property.name}"
+            )
+        }
     }
 
     fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) {
@@ -122,6 +129,8 @@ class AppViewModel : ViewModel() {
 
         when (property) {
             is ColorProperty -> { // ColorProperty
+                if (!colorProperties.containsKey(property.color))
+                    colorProperties[property.color] = mutableListOf()
                 colorProperties[property.color]?.add(property)
             }
             is StationProperty -> { // Station Property
