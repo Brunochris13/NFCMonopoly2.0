@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/PlayerFragment"
-        android:name="com.cxe.nfcmonopoly20.ui.player.PlayerFragment"
+        android:name="com.cxe.nfcmonopoly20.ui.game.player.PlayerFragment"
         android:label="@string/player_fragment_label" >
         <argument
             android:name="player"

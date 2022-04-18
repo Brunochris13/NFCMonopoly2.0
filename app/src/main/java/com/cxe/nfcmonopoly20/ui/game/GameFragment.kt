@@ -22,7 +22,7 @@ import com.cxe.nfcmonopoly20.ui.dialog.AuctionDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.NfcTapCardDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
-import com.cxe.nfcmonopoly20.ui.player.PLAYER_TAG
+import com.cxe.nfcmonopoly20.ui.game.player.PLAYER_TAG
 
 private const val LOG_TAG = "GameFragment"
 

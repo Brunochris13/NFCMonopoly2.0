@@ -68,7 +68,7 @@ class AppViewModel : ViewModel() {
     }
 
     fun deletePlayer(player: Player) {
-        if (!playerMap.containsKey(player.cardId)) {
+        if (playerMap.containsKey(player.cardId)) {
             player.reset()
             playerMap.remove(player.cardId)
             playerList.remove(player)

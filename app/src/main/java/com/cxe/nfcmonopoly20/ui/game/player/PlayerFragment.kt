@@ -1,4 +1,4 @@
-package com.cxe.nfcmonopoly20.ui.player
+package com.cxe.nfcmonopoly20.ui.game.player
 
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentPlayerBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
@@ -47,8 +49,26 @@ class PlayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bind player
+        // Bind Player
         binding.player = player
+
+        // Give Up Button
+        binding.giveUpBtn.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Confirmation")
+            builder.setMessage("Are you sure you want to give up?")
+            builder.setPositiveButton("Yes") { _, _ -> giveUp() }
+            builder.setNegativeButton("No", null)
+            builder.show()
+        }
+    }
+
+    private fun giveUp() {
+        // Go Back
+        findNavController().popBackStack()
+
+        // Delete Player
+        viewModel.deletePlayer(player)
     }
 
     override fun onAttach(context: Context) {
@@ -75,11 +95,11 @@ class PlayerFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
 
-        // Get Color
+        // Get Default Color
         val color = resources.getColor(R.color.game_button_bg_color_primary, null)
         val colorDrawable = ColorDrawable(color)
 
-        // Set ActionBar and StatusBar color the same as the Player's Debit card color
+        // Set ActionBar and StatusBar back to the Default Color
         val contextTemp = context as AppCompatActivity
         contextTemp.supportActionBar?.setBackgroundDrawable(colorDrawable)
         contextTemp.window.statusBarColor = color
