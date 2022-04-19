@@ -11,6 +11,8 @@ class ColorProperty(
     val colorSetPropertyAmount: Int
 ) : Property(id, name, price, rent, mortgagedValue) {
 
+    val sellPrice = housePrice / 2
+
     var set = false
 
     // Mega Edition Only
@@ -33,10 +35,6 @@ class ColorProperty(
             super.getRent(level) * 2
         } else
             super.getRent(level)
-    }
-
-    fun getColorResource() {
-        
     }
 
     override fun reset() {

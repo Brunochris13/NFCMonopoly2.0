@@ -50,12 +50,16 @@
     <string name="house_3">3 Houses</string>
     <string name="house_4">4 Houses</string>
     <string name="hotel">Hotel</string>
+    <string name="buy_house">Buy House</string>
+    <string name="sell_house">Sell House</string>
 
     <string name="train_icon">Train Icon</string>
     <string name="station_1">1 Station</string>
     <string name="station_2">2 Stations</string>
     <string name="station_3">3 Stations</string>
     <string name="station_4">4 Stations</string>
+    <string name="buy_depot">Buy Depot</string>
+    <string name="sell_depot">Sell Depot</string>
 
     <string name="utility_icon">Utility Icon</string>
     <string name="utility_1">1 Utility</string>
@@ -67,6 +71,8 @@
     <string name="utility_dice">Dice</string>
 
     <string name="auction">Auction</string>
+    <string name="mortgage">Mortgage</string>
+    <string name="unmortgage">Unmortgage</string>
 
 <!--Player Fragment-->
     <string name="player_fragment_label">Player</string>

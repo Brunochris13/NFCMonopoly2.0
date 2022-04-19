@@ -13,9 +13,9 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        style="@style/property_cardview_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:foreground="@{utilityProperty.mortgaged ? @drawable/property_border_mortgage_small : @drawable/property_border_small}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

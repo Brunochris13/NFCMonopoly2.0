@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentPlayerBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
+import com.cxe.nfcmonopoly20.logic.PROPERTY_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
+import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
 import com.cxe.nfcmonopoly20.util.CardIdToColor
 
 const val PLAYER_TAG = "player_tag"
@@ -60,6 +62,7 @@ class PlayerFragment : Fragment() {
 
         // Bind Player
         binding.player = player
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // RecyclerView
         val recyclerView = binding.playerPropertyList
@@ -71,7 +74,11 @@ class PlayerFragment : Fragment() {
             defaultColorProperty,
             defaultStationProperty,
             defaultUtilityProperty
-        )
+        ) { property ->
+            // Clicking on a Property
+            val propertyDialog = PropertyDialogFragment(property, playerView = true)
+            propertyDialog.show(parentFragmentManager, PROPERTY_DIALOG_TAG)
+        }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 

@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.R
-import com.cxe.nfcmonopoly20.databinding.FragmentGamePropertyDialogBinding
+import com.cxe.nfcmonopoly20.databinding.PropertyDialogBinding
 import com.cxe.nfcmonopoly20.logic.AUCTION_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
@@ -20,10 +20,13 @@ import com.cxe.nfcmonopoly20.logic.property.*
 
 private const val LOG_TAG = "PropertyDialogFragment"
 
-class PropertyDialogFragment(private val property: Property) : DialogFragment() {
+class PropertyDialogFragment(
+    private val property: Property,
+    private val playerView: Boolean = false
+) : DialogFragment() {
 
     // Binding
-    private var _binding: FragmentGamePropertyDialogBinding? = null
+    private var _binding: PropertyDialogBinding? = null
     private val binding get() = _binding!!
 
     // ViewModel
@@ -37,7 +40,7 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGamePropertyDialogBinding.inflate(inflater, container, false)
+        _binding = PropertyDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -47,6 +50,9 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Bind Property
+        binding.property = property
 
         // Default Values
         binding.colorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
@@ -106,6 +112,10 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
                 }
             }
         }
+
+        // If Player View
+        if (playerView)
+            setButtons()
     }
 
     fun onNewIntent(cardId: CardId): List<Player> {
@@ -162,6 +172,21 @@ class PropertyDialogFragment(private val property: Property) : DialogFragment() 
         dismiss()
 
         return players
+    }
+
+    private fun setButtons() {
+        // Mortgage Button
+        setMortgageButton()
+    }
+
+    private fun setMortgageButton() {
+        binding.mortgageButtonLayout.visibility = View.VISIBLE
+
+        binding.mortgageButton.setOnClickListener {
+            viewModel.mortgageProperty(property)
+
+
+        }
     }
 
     override fun onDestroyView() {

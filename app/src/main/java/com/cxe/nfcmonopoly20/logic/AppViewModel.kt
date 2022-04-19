@@ -142,6 +142,18 @@ class AppViewModel : ViewModel() {
         }
     }
 
+    fun mortgageProperty(property: Property) {
+        // Check if Property is already Mortgaged
+        if (property.mortgaged) {
+            // Player has to pay to Unmortgage the Property
+            playerPay(property.playerId!!, property.mortgagedValue)
+        } else {
+            // Player receives money
+            playerCollect(property.playerId!!, property.mortgagedValue)
+        }
+        property.mortgaged = !property.mortgaged
+    }
+
     // General Functions
     fun isCardId(msg: String): Boolean {
         val cardIds = CardId.values()

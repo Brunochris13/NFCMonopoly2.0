@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="property"
+            type="com.cxe.nfcmonopoly20.logic.property.Property" />
+        <variable
+            name="colorProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.ColorProperty" />
+
+        <variable
+            name="stationProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.StationProperty" />
+
+        <variable
+            name="utilityProperty"
+            type="com.cxe.nfcmonopoly20.logic.property.UtilityProperty" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/color_property_layout"
+            layout="@layout/color_property"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:colorProperty="@{colorProperty}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/station_property_layout"
+            layout="@layout/station_property"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:stationProperty="@{stationProperty}" />
+
+        <include
+            android:id="@+id/utility_property_layout"
+            layout="@layout/utility_property"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:utilityProperty="@{utilityProperty}" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="color_property_layout,station_property_layout,utility_property_layout"
+            tools:layout_editor_absoluteY="366dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="color_property_layout,station_property_layout,utility_property_layout" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="color_property_layout,station_property_layout,utility_property_layout" />
+
+        <Button
+            android:id="@+id/auction_btn"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/auction"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/barrier_right"
+            app:layout_constraintStart_toStartOf="@id/barrier_left"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_bottom" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/utility_dice_menu_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/barrier_right"
+            app:layout_constraintStart_toStartOf="@id/barrier_left"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_bottom">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/utility_dice_menu"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/utility_dice"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textSize="18sp"
+                        tools:ignore="LabelFor,TextContrastCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buy_house_button_layout"
+            style="@style/property_button_layout"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mortgage_button_layout"
+            app:layout_constraintStart_toStartOf="@+id/barrier_left"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_bottom">
+
+            <Button
+                android:id="@+id/buy_house_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/buy_house_button_title"
+                style="@style/property_button_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buy_house"
+                app:layout_constraintBottom_toBottomOf="@+id/buy_house_button"
+                app:layout_constraintEnd_toEndOf="@+id/buy_house_button"
+                app:layout_constraintStart_toStartOf="@+id/buy_house_button"
+                app:layout_constraintTop_toTopOf="@+id/buy_house_button" />
+
+            <TextView
+                android:id="@+id/buy_house_button_price"
+                style="@style/property_button_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+colorProperty.housePrice}"
+                android:textColor="@color/pay_text_color"
+                app:layout_constraintBottom_toBottomOf="@+id/buy_house_button"
+                app:layout_constraintEnd_toEndOf="@+id/buy_house_button"
+                app:layout_constraintStart_toStartOf="@+id/buy_house_button"
+                app:layout_constraintTop_toBottomOf="@+id/buy_house_button_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mortgage_button_layout"
+            style="@style/property_button_layout"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sell_house_button_layout"
+            app:layout_constraintStart_toEndOf="@+id/buy_house_button_layout"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_bottom">
+
+            <Button
+                android:id="@+id/mortgage_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/game_button_bg_color_primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/mortgage_button_title"
+                style="@style/property_button_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{property.mortgaged ? @string/unmortgage : @string/mortgage}"
+                app:layout_constraintBottom_toBottomOf="@+id/mortgage_button"
+                app:layout_constraintEnd_toEndOf="@+id/mortgage_button"
+                app:layout_constraintStart_toStartOf="@+id/mortgage_button"
+                app:layout_constraintTop_toTopOf="@+id/mortgage_button" />
+
+            <TextView
+                android:id="@+id/mortgage_button_price"
+                style="@style/property_button_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+property.mortgagedValue}"
+                android:textColor="@{property.mortgaged ? @color/receive_text_color : @color/pay_text_color}"
+                app:layout_constraintBottom_toBottomOf="@+id/mortgage_button"
+                app:layout_constraintEnd_toEndOf="@+id/mortgage_button"
+                app:layout_constraintStart_toStartOf="@+id/mortgage_button"
+                app:layout_constraintTop_toBottomOf="@+id/mortgage_button_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sell_house_button_layout"
+            style="@style/property_button_layout"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/barrier_right"
+            app:layout_constraintStart_toEndOf="@+id/mortgage_button_layout"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_bottom">
+
+            <Button
+                android:id="@+id/sell_house_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/pay_text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sell_house_button_title"
+                style="@style/property_button_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sell_house"
+                app:layout_constraintBottom_toBottomOf="@+id/sell_house_button"
+                app:layout_constraintEnd_toEndOf="@+id/sell_house_button"
+                app:layout_constraintStart_toStartOf="@+id/sell_house_button"
+                app:layout_constraintTop_toTopOf="@+id/sell_house_button" />
+
+            <TextView
+                android:id="@+id/sell_house_button_price"
+                style="@style/property_button_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`€`+colorProperty.sellPrice}"
+                android:textColor="@color/receive_text_color"
+                app:layout_constraintBottom_toBottomOf="@+id/sell_house_button"
+                app:layout_constraintEnd_toEndOf="@+id/sell_house_button"
+                app:layout_constraintStart_toStartOf="@+id/sell_house_button"
+                app:layout_constraintTop_toBottomOf="@+id/sell_house_button_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

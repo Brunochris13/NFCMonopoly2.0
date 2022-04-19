@@ -14,7 +14,8 @@ class PlayerPropertyListAdapter(
     private val playerPropertyList: List<Property>,
     private val defaultColorProperty: ColorProperty,
     private val defaultStationProperty: StationProperty,
-    private val defaultUtilityProperty: UtilityProperty
+    private val defaultUtilityProperty: UtilityProperty,
+    private val onClickListener: (Property) -> Unit
 ) : RecyclerView.Adapter<PlayerPropertyListAdapter.PlayerPropertyListViewHolder>() {
 
     inner class PlayerPropertyListViewHolder(
@@ -42,8 +43,14 @@ class PlayerPropertyListAdapter(
     }
 
     override fun onBindViewHolder(holder: PlayerPropertyListViewHolder, position: Int) {
+        val property = playerPropertyList[position]
+
+        binding.root.setOnClickListener {
+            onClickListener(property)
+        }
+
         // Bind Property
-        when (val property = playerPropertyList[position]) {
+        when (property) {
             is ColorProperty -> {
                 // Make the Color Property Visible
                 binding.colorPropertyLayout.root.visibility = View.VISIBLE
