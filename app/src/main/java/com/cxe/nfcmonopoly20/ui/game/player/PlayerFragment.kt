@@ -49,6 +49,8 @@ class PlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // TODO: Remove (Testing)
+        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)
+            viewModel.playerBuyProperty(player.cardId, brownProperty)
         for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
             viewModel.playerBuyProperty(player.cardId, brownProperty)
         for (stationProperty in viewModel.stationProperties)
@@ -65,7 +67,7 @@ class PlayerFragment : Fragment() {
         val defaultStationProperty = viewModel.stationProperties[0]
         val defaultUtilityProperty = viewModel.utilityProperties[0]
         val recyclerViewAdapter = PlayerPropertyListAdapter(
-            player.properties,
+            player.properties.sortedBy { it.id },
             defaultColorProperty,
             defaultStationProperty,
             defaultUtilityProperty
