@@ -1,10 +1,12 @@
 package com.cxe.nfcmonopoly20
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NdefMessage
 import android.nfc.NfcAdapter
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -115,15 +117,25 @@ class MainActivity : AppCompatActivity() {
         return records[0]
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun enableForegroundDispatch(activity: AppCompatActivity, adapter: NfcAdapter?) {
         val intent = Intent(activity.applicationContext, activity.javaClass)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-        val pendingIntent = PendingIntent.getActivity(
-            activity.applicationContext,
-            0,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(
+                activity.applicationContext,
+                0,
+                intent,
+                PendingIntent.FLAG_MUTABLE
+            )
+        } else {
+            PendingIntent.getActivity(
+                activity.applicationContext,
+                0,
+                intent,
+                0
+            )
+        }
         val filters = arrayOfNulls<IntentFilter>(1)
         val techList = arrayOf<Array<String>>()
         filters[0] = IntentFilter()
