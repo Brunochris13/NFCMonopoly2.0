@@ -85,7 +85,7 @@ class AppViewModel : ViewModel() {
         if (property.playerId == null) {
             playerPay(cardId, amount)
             property.playerId = cardId
-            playerMap[cardId]?.properties?.add(property)
+            playerMap[cardId]?.addProperty(property)
         } else {
             Log.e(
                 LOG_TAG,
@@ -156,6 +156,10 @@ class AppViewModel : ViewModel() {
             playerCollect(property.playerId!!, property.mortgagedValue)
         }
         property.setMortgageStatus(!property.mortgaged.value!!)
+
+        // Update Similar Property Status ONLY of the same Player
+        val player = playerMap[property.playerId]
+        player?.updatePropertyStatus(property)
     }
 
     // General Functions

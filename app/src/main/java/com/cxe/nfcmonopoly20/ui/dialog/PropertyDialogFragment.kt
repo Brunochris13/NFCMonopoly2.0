@@ -190,13 +190,14 @@ class PropertyDialogFragment(
                 val player = viewModel.playerMap[property.playerId]
                 val sameColorProperties = player?.getSameColorProperties(property)
                 // Buy?
-                if (canBuy(sameColorProperties!!)) {
+                if (canBuy(sameColorProperties!!))
                     setBuyHouseButton()
-                }
                 // Sell?
-                if (canSell(sameColorProperties)) {
+                if (canSell(sameColorProperties))
                     setSellHouseButton()
-                }
+                // Mortgage?
+                if (canMortgage(sameColorProperties))
+                    setMortgageButton()
             } else {
                 // Mortgage Button
                 setMortgageButton()
@@ -250,7 +251,7 @@ class PropertyDialogFragment(
         }
     }
 
-    private fun canBuy(sameColorProperties: List<ColorProperty>) : Boolean {
+    private fun canBuy(sameColorProperties: List<ColorProperty>): Boolean {
         // Cast property to ColorProperty
         property as ColorProperty
         // First check if property canBuy a house
@@ -266,12 +267,26 @@ class PropertyDialogFragment(
         }
     }
 
-    private fun canSell(sameColorProperties: List<ColorProperty>) : Boolean {
+    private fun canSell(sameColorProperties: List<ColorProperty>): Boolean {
         // Cast property to ColorProperty
         property as ColorProperty
         // First check if property canSell a house
         return if (property.canSell()) {
             // Check if any of the other properties have a bigger rentLevel than this property
+            for (sameColorProperty in sameColorProperties) {
+                if (sameColorProperty.currentRentLevel.value!! > property.currentRentLevel.value!!)
+                    return false
+            }
+            true
+        } else {
+            false
+        }
+    }
+
+    private fun canMortgage(sameColorProperties: List<ColorProperty>): Boolean {
+        // First check if the currentRentLevel is equal to 0
+        return if (property.currentRentLevel.value == 0) {
+            // Check if any of the other properties have a house
             for (sameColorProperty in sameColorProperties) {
                 if (sameColorProperty.currentRentLevel.value!! > property.currentRentLevel.value!!)
                     return false

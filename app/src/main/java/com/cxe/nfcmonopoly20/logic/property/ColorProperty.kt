@@ -94,7 +94,7 @@ class ColorProperty(
         }
     }
 
-    fun canBuy(): Boolean = currentRentLevel.value!! < rent.size
+    fun canBuy(): Boolean = currentRentLevel.value!! < rent.size - 1
 
     fun canSell(): Boolean = currentRentLevel.value!! > 0
 

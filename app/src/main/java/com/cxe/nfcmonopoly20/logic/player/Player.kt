@@ -27,6 +27,30 @@ class Player(var name: String, val cardId: CardId) : Serializable {
         _money.value = startingMoney
     }
 
+    fun addProperty(property: Property) {
+        properties.add(property)
+
+        // Update Property Status
+        updatePropertyStatus(property)
+    }
+
+    fun updatePropertyStatus(property: Property) {
+        // Check how many Properties of this Type the Player has
+        when (property) {
+            is ColorProperty -> {
+                val sameColorProperties = properties.filterIsInstance<ColorProperty>()
+                    .filter { it.color == property.color && !it.mortgaged.value!! }
+
+                property.set = property.colorSetPropertyAmount == sameColorProperties.size
+
+                // Set same color Properties set value
+                for (sameColorProperty in sameColorProperties) {
+                    sameColorProperty.set = property.set
+                }
+            }
+        }
+    }
+
     fun sortProperties() {
         properties = properties.sortedBy { it.id }.toMutableList()
     }
