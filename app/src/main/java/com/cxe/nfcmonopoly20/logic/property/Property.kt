@@ -37,24 +37,30 @@ abstract class Property(
 
     fun getCurrentRent() = currentRentLevel.value?.let { getRent(it) }
 
-    fun increaseRentLevel() {
-        if (currentRentLevel.value!! < rent.size)
+    fun increaseRentLevel(): Boolean {
+        return if (currentRentLevel.value!! < rent.size) {
             _currentRentLevel.value = _currentRentLevel.value?.plus(1)
-        else
+            true
+        } else {
             Log.e(
                 LOG_TAG,
                 "Tried to increase rent level, more than rent.size. currentRentLevel = ${currentRentLevel.value}, rent.size = ${rent.size}"
             )
+            false
+        }
     }
 
-    fun decreaseRentLevel() {
-        if (currentRentLevel.value!! > 0)
+    fun decreaseRentLevel(): Boolean {
+        return if (currentRentLevel.value!! > 0) {
             _currentRentLevel.value = _currentRentLevel.value?.minus(1)
-        else
+            true
+        } else {
             Log.e(
                 LOG_TAG,
                 "Tried to decrease rent level, less than 0. currentRentLevel = ${currentRentLevel.value}"
             )
+            false
+        }
     }
 
     fun setMortgageStatus(status: Boolean) {

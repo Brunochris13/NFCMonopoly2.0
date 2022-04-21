@@ -180,8 +180,32 @@ class PropertyDialogFragment(
     }
 
     private fun setButtons() {
-        // Mortgage Button
-        setMortgageButton()
+        // Hide all Buttons
+        hideAllButtons()
+
+        // Color Property
+        if (property is ColorProperty) {
+            // Check if Color Property is Set
+            if (property.set) {
+                val player = viewModel.playerMap[property.playerId]
+                val sameColorProperties = player?.getSameColorProperties(property)
+                // Buy?
+                if (canBuy(sameColorProperties!!)) {
+                    setBuyHouseButton()
+                }
+                // Sell?
+                if (canSell(sameColorProperties)) {
+                    setSellHouseButton()
+                }
+            } else {
+                // Mortgage Button
+                setMortgageButton()
+            }
+        } else {
+            // Station and Utility Properties
+            // Mortgage Button
+            setMortgageButton()
+        }
     }
 
     private fun setMortgageButton() {
@@ -194,7 +218,74 @@ class PropertyDialogFragment(
             // Update Player Property RecyclerView
             if (this::propertyListAdapter.isInitialized)
                 propertyListAdapter.updateItem(property)
+
+            // Update Buttons
+            setButtons()
         }
+    }
+
+    private fun setBuyHouseButton() {
+        // Make the Buy House Button Visible
+        binding.buyHouseButtonLayout.visibility = View.VISIBLE
+
+        binding.buyHouseButton.setOnClickListener {
+            property as ColorProperty
+            val player = viewModel.playerMap[property.playerId]
+            property.buyHouse(player!!)
+            // Update Buttons
+            setButtons()
+        }
+    }
+
+    private fun setSellHouseButton() {
+        // Make the Sell House Button Visible
+        binding.sellHouseButtonLayout.visibility = View.VISIBLE
+
+        binding.sellHouseButton.setOnClickListener {
+            property as ColorProperty
+            val player = viewModel.playerMap[property.playerId]
+            property.sellHouse(player!!)
+            // Update Buttons
+            setButtons()
+        }
+    }
+
+    private fun canBuy(sameColorProperties: List<ColorProperty>) : Boolean {
+        // Cast property to ColorProperty
+        property as ColorProperty
+        // First check if property canBuy a house
+        return if (property.canBuy()) {
+            // Check if any of the other properties have a lower rentLevel than this property
+            for (sameColorProperty in sameColorProperties) {
+                if (sameColorProperty.currentRentLevel.value!! < property.currentRentLevel.value!!)
+                    return false
+            }
+            true
+        } else {
+            false
+        }
+    }
+
+    private fun canSell(sameColorProperties: List<ColorProperty>) : Boolean {
+        // Cast property to ColorProperty
+        property as ColorProperty
+        // First check if property canSell a house
+        return if (property.canSell()) {
+            // Check if any of the other properties have a bigger rentLevel than this property
+            for (sameColorProperty in sameColorProperties) {
+                if (sameColorProperty.currentRentLevel.value!! > property.currentRentLevel.value!!)
+                    return false
+            }
+            true
+        } else {
+            false
+        }
+    }
+
+    private fun hideAllButtons() {
+        binding.buyHouseButtonLayout.visibility = View.GONE
+        binding.mortgageButtonLayout.visibility = View.GONE
+        binding.sellHouseButtonLayout.visibility = View.GONE
     }
 
     fun setRecyclerViewAdapter(recyclerViewAdapter: PlayerPropertyListAdapter) {

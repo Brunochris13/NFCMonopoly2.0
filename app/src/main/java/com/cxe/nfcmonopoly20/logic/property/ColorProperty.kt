@@ -1,5 +1,10 @@
 package com.cxe.nfcmonopoly20.logic.property
 
+import android.util.Log
+import com.cxe.nfcmonopoly20.logic.player.Player
+
+private const val LOG_TAG = "ColorProperty"
+
 class ColorProperty(
     id: PropertyId,
     name: String,
@@ -36,6 +41,62 @@ class ColorProperty(
         } else
             super.getRent(level)
     }
+
+    fun buyHouse(player: Player) {
+        // Check if Property is Mortgaged
+        if (mortgaged.value!!) {
+            Log.e(LOG_TAG, "Tried to build house on a Mortgaged property, property = $name")
+            return
+        }
+
+        // Check if the Property is not set
+        if (!set) {
+            Log.e(LOG_TAG, "Tried to build house on a Non-Set Property, proeprty = $name")
+            return
+        }
+
+        // Check if we can build any more houses
+        if (canBuy()) {
+            // Check if this player owns the property
+            if (player.cardId != playerId) {
+                Log.e(
+                    LOG_TAG,
+                    "Player does not own this property. property = $name, player = ${player.name}"
+                )
+                return
+            }
+
+            if (increaseRentLevel())
+                player.pay(housePrice)
+
+        } else {
+            Log.e(LOG_TAG, "Cannot build any more houses, property = $name")
+        }
+    }
+
+    fun sellHouse(player: Player) {
+        // Check if we can sell any more houses
+        if (canSell()) {
+            // Check if this player owns the property
+            if (player.cardId != playerId) {
+                Log.e(
+                    LOG_TAG,
+                    "Player does not own this property. property = $name, player = ${player.name}"
+                )
+                return
+            }
+
+            if (decreaseRentLevel())
+                player.pay(housePrice)
+
+        } else {
+            Log.e(LOG_TAG, "Cannot sell any more houses, property = $name")
+        }
+    }
+
+    fun canBuy(): Boolean = currentRentLevel.value!! < rent.size
+
+    fun canSell(): Boolean = currentRentLevel.value!! > 0
 
     override fun reset() {
         super.reset()

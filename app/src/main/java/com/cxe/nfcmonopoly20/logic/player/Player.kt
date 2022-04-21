@@ -2,6 +2,7 @@ package com.cxe.nfcmonopoly20.logic.player
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.Property
 import java.io.Serializable
 
@@ -28,6 +29,11 @@ class Player(var name: String, val cardId: CardId) : Serializable {
 
     fun sortProperties() {
         properties = properties.sortedBy { it.id }.toMutableList()
+    }
+
+    fun getSameColorProperties(colorProperty: ColorProperty): List<ColorProperty> {
+        return properties.filterIsInstance<ColorProperty>()
+            .filter { it.color == colorProperty.color }
     }
 
     fun reset() {
