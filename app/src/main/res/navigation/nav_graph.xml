@@ -11,7 +11,7 @@
         android:label="@string/home_fragment_title"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_HomeFragment_to_gameFragment"
+            android:id="@+id/action_HomeFragment_to_GameFragment"
             app:destination="@id/GameFragment" />
     </fragment>
     <fragment
@@ -19,8 +19,11 @@
         android:name="com.cxe.nfcmonopoly20.ui.game.GameFragment"
         android:label="@string/game_fragment_label" >
         <action
-            android:id="@+id/action_GameFragment_to_playerFragment"
+            android:id="@+id/action_GameFragment_to_PlayerFragment"
             app:destination="@id/PlayerFragment" />
+        <action
+            android:id="@+id/action_GameFragment_to_TradeFragment"
+            app:destination="@id/TradeFragment" />
     </fragment>
     <fragment
         android:id="@+id/PlayerFragment"
@@ -30,4 +33,8 @@
             android:name="player"
             app:argType="com.cxe.nfcmonopoly20.logic.player.Player" />
     </fragment>
+    <fragment
+        android:id="@+id/TradeFragment"
+        android:name="com.cxe.nfcmonopoly20.ui.trade.TradeFragment"
+        android:label="@string/trade_fragment_title" />
 </navigation>

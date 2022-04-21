@@ -74,7 +74,7 @@ class GameFragment : Fragment() {
             val player = viewModel.playerList[position]
             val bundle = Bundle()
             bundle.putSerializable(PLAYER_TAG, player)
-            findNavController().navigate(R.id.action_GameFragment_to_playerFragment, bundle)
+            findNavController().navigate(R.id.action_GameFragment_to_PlayerFragment, bundle)
         }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -116,6 +116,9 @@ class GameFragment : Fragment() {
         }
 
         // Trade Button
+        binding.tradeBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_GameFragment_to_TradeFragment)
+        }
 
         // Collect Button
         binding.collectBtn.setOnClickListener {

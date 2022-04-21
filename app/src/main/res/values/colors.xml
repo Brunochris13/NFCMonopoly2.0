@@ -37,4 +37,6 @@
     <color name="player_brown">@color/property_brown</color>
     <color name="player_purple">#7b2cbf</color>
 
+    <color name="white_ripple">#5fffffff</color>
+
 </resources>

@@ -5,6 +5,7 @@
     <!--Navigation-->
     <string name="home_fragment_title">Players Setup</string>
     <string name="game_fragment_title">Game</string>
+    <string name="trade_fragment_title">Trade</string>
 
     <!--Home Fragment-->
     <string name="start_btn">Start</string>
@@ -74,8 +75,12 @@
     <string name="mortgage">Mortgage</string>
     <string name="unmortgage">Unmortgage</string>
 
-<!--Player Fragment-->
+    <!--Player Fragment-->
     <string name="player_fragment_label">Player</string>
     <string name="give_up_btn">Give Up</string>
+
+    <!--Trade Fragment-->
+    <string name="trade_edit_text_hint">Amount</string>
+    <string name="up_down_button">Up Down</string>
 
 </resources>

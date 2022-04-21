@@ -95,7 +95,7 @@ class HomeFragment : Fragment() {
                 createProperties()
 
                 // Navigate to GameFragment
-                findNavController().navigate(R.id.action_HomeFragment_to_gameFragment)
+                findNavController().navigate(R.id.action_HomeFragment_to_GameFragment)
             }
         }
     }

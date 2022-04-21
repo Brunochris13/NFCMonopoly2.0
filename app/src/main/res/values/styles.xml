@@ -27,14 +27,6 @@
         <item name="iconPadding">-1dp</item>
     </style>
 
-<!--    <style name="property_cardview">-->
-<!--        <item name="android:foreground">@drawable/property_border</item>-->
-<!--    </style>-->
-
-<!--    <style name="property_cardview_small">-->
-<!--        <item name="android:foreground">@drawable/property_border_small</item>-->
-<!--    </style>-->
-
     <style name="property_layout">
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">400dp</item>
@@ -99,5 +91,9 @@
         <item name="android:textSize">16sp</item>
         <item name="android:elevation">10dp</item>
         <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="trade_fragment_player_name">
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>
