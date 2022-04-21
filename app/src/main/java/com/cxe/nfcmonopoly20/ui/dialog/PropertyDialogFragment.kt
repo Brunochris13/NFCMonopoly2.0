@@ -103,7 +103,7 @@ class PropertyDialogFragment(
                 binding.utilityPropertyLayout.root.visibility = View.VISIBLE
 
                 // Check if the Property is owned by a Player
-                if (property.playerId != null && !playerView) {
+                if (property.playerId != null && !playerView && !property.mortgaged.value!!) {
                     binding.utilityDiceMenuCard.visibility = View.VISIBLE
 
                     // Dice Menu
@@ -148,13 +148,25 @@ class PropertyDialogFragment(
             if (cardId == property.playerId) {
                 Toast.makeText(context, "You own it!", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Player tried to pay rent to themselves")
-                return listOf()
+                return emptyList()
+            }
+
+            // Check if Property is Mortgaged
+            if (property.mortgaged.value!!) {
+                Toast.makeText(context, "Property is Mortgaged!", Toast.LENGTH_SHORT).show()
+                dismiss()
+                return emptyList()
             }
 
             // Check if Property is a Utility Property
-            if (property is UtilityProperty) {
-                val diceValue: Int =
-                    Integer.parseInt(binding.utilityDiceMenu.editText?.text.toString())
+            val rent = if (property is UtilityProperty) {
+                val text = binding.utilityDiceMenu.editText?.text.toString()
+                // Check if Nothing is Selected
+                if (text == "") {
+                    Toast.makeText(context, "Please select a value", Toast.LENGTH_SHORT).show()
+                    return emptyList()
+                }
+                val diceValue = Integer.parseInt(text)
                 viewModel.playerPaysRent(cardId, property, diceValue = diceValue)
             } else {
                 viewModel.playerPaysRent(cardId, property)
@@ -169,7 +181,7 @@ class PropertyDialogFragment(
             // Toast
             Toast.makeText(
                 context,
-                "${player.name} paid rent of €${property.getCurrentRent()} to ${otherPlayer.name}",
+                "${player.name} paid rent of €${rent} to ${otherPlayer.name}",
                 Toast.LENGTH_SHORT
             ).show()
         }

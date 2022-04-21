@@ -94,7 +94,7 @@ class AppViewModel : ViewModel() {
         }
     }
 
-    fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) {
+    fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) : Int? {
         val rent = if (diceValue == null) {
             property.getCurrentRent()
         } else {
@@ -107,6 +107,7 @@ class AppViewModel : ViewModel() {
         } else {
             Log.e(LOG_TAG, "Rent equals null, property = ${property.name}")
         }
+        return rent
     }
 
     // Free Parking Functions

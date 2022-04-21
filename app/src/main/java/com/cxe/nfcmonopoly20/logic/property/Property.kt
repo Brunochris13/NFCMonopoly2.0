@@ -63,6 +63,10 @@ abstract class Property(
         }
     }
 
+    fun setRentLevel(level: Int) {
+        _currentRentLevel.value = level
+    }
+
     fun setMortgageStatus(status: Boolean) {
         _mortgaged.value = status
     }
