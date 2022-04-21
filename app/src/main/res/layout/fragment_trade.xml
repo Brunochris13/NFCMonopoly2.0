@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="player1"
             type="com.cxe.nfcmonopoly20.logic.player.Player" />
@@ -27,10 +29,22 @@
             style="@style/trade_fragment_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:text="@{player1.name}"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/player1_delete_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/delete_player_btn"
+            android:src="@drawable/ic_delete"
+            android:visibility="@{player1 == null ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -39,7 +53,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/trade_btn"
             app:layout_constraintStart_toStartOf="@+id/player1_name"
             app:layout_constraintTop_toBottomOf="@+id/player1_name" />
 
@@ -58,8 +72,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
-            android:contentDescription="@string/up_down_button"
             android:background="@drawable/round_white_ripple_effect"
+            android:contentDescription="@string/up_down_button"
             android:src="@{player1Pays ? @drawable/ic_arrow_downward : @drawable/ic_arrow_upward}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/trade_amount_text_input"
@@ -69,7 +83,7 @@
             android:id="@+id/trade_amount_text_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="100dp"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:autofillHints="0"
             android:background="@color/white"
             android:hint="@string/trade_edit_text_hint"
@@ -88,7 +102,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/trade_btn"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_marginEnd="16dp"
@@ -103,11 +117,23 @@
             style="@style/trade_fragment_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
             android:text="@{player2.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/player2_delete_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/delete_player_btn"
+            android:src="@drawable/ic_delete"
+            android:visibility="@{player2 == null ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/player2_recyclerview"
@@ -117,8 +143,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/player2_name"
             app:layout_constraintStart_toStartOf="@+id/player2_name"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
+            app:layout_constraintTop_toBottomOf="@+id/trade_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

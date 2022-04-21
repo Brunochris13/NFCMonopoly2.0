@@ -110,6 +110,24 @@ class AppViewModel : ViewModel() {
         return rent
     }
 
+    fun playerPaysPlayer(player1: Player, player2: Player, amount: Int) : Boolean {
+        // Check if Player 1 exists
+        if (!playerMap.containsKey(player1.cardId)) {
+            Log.e(LOG_TAG, "Player = ${player1.name} does not exist")
+            return false
+        }
+
+        // Check if Player 2 exists
+        if (!playerMap.containsKey(player2.cardId)) {
+            Log.e(LOG_TAG, "Player = ${player2.name} does not exist")
+            return false
+        }
+
+        player1.pay(amount)
+        player2.collect(amount)
+        return true
+    }
+
     // Free Parking Functions
     fun payFreeParking(card: CardId, amount: Int) {
         playerPay(card, amount)

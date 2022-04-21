@@ -24,6 +24,7 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.nfcparser.NdefMessageParser
 import com.cxe.nfcmonopoly20.ui.game.GameFragment
 import com.cxe.nfcmonopoly20.ui.home.HomeFragment
+import com.cxe.nfcmonopoly20.ui.trade.TradeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -82,6 +83,8 @@ class MainActivity : AppCompatActivity() {
             if (currentFragment is HomeFragment) {
                 currentFragment.onNewIntent(msg)
             } else if (currentFragment is GameFragment) {
+                currentFragment.onNewIntent(msg)
+            } else if (currentFragment is TradeFragment) {
                 currentFragment.onNewIntent(msg)
             }
         }
