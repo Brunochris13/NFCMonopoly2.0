@@ -192,7 +192,8 @@ class PropertyDialogFragment(
             viewModel.mortgageProperty(property)
 
             // Update Player Property RecyclerView
-            propertyListAdapter.updateItem(property)
+            if (this::propertyListAdapter.isInitialized)
+                propertyListAdapter.updateItem(property)
         }
     }
 
