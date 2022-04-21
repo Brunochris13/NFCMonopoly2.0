@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="player"
             type="com.cxe.nfcmonopoly20.logic.player.Player" />
 
-        <import type="com.cxe.nfcmonopoly20.util.CardIdToColor"/>
+        <import type="com.cxe.nfcmonopoly20.util.CardIdToColor" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +33,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="@{player.name}"
+            android:textColor="@{player.money &lt; 0 ? @color/pay_text_color : @color/gray}"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/player_color"
@@ -45,6 +47,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:minWidth="70dp"
+            android:textColor="@{player.money &lt; 0 ? @color/pay_text_color : @color/gray}"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

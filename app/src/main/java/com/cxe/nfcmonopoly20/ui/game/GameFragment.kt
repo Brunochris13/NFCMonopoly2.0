@@ -182,8 +182,7 @@ class GameFragment : Fragment() {
 
                 // Update RecyclerView
                 val player = viewModel.playerMap[cardId]
-                if (player!!.moneyShown)
-                    recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+                recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Wrong Card")
@@ -209,8 +208,7 @@ class GameFragment : Fragment() {
                 // Update RecyclerView
                 val players = propertyDialogFragment.onNewIntent(cardId)
                 for (player in players) {
-                    if (player.moneyShown)
-                        recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+                    recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
                 }
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
@@ -238,8 +236,7 @@ class GameFragment : Fragment() {
 
                 // Update RecyclerView
                 val player = viewModel.playerMap[cardId]
-                if (player!!.moneyShown)
-                    recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
+                recyclerViewAdapter.notifyItemChanged(viewModel.playerList.indexOf(player))
             } else {
                 Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
                 Log.i(LOG_TAG, "Wrong Card")
