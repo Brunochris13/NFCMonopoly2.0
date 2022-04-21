@@ -23,11 +23,11 @@ class GamePlayerListAdapter(
             // Money Button
             with(binding.playerMoney) {
                 if (player.moneyShown) {
-                    text = "€${player.money}"
+                    text = "€${player.money.value}"
                 }
                 setOnClickListener {
                     text = if (!player.moneyShown) {
-                        "€${player.money}"
+                        "€${player.money.value}"
                     } else {
                         ""
                     }

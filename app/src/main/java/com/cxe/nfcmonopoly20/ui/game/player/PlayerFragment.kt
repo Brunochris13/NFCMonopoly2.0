@@ -19,7 +19,6 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.PROPERTY_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
-import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
 import com.cxe.nfcmonopoly20.util.CardIdToColor
 
@@ -36,7 +35,11 @@ class PlayerFragment : Fragment() {
     // ViewModel
     private val viewModel: AppViewModel by activityViewModels()
 
+    // Player
     private lateinit var player: Player
+
+    // RecyclerView Adapter
+    private lateinit var recyclerViewAdapter: PlayerPropertyListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,27 +63,12 @@ class PlayerFragment : Fragment() {
         for (utilityProperty in viewModel.utilityProperties)
             viewModel.playerBuyProperty(player.cardId, utilityProperty)
 
-        // Bind Player
+        // Bind Player and livecycleOwner
         binding.player = player
         binding.lifecycleOwner = viewLifecycleOwner
 
         // RecyclerView
-        val recyclerView = binding.playerPropertyList
-        val defaultColorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
-        val defaultStationProperty = viewModel.stationProperties[0]
-        val defaultUtilityProperty = viewModel.utilityProperties[0]
-        val recyclerViewAdapter = PlayerPropertyListAdapter(
-            player.properties.sortedBy { it.id },
-            defaultColorProperty,
-            defaultStationProperty,
-            defaultUtilityProperty
-        ) { property ->
-            // Clicking on a Property
-            val propertyDialog = PropertyDialogFragment(property, playerView = true)
-            propertyDialog.show(parentFragmentManager, PROPERTY_DIALOG_TAG)
-        }
-        recyclerView.adapter = recyclerViewAdapter
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        buildRecyclerView()
 
         // Give Up Button
         binding.giveUpBtn.setOnClickListener {
@@ -91,6 +79,24 @@ class PlayerFragment : Fragment() {
             builder.setNegativeButton("No", null)
             builder.show()
         }
+    }
+
+    private fun buildRecyclerView() {
+        // RecyclerView
+        val recyclerView = binding.playerPropertyList
+
+        // Sort Player Properties
+        player.sortProperties()
+        recyclerViewAdapter = PlayerPropertyListAdapter(
+            player.properties
+        ) { property ->
+            // Clicking on a Property
+            val propertyDialog = PropertyDialogFragment(property, playerView = true)
+            propertyDialog.setRecyclerViewAdapter(recyclerViewAdapter)
+            propertyDialog.show(parentFragmentManager, PROPERTY_DIALOG_TAG)
+        }
+        recyclerView.adapter = recyclerViewAdapter
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
     }
 
     private fun giveUp() {

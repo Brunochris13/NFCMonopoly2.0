@@ -221,7 +221,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{`€`+property.mortgagedValue}"
-                android:textColor="@{property.mortgaged ? @color/receive_text_color : @color/pay_text_color}"
+                android:textColor="@{property.mortgaged ? @color/pay_text_color : @color/receive_text_color}"
                 app:layout_constraintBottom_toBottomOf="@+id/mortgage_button"
                 app:layout_constraintEnd_toEndOf="@+id/mortgage_button"
                 app:layout_constraintStart_toStartOf="@+id/mortgage_button"

@@ -1,21 +1,33 @@
 package com.cxe.nfcmonopoly20.logic.player
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.cxe.nfcmonopoly20.logic.property.Property
 import java.io.Serializable
 
 class Player(var name: String, val cardId: CardId) : Serializable {
 
-    var money: Int = 0
+    private val _money = MutableLiveData<Int>()
+    val money: LiveData<Int>
+        get() = _money
     var moneyShown = true
 
-    val properties = mutableListOf<Property>()
+    var properties = mutableListOf<Property>()
 
     fun pay(amount: Int) {
-        money -= amount
+        _money.value = _money.value?.minus(amount)
     }
 
     fun collect(amount: Int) {
-        money += amount
+        _money.value = _money.value?.plus(amount)
+    }
+
+    fun setStartingMoney(startingMoney: Int) {
+        _money.value = startingMoney
+    }
+
+    fun sortProperties() {
+        properties = properties.sortedBy { it.id }.toMutableList()
     }
 
     fun reset() {

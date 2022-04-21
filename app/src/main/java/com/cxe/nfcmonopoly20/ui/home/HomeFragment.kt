@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
                 // Set the starting money for all Players
                 val startingMoney = if (viewModel.mega) STARTING_MONEY_MEGA else STARTING_MONEY
                 for (player in viewModel.playerList) {
-                    player.money = startingMoney
+                    player.setStartingMoney(startingMoney)
                 }
 
                 // Read Properties from JSON

@@ -1,10 +1,13 @@
 package com.cxe.nfcmonopoly20.logic.property
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import java.io.Serializable
 
 private const val LOG_TAG = "Property"
+
 abstract class Property(
     val id: PropertyId,
     val name: String,
@@ -13,12 +16,15 @@ abstract class Property(
     val mortgagedValue: Int
 ) : Serializable {
 
-    var mortgaged = false
+    private val _mortgaged = MutableLiveData(false)
+    val mortgaged: LiveData<Boolean>
+        get() = _mortgaged
 
     var playerId: CardId? = null
 
-    private var _currentRentLevel = 0
-    val currentRentLevel = _currentRentLevel
+    private var _currentRentLevel = MutableLiveData(0)
+    val currentRentLevel: LiveData<Int>
+        get() = _currentRentLevel
 
     open fun getRent(level: Int): Int {
         // Check if level index is out of bounds
@@ -29,25 +35,35 @@ abstract class Property(
             rent[level]
     }
 
-    fun getCurrentRent() = getRent(currentRentLevel)
+    fun getCurrentRent() = currentRentLevel.value?.let { getRent(it) }
 
     fun increaseRentLevel() {
-        if (currentRentLevel < rent.size)
-            _currentRentLevel++
+        if (currentRentLevel.value!! < rent.size)
+            _currentRentLevel.value = _currentRentLevel.value?.plus(1)
         else
-            Log.e(LOG_TAG, "Tried to increase rent level, more than rent.size. currentRentLevel = $currentRentLevel, rent.size = ${rent.size}")
+            Log.e(
+                LOG_TAG,
+                "Tried to increase rent level, more than rent.size. currentRentLevel = ${currentRentLevel.value}, rent.size = ${rent.size}"
+            )
     }
 
     fun decreaseRentLevel() {
-        if (currentRentLevel > 0)
-            _currentRentLevel--
+        if (currentRentLevel.value!! > 0)
+            _currentRentLevel.value = _currentRentLevel.value?.minus(1)
         else
-            Log.e(LOG_TAG, "Tried to decrease rent level, less than 0. currentRentLevel = $currentRentLevel")
+            Log.e(
+                LOG_TAG,
+                "Tried to decrease rent level, less than 0. currentRentLevel = ${currentRentLevel.value}"
+            )
+    }
+
+    fun setMortgageStatus(status: Boolean) {
+        _mortgaged.value = status
     }
 
     open fun reset() {
-        _currentRentLevel = 0
-        mortgaged = false
+        _currentRentLevel.value = 0
+        _mortgaged.value = false
         playerId = null
     }
 

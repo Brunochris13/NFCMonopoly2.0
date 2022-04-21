@@ -96,13 +96,17 @@ class AppViewModel : ViewModel() {
 
     fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) {
         val rent = if (diceValue == null) {
-            property.getRent(property.currentRentLevel)
+            property.getCurrentRent()
         } else {
             // Utility Property
-            property.getRent(property.currentRentLevel) * diceValue
+            property.getCurrentRent()?.times(diceValue)
         }
-        playerPay(cardId, rent)
-        playerCollect(property.playerId!!, rent)
+        if (rent != null) {
+            playerPay(cardId, rent)
+            playerCollect(property.playerId!!, rent)
+        } else {
+            Log.e(LOG_TAG, "Rent equals null, property = ${property.name}")
+        }
     }
 
     // Free Parking Functions
@@ -144,14 +148,14 @@ class AppViewModel : ViewModel() {
 
     fun mortgageProperty(property: Property) {
         // Check if Property is already Mortgaged
-        if (property.mortgaged) {
+        if (property.mortgaged.value == true) {
             // Player has to pay to Unmortgage the Property
             playerPay(property.playerId!!, property.mortgagedValue)
         } else {
             // Player receives money
             playerCollect(property.playerId!!, property.mortgagedValue)
         }
-        property.mortgaged = !property.mortgaged
+        property.setMortgageStatus(!property.mortgaged.value!!)
     }
 
     // General Functions

@@ -9,131 +9,137 @@
             type="com.cxe.nfcmonopoly20.logic.property.StationProperty" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foreground="@{stationProperty.mortgaged ? @drawable/property_border_mortgage_small : @drawable/property_border_small}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="5dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout style="@style/property_layout_small">
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="@{stationProperty.mortgaged ? @drawable/property_border_mortgage_small : @drawable/property_border_small}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:contentDescription="@string/train_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/monopoly_train_icon" />
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/property_layout_small">
 
-            <TextView
-                android:id="@+id/station_title"
-                style="@style/property_title_small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="2dp"
-                android:text="@{stationProperty.name}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/train_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/monopoly_train_icon" />
 
-            <TextView
-                android:id="@+id/station1"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/station_1"
-                app:layout_constraintBottom_toTopOf="@+id/station2"
-                app:layout_constraintEnd_toStartOf="@+id/station1_amount"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/station_title" />
+                <TextView
+                    android:id="@+id/station_title"
+                    style="@style/property_title_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@{stationProperty.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-            <TextView
-                android:id="@+id/station1_amount"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@{`€`+stationProperty.getRent(0)}"
-                app:layout_constraintBottom_toTopOf="@+id/station2_amount"
-                app:layout_constraintEnd_toEndOf="parent"
+                <TextView
+                    android:id="@+id/station1"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/station_1"
+                    app:layout_constraintBottom_toTopOf="@+id/station2"
+                    app:layout_constraintEnd_toStartOf="@+id/station1_amount"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/station_title" />
 
-                app:layout_constraintStart_toEndOf="@+id/station1"
-                app:layout_constraintTop_toBottomOf="@+id/station_title" />
+                <TextView
+                    android:id="@+id/station1_amount"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{`€`+stationProperty.getRent(0)}"
+                    app:layout_constraintBottom_toTopOf="@+id/station2_amount"
+                    app:layout_constraintEnd_toEndOf="parent"
 
-            <TextView
-                android:id="@+id/station2"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:text="@string/station_2"
-                app:layout_constraintBottom_toTopOf="@+id/station3"
-                app:layout_constraintEnd_toEndOf="@+id/station1"
+                    app:layout_constraintStart_toEndOf="@+id/station1"
+                    app:layout_constraintTop_toBottomOf="@+id/station_title" />
 
-                app:layout_constraintStart_toStartOf="@+id/station1"
-                app:layout_constraintTop_toBottomOf="@+id/station1" />
+                <TextView
+                    android:id="@+id/station2"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:text="@string/station_2"
+                    app:layout_constraintBottom_toTopOf="@+id/station3"
+                    app:layout_constraintEnd_toEndOf="@+id/station1"
 
-            <TextView
-                android:id="@+id/station2_amount"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:text="@{`€`+stationProperty.getRent(1)}"
-                app:layout_constraintBottom_toTopOf="@+id/station3_amount"
-                app:layout_constraintEnd_toEndOf="@+id/station1_amount"
+                    app:layout_constraintStart_toStartOf="@+id/station1"
+                    app:layout_constraintTop_toBottomOf="@+id/station1" />
 
-                app:layout_constraintStart_toStartOf="@+id/station1_amount"
-                app:layout_constraintTop_toBottomOf="@+id/station1_amount" />
+                <TextView
+                    android:id="@+id/station2_amount"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:text="@{`€`+stationProperty.getRent(1)}"
+                    app:layout_constraintBottom_toTopOf="@+id/station3_amount"
+                    app:layout_constraintEnd_toEndOf="@+id/station1_amount"
 
-            <TextView
-                android:id="@+id/station3"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:text="@string/station_3"
-                app:layout_constraintBottom_toTopOf="@+id/station4"
-                app:layout_constraintEnd_toEndOf="@+id/station2"
+                    app:layout_constraintStart_toStartOf="@+id/station1_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/station1_amount" />
 
-                app:layout_constraintStart_toStartOf="@+id/station2"
-                app:layout_constraintTop_toBottomOf="@+id/station2" />
+                <TextView
+                    android:id="@+id/station3"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:text="@string/station_3"
+                    app:layout_constraintBottom_toTopOf="@+id/station4"
+                    app:layout_constraintEnd_toEndOf="@+id/station2"
 
-            <TextView
-                android:id="@+id/station3_amount"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:text="@{`€`+stationProperty.getRent(2)}"
-                app:layout_constraintBottom_toTopOf="@+id/station4_amount"
-                app:layout_constraintEnd_toEndOf="@+id/station2_amount"
+                    app:layout_constraintStart_toStartOf="@+id/station2"
+                    app:layout_constraintTop_toBottomOf="@+id/station2" />
 
-                app:layout_constraintStart_toStartOf="@+id/station2_amount"
-                app:layout_constraintTop_toBottomOf="@+id/station2_amount" />
+                <TextView
+                    android:id="@+id/station3_amount"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:text="@{`€`+stationProperty.getRent(2)}"
+                    app:layout_constraintBottom_toTopOf="@+id/station4_amount"
+                    app:layout_constraintEnd_toEndOf="@+id/station2_amount"
 
-            <TextView
-                android:id="@+id/station4"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@string/station_4"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/station3"
-                app:layout_constraintStart_toStartOf="@+id/station3"
-                app:layout_constraintTop_toBottomOf="@+id/station3" />
+                    app:layout_constraintStart_toStartOf="@+id/station2_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/station2_amount" />
 
-            <TextView
-                android:id="@+id/station4_amount"
-                style="@style/property_details_small"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@{`€`+stationProperty.getRent(3)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/station3_amount"
-                app:layout_constraintStart_toStartOf="@+id/station3_amount"
-                app:layout_constraintTop_toBottomOf="@+id/station3_amount" />
+                <TextView
+                    android:id="@+id/station4"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/station_4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/station3"
+                    app:layout_constraintStart_toStartOf="@+id/station3"
+                    app:layout_constraintTop_toBottomOf="@+id/station3" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/station4_amount"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@{`€`+stationProperty.getRent(3)}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/station3_amount"
+                    app:layout_constraintStart_toStartOf="@+id/station3_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/station3_amount" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

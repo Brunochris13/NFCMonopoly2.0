@@ -17,6 +17,7 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.*
+import com.cxe.nfcmonopoly20.ui.game.player.PlayerPropertyListAdapter
 
 private const val LOG_TAG = "PropertyDialogFragment"
 
@@ -31,6 +32,9 @@ class PropertyDialogFragment(
 
     // ViewModel
     private val viewModel: AppViewModel by activityViewModels()
+
+    // PropertyList Adapter
+    private lateinit var propertyListAdapter: PlayerPropertyListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,8 +55,9 @@ class PropertyDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bind Property
+        // Bind Property and LifecycleOwner
         binding.property = property
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // Default Values
         binding.colorProperty = viewModel.properties[PropertyId.COLOR_BROWN_1] as ColorProperty
@@ -98,7 +103,7 @@ class PropertyDialogFragment(
                 binding.utilityPropertyLayout.root.visibility = View.VISIBLE
 
                 // Check if the Property is owned by a Player
-                if (property.playerId != null) {
+                if (property.playerId != null && !playerView) {
                     binding.utilityDiceMenuCard.visibility = View.VISIBLE
 
                     // Dice Menu
@@ -164,7 +169,7 @@ class PropertyDialogFragment(
             // Toast
             Toast.makeText(
                 context,
-                "${player.name} paid rent of €${property.getRent(property.currentRentLevel)} to ${otherPlayer.name}",
+                "${player.name} paid rent of €${property.getCurrentRent()} to ${otherPlayer.name}",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -180,13 +185,19 @@ class PropertyDialogFragment(
     }
 
     private fun setMortgageButton() {
+        // Make the Mortgage Button Visible
         binding.mortgageButtonLayout.visibility = View.VISIBLE
 
         binding.mortgageButton.setOnClickListener {
             viewModel.mortgageProperty(property)
 
-
+            // Update Player Property RecyclerView
+            propertyListAdapter.updateItem(property)
         }
+    }
+
+    fun setRecyclerViewAdapter(recyclerViewAdapter: PlayerPropertyListAdapter) {
+        this.propertyListAdapter = recyclerViewAdapter
     }
 
     override fun onDestroyView() {
