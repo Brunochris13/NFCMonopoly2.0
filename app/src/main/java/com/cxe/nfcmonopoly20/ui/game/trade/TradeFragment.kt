@@ -111,8 +111,6 @@ class TradeFragment : Fragment() {
                 // Check if Trade was Successful
                 if (tradeMoneyResult && tradePropertiesResult) {
                     binding.tradeAmountTextInput.editText?.setText("")
-//                    clearRecyclerView(player1 = true)
-//                    clearRecyclerView(player1 = false)
                     swapRecyclerView()
                     Toast.makeText(context, "Trade Successful", Toast.LENGTH_SHORT).show()
                 } else {
@@ -143,6 +141,7 @@ class TradeFragment : Fragment() {
         player1Properties = player2Properties
         player2Properties = tempPropertyList
 
+        // Update RecyclerViews
         player1RecyclerViewAdapter.updateList(player1Properties)
         player2RecyclerViewAdapter.updateList(player2Properties)
     }
