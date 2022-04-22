@@ -35,6 +35,6 @@
     </fragment>
     <fragment
         android:id="@+id/TradeFragment"
-        android:name="com.cxe.nfcmonopoly20.ui.trade.TradeFragment"
+        android:name="com.cxe.nfcmonopoly20.ui.game.trade.TradeFragment"
         android:label="@string/trade_fragment_title" />
 </navigation>

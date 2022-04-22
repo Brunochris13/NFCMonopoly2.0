@@ -18,8 +18,8 @@ import com.cxe.nfcmonopoly20.databinding.FragmentPlayerBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.PROPERTY_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.player.Player
-import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
+import com.cxe.nfcmonopoly20.ui.game.PlayerPropertyListAdapter
 import com.cxe.nfcmonopoly20.util.CardIdToColor
 
 const val PLAYER_TAG = "player_tag"
@@ -52,16 +52,6 @@ class PlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // TODO: Remove (Testing)
-        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)
-            viewModel.playerBuyProperty(player.cardId, brownProperty)
-        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
-            viewModel.playerBuyProperty(player.cardId, brownProperty)
-        for (stationProperty in viewModel.stationProperties)
-            viewModel.playerBuyProperty(player.cardId, stationProperty)
-        for (utilityProperty in viewModel.utilityProperties)
-            viewModel.playerBuyProperty(player.cardId, utilityProperty)
 
         // Bind Player and livecycleOwner
         binding.player = player

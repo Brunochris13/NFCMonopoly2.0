@@ -82,6 +82,12 @@ class AppViewModel : ViewModel() {
     fun playerCollect(cardId: CardId, amount: Int) = playerMap[cardId]?.collect(amount)
 
     fun playerBuyProperty(cardId: CardId, property: Property, amount: Int = property.price) {
+        // Check if Player exists
+        if (!playerMap.containsKey(cardId)) {
+            Log.e(LOG_TAG, "Player with cardId = ${cardId.name} does not exist")
+            return
+        }
+
         if (property.playerId == null) {
             playerPay(cardId, amount)
             property.playerId = cardId
@@ -94,7 +100,7 @@ class AppViewModel : ViewModel() {
         }
     }
 
-    fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null) : Int? {
+    fun playerPaysRent(cardId: CardId, property: Property, diceValue: Int? = null): Int? {
         val rent = if (diceValue == null) {
             property.getCurrentRent()
         } else {
@@ -110,7 +116,7 @@ class AppViewModel : ViewModel() {
         return rent
     }
 
-    fun playerPaysPlayer(player1: Player, player2: Player, amount: Int) : Boolean {
+    fun playerPaysPlayer(player1: Player, player2: Player, amount: Int): Boolean {
         // Check if Player 1 exists
         if (!playerMap.containsKey(player1.cardId)) {
             Log.e(LOG_TAG, "Player = ${player1.name} does not exist")
@@ -125,6 +131,49 @@ class AppViewModel : ViewModel() {
 
         player1.pay(amount)
         player2.collect(amount)
+        return true
+    }
+
+    fun playersTradeProperties(
+        player1: Player,
+        player1Properties: List<Property>,
+        player2: Player,
+        player2Properties: List<Property>
+    ): Boolean {
+        // Check if Player 1 exists
+        if (!playerMap.containsKey(player1.cardId)) {
+            Log.e(LOG_TAG, "Player = ${player1.name} does not exist")
+            return false
+        }
+
+        // Check if Player 2 exists
+        if (!playerMap.containsKey(player2.cardId)) {
+            Log.e(LOG_TAG, "Player = ${player2.name} does not exist")
+            return false
+        }
+
+        for (property in player1Properties) {
+            val result = player1.removeProperty(property)
+            // If Property could not be removed from Player 1
+            if (!result) {
+                Log.e(LOG_TAG, "property = ${property.name} could not be removed from player = ${player1.name}")
+                return false
+            }
+            player2.addProperty(property)
+            property.playerId = player2.cardId
+        }
+
+        for (property in player2Properties) {
+            val result = player2.removeProperty(property)
+            // If Property could not be removed from Player 2
+            if (!result) {
+                Log.e(LOG_TAG, "property = ${property.name} could not be removed from player = ${player2.name}")
+                return false
+            }
+            player1.addProperty(property)
+            property.playerId = player1.cardId
+        }
+
         return true
     }
 

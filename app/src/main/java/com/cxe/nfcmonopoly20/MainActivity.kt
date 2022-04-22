@@ -24,7 +24,7 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.nfcparser.NdefMessageParser
 import com.cxe.nfcmonopoly20.ui.game.GameFragment
 import com.cxe.nfcmonopoly20.ui.home.HomeFragment
-import com.cxe.nfcmonopoly20.ui.trade.TradeFragment
+import com.cxe.nfcmonopoly20.ui.game.trade.TradeFragment
 
 class MainActivity : AppCompatActivity() {
 

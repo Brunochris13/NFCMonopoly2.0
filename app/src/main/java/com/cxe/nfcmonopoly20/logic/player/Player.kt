@@ -36,6 +36,19 @@ class Player(var name: String, val cardId: CardId) : Serializable {
         updatePropertyStatus(property)
     }
 
+    fun removeProperty(property: Property): Boolean {
+        // Check if Player has this Property
+        return if (!properties.contains(property)) {
+            false
+        } else {
+            properties.remove(property)
+
+            // Update Property Status
+            updatePropertyStatus(property)
+            true
+        }
+    }
+
     fun updatePropertyStatus(property: Property) {
         // Check how many Properties of this Type the Player has
         when (property) {

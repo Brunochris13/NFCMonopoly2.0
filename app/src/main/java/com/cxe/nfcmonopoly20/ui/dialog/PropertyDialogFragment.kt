@@ -17,7 +17,7 @@ import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.*
-import com.cxe.nfcmonopoly20.ui.game.player.PlayerPropertyListAdapter
+import com.cxe.nfcmonopoly20.ui.game.PlayerPropertyListAdapter
 
 private const val LOG_TAG = "PropertyDialogFragment"
 

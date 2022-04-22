@@ -49,11 +49,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/player1_recyclerview"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/trade_btn"
+            app:layout_constraintEnd_toEndOf="@+id/player1_delete_btn"
             app:layout_constraintStart_toStartOf="@+id/player1_name"
             app:layout_constraintTop_toBottomOf="@+id/player1_name" />
 
@@ -137,11 +138,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/player2_recyclerview"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/player2_name"
+            app:layout_constraintEnd_toEndOf="@+id/player2_delete_btn"
             app:layout_constraintStart_toStartOf="@+id/player2_name"
             app:layout_constraintTop_toBottomOf="@+id/trade_btn" />
 

@@ -17,6 +17,7 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.ui.dialog.AuctionDialogFragment
 import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
@@ -78,6 +79,16 @@ class GameFragment : Fragment() {
         }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
+
+        // TODO: Remove (Testing)
+        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)
+            viewModel.playerBuyProperty(CardId.YELLOW_CARD, brownProperty)
+        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
+            viewModel.playerBuyProperty(CardId.GREEN_CARD, brownProperty)
+        for (stationProperty in viewModel.stationProperties)
+            viewModel.playerBuyProperty(CardId.YELLOW_CARD, stationProperty)
+        for (utilityProperty in viewModel.utilityProperties)
+            viewModel.playerBuyProperty(CardId.BLUE_CARD, utilityProperty)
 
         // Pay Prison Button
         binding.payPrisonBtn.setOnClickListener {

@@ -1,4 +1,4 @@
-package com.cxe.nfcmonopoly20.ui.game.player
+package com.cxe.nfcmonopoly20.ui.game
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,7 +17,7 @@ private const val STATION_PROPERTY_VIEW_TYPE = 1
 private const val UTILITY_PROPERTY_VIEW_TYPE = 2
 
 class PlayerPropertyListAdapter(
-    private val playerPropertyList: List<Property>,
+    private var playerPropertyList: List<Property>,
     private val onClickListener: (Property) -> Unit
 ) : RecyclerView.Adapter<PlayerPropertyListAdapter.PlayerPropertyListViewHolder>() {
 
@@ -95,6 +95,13 @@ class PlayerPropertyListAdapter(
     fun updateItem(property: Property) {
         val position = playerPropertyList.indexOf(property)
         notifyItemChanged(position)
+    }
+
+    fun updateList(newProperties: List<Property>) {
+        val size = playerPropertyList.size
+        notifyItemRangeRemoved(0, size)
+        playerPropertyList = newProperties
+        notifyItemRangeInserted(0, playerPropertyList.size)
     }
 
     override fun getItemCount(): Int = playerPropertyList.size
