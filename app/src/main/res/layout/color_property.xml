@@ -10,6 +10,7 @@
         <import type="com.cxe.nfcmonopoly20.util.PropertyColorToResourcesConverter" />
 
         <import type="android.graphics.Typeface" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -43,7 +44,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; !colorProperty.mortgaged &amp;&amp; colorProperty.currentRentLevel == 0) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_1house_textview"
                 app:layout_constraintEnd_toStartOf="@+id/rent_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/property_title" />
@@ -57,7 +57,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; !colorProperty.mortgaged &amp;&amp; colorProperty.currentRentLevel == 0) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_1house_amount"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/color_rent_textview"
                 app:layout_constraintTop_toBottomOf="@+id/property_title" />
 
@@ -69,7 +68,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_2houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_rent_textview"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/color_rent_textview"
                 app:layout_constraintTop_toBottomOf="@+id/color_rent_textview" />
 
@@ -81,7 +79,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_2houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/rent_amount"
                 app:layout_constraintTop_toBottomOf="@+id/rent_amount" />
 
@@ -93,7 +90,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_3houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_1house_textview"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/color_1house_textview"
                 app:layout_constraintTop_toBottomOf="@+id/color_1house_textview" />
 
@@ -106,7 +102,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_3houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_1house_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/rent_1house_amount"
                 app:layout_constraintTop_toBottomOf="@+id/rent_1house_amount" />
 
@@ -118,7 +113,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 3) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_4houses_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_2houses_textview"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/color_2houses_textview"
                 app:layout_constraintTop_toBottomOf="@+id/color_2houses_textview" />
 
@@ -130,7 +124,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 3) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_4houses_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_2houses_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/rent_2houses_amount"
                 app:layout_constraintTop_toBottomOf="@+id/rent_2houses_amount" />
 
@@ -142,7 +135,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 4) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/color_hotel_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_3houses_textview"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/color_3houses_textview"
                 app:layout_constraintTop_toBottomOf="@+id/color_3houses_textview" />
 
@@ -154,7 +146,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 4) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/rent_hotel_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_3houses_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/rent_3houses_amount"
                 app:layout_constraintTop_toBottomOf="@+id/rent_3houses_amount" />
 
@@ -162,12 +153,10 @@
                 android:id="@+id/color_hotel_textview"
                 style="@style/property_details"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
                 android:text="@string/hotel"
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 5) ? Typeface.BOLD : Typeface.NORMAL)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/color_skyscraper_textview"
                 app:layout_constraintEnd_toEndOf="@+id/color_4houses_textview"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/color_4houses_textview"
                 app:layout_constraintTop_toBottomOf="@+id/color_4houses_textview" />
 
@@ -175,14 +164,38 @@
                 android:id="@+id/rent_hotel_amount"
                 style="@style/property_details"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
                 android:text="@{`€`+colorProperty.getRent(5)}"
                 android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 5) ? Typeface.BOLD : Typeface.NORMAL)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/rent_skyscraper_amount"
                 app:layout_constraintEnd_toEndOf="@+id/rent_4houses_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/rent_4houses_amount"
                 app:layout_constraintTop_toBottomOf="@+id/rent_4houses_amount" />
+
+            <TextView
+                android:id="@+id/color_skyscraper_textview"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/skyscraper"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 6) ? Typeface.BOLD : Typeface.NORMAL)}"
+                android:visibility="@{colorProperty.mega ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/color_hotel_textview"
+                app:layout_constraintStart_toStartOf="@+id/color_hotel_textview"
+                app:layout_constraintTop_toBottomOf="@+id/color_hotel_textview" />
+
+            <TextView
+                android:id="@+id/rent_skyscraper_amount"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@{colorProperty.mega ? `€`+colorProperty.getRent(6) : ``}"
+                android:typeface="@{Typeface.defaultFromStyle((colorProperty.playerId != null &amp;&amp; colorProperty.currentRentLevel == 6) ? Typeface.BOLD : Typeface.NORMAL)}"
+                android:visibility="@{colorProperty.mega ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/rent_hotel_amount"
+                app:layout_constraintStart_toStartOf="@+id/rent_hotel_amount"
+                app:layout_constraintTop_toBottomOf="@+id/rent_hotel_amount" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

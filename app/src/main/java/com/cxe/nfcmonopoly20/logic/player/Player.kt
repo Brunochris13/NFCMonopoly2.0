@@ -57,10 +57,22 @@ class Player(var name: String, val cardId: CardId) : Serializable {
                 val sameColorProperties = properties.filterIsInstance<ColorProperty>()
                     .filter { it.color == property.color && !it.mortgaged.value!! }
 
-                // Set same Color Properties Set value
-                for (sameColorProperty in sameColorProperties) {
-                    sameColorProperty.set =
-                        property.colorSetPropertyAmount == sameColorProperties.size
+                // Mega Edition
+                if (property.mega) {
+                    for (sameColorProperty in sameColorProperties) {
+                        sameColorProperty.set =
+                            property.colorSetPropertyAmount - 1 <= sameColorProperties.size
+                        sameColorProperty.megaSet =
+                            property.colorSetPropertyAmount == sameColorProperties.size
+                    }
+                } else {
+                    // Normal Edition
+
+                    // Set same Color Properties Set value
+                    for (sameColorProperty in sameColorProperties) {
+                        sameColorProperty.set =
+                            property.colorSetPropertyAmount == sameColorProperties.size
+                    }
                 }
             }
             is StationProperty -> {

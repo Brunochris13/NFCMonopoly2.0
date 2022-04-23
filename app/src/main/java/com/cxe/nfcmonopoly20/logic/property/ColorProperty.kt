@@ -96,9 +96,17 @@ class ColorProperty(
         }
     }
 
-    fun canBuy(): Boolean = currentRentLevel.value!! < rent.size - 1
+    fun canBuy(): Boolean {
+        return set && !mortgaged.value!! && currentRentLevel.value!! < rent.size - 1
+    }
 
     fun canSell(): Boolean = currentRentLevel.value!! > 0
+
+    override fun setMortgageStatus(status: Boolean) {
+        super.setMortgageStatus(status)
+        set = false
+        megaSet = false
+    }
 
     override fun reset() {
         super.reset()

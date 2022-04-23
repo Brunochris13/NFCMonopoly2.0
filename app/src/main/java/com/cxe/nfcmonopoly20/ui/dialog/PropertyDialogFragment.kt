@@ -244,8 +244,18 @@ class PropertyDialogFragment(
             viewModel.mortgageProperty(property)
 
             // Update Player Property RecyclerView
-            if (this::propertyListAdapter.isInitialized)
-                propertyListAdapter.updateItem(property)
+            if (this::propertyListAdapter.isInitialized) {
+                // Color Property
+                if (property is ColorProperty) {
+                    // Update all the Same Color Properties
+                    val player = viewModel.playerMap[property.playerId]
+                    val sameColorProperties = player?.getSameColorProperties(property)
+                    for (sameColorProperty in sameColorProperties!!) {
+                        propertyListAdapter.updateItem(sameColorProperty)
+                    }
+                } else
+                    propertyListAdapter.updateItem(property)
+            }
 
             // Update Buttons
             setButtons()
@@ -319,8 +329,19 @@ class PropertyDialogFragment(
         property as ColorProperty
         // First check if property canBuy a house
         return if (property.canBuy()) {
+
             // Check if any of the other properties have a lower rentLevel than this property
             for (sameColorProperty in sameColorProperties) {
+
+                // Mega Edition
+                if (viewModel.mega) {
+                    // If any of the other Properties are Mortgaged or a Property has a Skyscraper
+                    if (sameColorProperty.mortgaged.value!! ||
+                        sameColorProperty.currentRentLevel.value!! == property.rent.size - 1
+                    )
+                        return false
+                }
+
                 if (sameColorProperty.currentRentLevel.value!! < property.currentRentLevel.value!!)
                     return false
             }
