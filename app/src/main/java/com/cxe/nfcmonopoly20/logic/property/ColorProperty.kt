@@ -16,7 +16,7 @@ class ColorProperty(
     val colorSetPropertyAmount: Int
 ) : Property(id, name, price, rent, mortgagedValue) {
 
-    val sellPrice = housePrice / 2
+    val houseSellPrice = housePrice / 2
 
     var set = false
 
@@ -89,7 +89,7 @@ class ColorProperty(
             }
 
             if (decreaseRentLevel())
-                player.pay(housePrice)
+                player.collect(houseSellPrice)
 
         } else {
             Log.e(LOG_TAG, "Cannot sell any more houses, property = $name")

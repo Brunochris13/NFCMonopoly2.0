@@ -268,7 +268,7 @@
                 style="@style/property_button_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{property instanceof StationProperty ? `€`+stationProperty.depotSellPrice : `€`+colorProperty.sellPrice}"
+                android:text="@{property instanceof StationProperty ? `€`+stationProperty.depotSellPrice : `€`+colorProperty.houseSellPrice}"
                 android:textColor="@color/receive_text_color"
                 app:layout_constraintBottom_toBottomOf="@+id/sell_house_button"
                 app:layout_constraintEnd_toEndOf="@+id/sell_house_button"
