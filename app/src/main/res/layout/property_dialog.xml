@@ -8,6 +8,7 @@
         <variable
             name="property"
             type="com.cxe.nfcmonopoly20.logic.property.Property" />
+
         <variable
             name="colorProperty"
             type="com.cxe.nfcmonopoly20.logic.property.ColorProperty" />
@@ -19,6 +20,8 @@
         <variable
             name="utilityProperty"
             type="com.cxe.nfcmonopoly20.logic.property.UtilityProperty" />
+
+        <import type="com.cxe.nfcmonopoly20.logic.property.StationProperty"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -162,7 +165,7 @@
                 style="@style/property_button_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/buy_house"
+                android:text="@{property instanceof StationProperty ? @string/buy_depot : @string/buy_house}"
                 app:layout_constraintBottom_toBottomOf="@+id/buy_house_button"
                 app:layout_constraintEnd_toEndOf="@+id/buy_house_button"
                 app:layout_constraintStart_toStartOf="@+id/buy_house_button"
@@ -173,7 +176,7 @@
                 style="@style/property_button_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`€`+colorProperty.housePrice}"
+                android:text="@{property instanceof StationProperty ? `€`+stationProperty.depotBuyPrice : `€`+colorProperty.housePrice}"
                 android:textColor="@color/pay_text_color"
                 app:layout_constraintBottom_toBottomOf="@+id/buy_house_button"
                 app:layout_constraintEnd_toEndOf="@+id/buy_house_button"
@@ -254,7 +257,7 @@
                 style="@style/property_button_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sell_house"
+                android:text="@{property instanceof StationProperty ? @string/sell_depot : @string/sell_house}"
                 app:layout_constraintBottom_toBottomOf="@+id/sell_house_button"
                 app:layout_constraintEnd_toEndOf="@+id/sell_house_button"
                 app:layout_constraintStart_toStartOf="@+id/sell_house_button"
@@ -265,7 +268,7 @@
                 style="@style/property_button_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`€`+colorProperty.sellPrice}"
+                android:text="@{property instanceof StationProperty ? `€`+stationProperty.depotSellPrice : `€`+colorProperty.sellPrice}"
                 android:textColor="@color/receive_text_color"
                 app:layout_constraintBottom_toBottomOf="@+id/sell_house_button"
                 app:layout_constraintEnd_toEndOf="@+id/sell_house_button"

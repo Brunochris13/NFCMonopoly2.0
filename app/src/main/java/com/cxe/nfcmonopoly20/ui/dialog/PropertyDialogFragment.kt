@@ -107,7 +107,7 @@ class PropertyDialogFragment(
                     binding.utilityDiceMenuCard.visibility = View.VISIBLE
 
                     // Dice Menu
-                    val diceItems = if (viewModel.mega) (2..15).toList() else  (2..12).toList()
+                    val diceItems = if (viewModel.mega) (2..15).toList() else (2..12).toList()
                     val adapter = ArrayAdapter(
                         requireContext(),
                         R.layout.fragment_game_dice_list_item,
@@ -214,6 +214,21 @@ class PropertyDialogFragment(
                 // Mortgage Button
                 setMortgageButton()
             }
+        } else if (viewModel.mega && property is StationProperty) {
+            // Mega Station Properties
+
+            // Mortgage?
+            if (property.mortgaged.value!!) {
+                setMortgageButton()
+            } else {
+                // Depot?
+                if (property.depot.value!!) {
+                    setSellDepotButton()
+                } else {
+                    setBuyDepotButton()
+                    setMortgageButton()
+                }
+            }
         } else {
             // Station and Utility Properties
             // Mortgage Button
@@ -227,6 +242,42 @@ class PropertyDialogFragment(
 
         binding.mortgageButton.setOnClickListener {
             viewModel.mortgageProperty(property)
+
+            // Update Player Property RecyclerView
+            if (this::propertyListAdapter.isInitialized)
+                propertyListAdapter.updateItem(property)
+
+            // Update Buttons
+            setButtons()
+        }
+    }
+
+    private fun setBuyDepotButton() {
+        // Make the Buy House Button Visible
+        binding.buyHouseButtonLayout.visibility = View.VISIBLE
+
+        binding.buyHouseButton.setOnClickListener {
+            property as StationProperty
+            val player = viewModel.playerMap[property.playerId]
+            property.buyDepot(player!!)
+
+            // Update Player Property RecyclerView
+            if (this::propertyListAdapter.isInitialized)
+                propertyListAdapter.updateItem(property)
+
+            // Update Buttons
+            setButtons()
+        }
+    }
+
+    private fun setSellDepotButton() {
+        // Make the Sell House Button Visible
+        binding.sellHouseButtonLayout.visibility = View.VISIBLE
+
+        binding.sellHouseButton.setOnClickListener {
+            property as StationProperty
+            val player = viewModel.playerMap[property.playerId]
+            property.sellDepot(player!!)
 
             // Update Player Property RecyclerView
             if (this::propertyListAdapter.isInitialized)

@@ -53,7 +53,7 @@ class ColorProperty(
 
         // Check if the Property is not set
         if (!set) {
-            Log.e(LOG_TAG, "Tried to build house on a Non-Set Property, proeprty = $name")
+            Log.e(LOG_TAG, "Tried to build house on a Non-Set Property, property = $name")
             return
         }
 
