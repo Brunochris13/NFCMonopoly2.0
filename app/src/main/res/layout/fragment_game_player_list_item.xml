@@ -34,7 +34,7 @@
             android:layout_marginBottom="8dp"
             android:text="@{player.name}"
             android:textColor="@{player.money &lt; 0 ? @color/pay_text_color : @color/gray}"
-            android:textSize="24sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/player_color"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
             android:layout_marginBottom="8dp"
             android:minWidth="70dp"
             android:textColor="@{player.money &lt; 0 ? @color/pay_text_color : @color/gray}"
-            android:textSize="24sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
