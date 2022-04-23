@@ -15,8 +15,10 @@ import com.cxe.nfcmonopoly20.databinding.FragmentTradeBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.player.Player
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.Property
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
+import com.cxe.nfcmonopoly20.logic.property.StationProperty
 import com.cxe.nfcmonopoly20.ui.game.PlayerPropertyListAdapter
 
 private const val LOG_TAG = "TradeFragment"
@@ -228,23 +230,17 @@ class TradeFragment : Fragment() {
             // Check if any of the Players contain the Property
             when {
                 player1 != null && player1.properties.contains(property) -> {
-                    // Check if Property has already been added
-                    if (player1Properties.contains(property)) {
-                        Toast.makeText(context, "Property is already added", Toast.LENGTH_SHORT)
-                            .show()
+                    // Check Property
+                    if (!checkProperty(property!!, player1Properties))
                         return
-                    }
-                    player1Properties.add(property!!)
+                    player1Properties.add(property)
                     player1RecyclerViewAdapter.notifyItemInserted(player1Properties.size - 1)
                 }
                 player2 != null && player2.properties.contains(property) -> {
-                    // Check if Property has already been added
-                    if (player2Properties.contains(property)) {
-                        Toast.makeText(context, "Property is already added", Toast.LENGTH_SHORT)
-                            .show()
+                    // Check Property
+                    if (!checkProperty(property!!, player2Properties))
                         return
-                    }
-                    player2Properties.add(property!!)
+                    player2Properties.add(property)
                     player2RecyclerViewAdapter.notifyItemInserted(player2Properties.size - 1)
                 }
                 else -> {
@@ -274,6 +270,34 @@ class TradeFragment : Fragment() {
             Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
             Log.i(LOG_TAG, "Wrong Card")
         }
+    }
+
+    private fun checkProperty(property: Property, propertyList: List<Property>) : Boolean {
+        // Check if Property has already been added
+        if (propertyList.contains(property)) {
+            Toast.makeText(context, "Property is already added", Toast.LENGTH_SHORT)
+                .show()
+            return false
+        }
+        // Color Property
+        if (property is ColorProperty) {
+            val player = viewModel.playerMap[property.playerId]
+            val sameColorProperties = player?.getSameColorProperties(property)
+            for (sameColorProperty in sameColorProperties!!) {
+                if (sameColorProperty.currentRentLevel.value!! > 0) {
+                    Toast.makeText(context, "Cannot Trade Property with Houses", Toast.LENGTH_SHORT)
+                        .show()
+                    return false
+                }
+            }
+        }
+        // Station has Depot
+        if (viewModel.mega && property is StationProperty && property.depot.value!!) {
+            Toast.makeText(context, "Cannot Trade Station with a Depot", Toast.LENGTH_SHORT)
+                .show()
+            return false
+        }
+        return true
     }
 
     private fun playerExists(cardId: CardId): Boolean {
