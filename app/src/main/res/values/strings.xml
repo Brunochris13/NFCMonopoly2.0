@@ -83,4 +83,8 @@
     <string name="trade_edit_text_hint">Amount</string>
     <string name="up_down_button">Up Down</string>
 
+    <!--Winning Dialog-->
+    <string name="trophy">Trophy</string>
+    <string name="winning_msg">is the Winner</string>
+
 </resources>

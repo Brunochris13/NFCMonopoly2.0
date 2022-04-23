@@ -19,10 +19,7 @@ import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
-import com.cxe.nfcmonopoly20.ui.dialog.AuctionDialogFragment
-import com.cxe.nfcmonopoly20.ui.dialog.BankOrFreeParkingDialogFragment
-import com.cxe.nfcmonopoly20.ui.dialog.NfcTapCardDialogFragment
-import com.cxe.nfcmonopoly20.ui.dialog.PropertyDialogFragment
+import com.cxe.nfcmonopoly20.ui.dialog.*
 import com.cxe.nfcmonopoly20.ui.game.player.PLAYER_TAG
 
 private const val LOG_TAG = "GameFragment"
@@ -79,6 +76,21 @@ class GameFragment : Fragment() {
         }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
+
+        // Check if we have a Winner
+        if (viewModel.playerList.size == 1) {
+            // Show Winning Dialog
+            val winningDialog = WinningDialogFragment {
+                // Exit Button
+
+                // Reset Game
+                viewModel.resetGame()
+
+                // Navigate to Home Fragment
+                findNavController().navigate(R.id.action_GameFragment_to_HomeFragment)
+            }
+            winningDialog.show(parentFragmentManager, WINNING_DIALOG_TAG)
+        }
 
         // TODO: Remove (Testing)
         for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)

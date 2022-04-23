@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_arrow_downward.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_arrow_upward.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_contactless.xml" value="0.2555" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_delete.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/ic_free_parking.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/image_button_round_corners.xml" value="0.2555" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/drawable/property_border.xml" value="0.2555" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/station_property_small.xml" value="0.536" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/utility_property.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/utility_property_small.xml" value="0.22056159420289856" />
+        <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/layout/winning_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Users/Christos/AndroidStudioProjects/NFCMonopoly20/app/src/main/res/xml/nfc_tech_list.xml" value="0.22056159420289856" />
       </map>

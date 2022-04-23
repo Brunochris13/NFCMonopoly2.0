@@ -21,6 +21,7 @@ const val CUSTOM_AMOUNT_DIALOG_TAG = "custom_amount_dialog_tag"
 const val BANK_OR_FREE_PARKING_DIALOG_TAG = "bank_or_free_parking_dialog_tag"
 const val PROPERTY_DIALOG_TAG = "property_dialog_tag"
 const val AUCTION_DIALOG_TAG = "auction_dialog_tag"
+const val WINNING_DIALOG_TAG = "winning_dialog_tag"
 
 private const val LOG_TAG = "AppViewModel"
 
