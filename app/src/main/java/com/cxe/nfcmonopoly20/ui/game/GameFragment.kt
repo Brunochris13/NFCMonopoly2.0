@@ -17,6 +17,7 @@ import com.cxe.nfcmonopoly20.R
 import com.cxe.nfcmonopoly20.databinding.FragmentGameBinding
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.ui.dialog.*
 import com.cxe.nfcmonopoly20.ui.game.player.PLAYER_TAG
@@ -92,21 +93,24 @@ class GameFragment : Fragment() {
         }
 
         // TODO: Remove (Testing)
-//        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)
-//            viewModel.playerBuyProperty(CardId.YELLOW_CARD, brownProperty)
-//        for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
-//            viewModel.playerBuyProperty(CardId.GREEN_CARD, brownProperty)
-//        for (stationProperty in viewModel.stationProperties)
-//            viewModel.playerBuyProperty(CardId.YELLOW_CARD, stationProperty)
-//        for (utilityProperty in viewModel.utilityProperties)
-//            viewModel.playerBuyProperty(CardId.BLUE_CARD, utilityProperty)
+        if (DEBUG_MODE) {
+            for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.LIGHT_BLUE]!!)
+                viewModel.playerBuyProperty(CardId.YELLOW_CARD, brownProperty)
+            for (brownProperty in viewModel.colorProperties[ColorProperty.PropertyColors.BROWN]!!)
+                viewModel.playerBuyProperty(CardId.GREEN_CARD, brownProperty)
+            for (stationProperty in viewModel.stationProperties)
+                viewModel.playerBuyProperty(CardId.YELLOW_CARD, stationProperty)
+            for (utilityProperty in viewModel.utilityProperties)
+                viewModel.playerBuyProperty(CardId.BLUE_CARD, utilityProperty)
+        }
 
         // Pay Prison Button
         binding.payPrisonBtn.setOnClickListener {
             nfcTapCardDialog = NfcTapCardDialogFragment(
                 resources.getString(R.string.pay_prison),
                 PRISON_AMOUNT,
-                true
+                pay = true,
+                freeParking = true
             )
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
@@ -116,7 +120,8 @@ class GameFragment : Fragment() {
             nfcTapCardDialog = NfcTapCardDialogFragment(
                 resources.getString(R.string.luxury_tax),
                 LUXURY_TAX_AMOUNT,
-                true
+                pay = true,
+                freeParking = true
             )
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }
@@ -126,7 +131,8 @@ class GameFragment : Fragment() {
             nfcTapCardDialog = NfcTapCardDialogFragment(
                 resources.getString(R.string.income_tax),
                 INCOME_TAX_AMOUNT,
-                true
+                true,
+                freeParking = true
             )
             nfcTapCardDialog.show(parentFragmentManager, NFC_TAP_DIALOG_TAG)
         }

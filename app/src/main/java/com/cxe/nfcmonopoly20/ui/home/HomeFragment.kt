@@ -15,6 +15,7 @@ import com.cxe.nfcmonopoly20.databinding.FragmentHomeBinding
 import com.cxe.nfcmonopoly20.getJsonDataFromAsset
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
+import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.logic.property.StationProperty
@@ -53,9 +54,11 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
 
         // TODO: Fill up the player list
-//        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD))
-//        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD))
-//        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD))
+        if (DEBUG_MODE) {
+            viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD))
+            viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD))
+            viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD))
+        }
 
         // RecyclerView
         val recyclerView = binding.recyclerviewHome
