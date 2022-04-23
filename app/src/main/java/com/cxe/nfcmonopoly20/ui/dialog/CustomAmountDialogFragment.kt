@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cxe.nfcmonopoly20.R
-import com.cxe.nfcmonopoly20.databinding.FragmentGameCustomAmountBinding
+import com.cxe.nfcmonopoly20.databinding.CustomAmountDialogBinding
 import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
 
 class CustomAmountDialogFragment(
@@ -17,7 +17,7 @@ class CustomAmountDialogFragment(
     DialogFragment() {
 
     // Binding
-    private var _binding: FragmentGameCustomAmountBinding? = null
+    private var _binding: CustomAmountDialogBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class CustomAmountDialogFragment(
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGameCustomAmountBinding.inflate(inflater, container, false)
+        _binding = CustomAmountDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)

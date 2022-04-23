@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.R
-import com.cxe.nfcmonopoly20.databinding.FragmentGameBankOrFreeParkingBinding
+import com.cxe.nfcmonopoly20.databinding.BankOrFreeParkingDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.CUSTOM_AMOUNT_DIALOG_TAG
 import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
@@ -15,7 +15,7 @@ import com.cxe.nfcmonopoly20.logic.NFC_TAP_DIALOG_TAG
 class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment() {
 
     // Binding
-    private var _binding: FragmentGameBankOrFreeParkingBinding? = null
+    private var _binding: BankOrFreeParkingDialogBinding? = null
     private val binding get() = _binding!!
 
     // ViewModel
@@ -29,7 +29,7 @@ class BankOrFreeParkingDialogFragment(private val pay: Boolean) : DialogFragment
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGameBankOrFreeParkingBinding.inflate(inflater, container, false)
+        _binding = BankOrFreeParkingDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)

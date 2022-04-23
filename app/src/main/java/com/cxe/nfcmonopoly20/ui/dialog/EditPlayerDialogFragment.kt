@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.cxe.nfcmonopoly20.databinding.FragmentHomePlayerEditBinding
+import com.cxe.nfcmonopoly20.databinding.PlayerEditDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.CARD_ID_TAG
 import com.cxe.nfcmonopoly20.logic.PLAYER_NAME_TAG
@@ -20,7 +20,7 @@ private const val LOG_TAG = "EditPlayerDialogFragment"
 class EditPlayerDialogFragment : DialogFragment() {
 
     // Binding
-    private var _binding: FragmentHomePlayerEditBinding? = null
+    private var _binding: PlayerEditDialogBinding? = null
     private val binding get() = _binding!!
 
     // ViewModel
@@ -39,7 +39,7 @@ class EditPlayerDialogFragment : DialogFragment() {
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        _binding = FragmentHomePlayerEditBinding.inflate(inflater, container, false)
+        _binding = PlayerEditDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
 

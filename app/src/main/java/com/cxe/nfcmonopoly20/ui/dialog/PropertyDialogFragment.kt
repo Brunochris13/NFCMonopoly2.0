@@ -110,7 +110,7 @@ class PropertyDialogFragment(
                     val diceItems = if (viewModel.mega) (2..15).toList() else (2..12).toList()
                     val adapter = ArrayAdapter(
                         requireContext(),
-                        R.layout.fragment_game_dice_list_item,
+                        R.layout.dice_list_item,
                         diceItems
                     )
                     (binding.utilityDiceMenu.editText as? AutoCompleteTextView)?.setAdapter(adapter)

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.cxe.nfcmonopoly20.R
-import com.cxe.nfcmonopoly20.databinding.FragmentGameNfcCardTapBinding
+import com.cxe.nfcmonopoly20.databinding.NfcCardTapDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 
@@ -25,7 +25,7 @@ class NfcTapCardDialogFragment(
     DialogFragment() {
 
     // Binding
-    private var _binding: FragmentGameNfcCardTapBinding? = null
+    private var _binding: NfcCardTapDialogBinding? = null
     private val binding get() = _binding!!
 
     // ViewModel
@@ -39,7 +39,7 @@ class NfcTapCardDialogFragment(
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGameNfcCardTapBinding.inflate(inflater, container, false)
+        _binding = NfcCardTapDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)

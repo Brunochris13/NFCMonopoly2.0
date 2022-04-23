@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.cxe.nfcmonopoly20.databinding.FragmentGameAuctionLayoutBinding
+import com.cxe.nfcmonopoly20.databinding.AuctionDialogBinding
 import com.cxe.nfcmonopoly20.logic.AppViewModel
 import com.cxe.nfcmonopoly20.logic.player.CardId
 import com.cxe.nfcmonopoly20.logic.property.Property
@@ -17,7 +17,7 @@ private const val LOG_TAG = "AuctionDialogFragment"
 class AuctionDialogFragment(private val property: Property) : DialogFragment() {
 
     // Binding
-    private var _binding: FragmentGameAuctionLayoutBinding? = null
+    private var _binding: AuctionDialogBinding? = null
     private val binding get() = _binding!!
 
     // ViewModel
@@ -33,7 +33,7 @@ class AuctionDialogFragment(private val property: Property) : DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
 
         // Binding
-        _binding = FragmentGameAuctionLayoutBinding.inflate(inflater, container, false)
+        _binding = AuctionDialogBinding.inflate(inflater, container, false)
 
         // Fix corners
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
