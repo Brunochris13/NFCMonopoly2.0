@@ -26,6 +26,9 @@ abstract class Property(
     val currentRentLevel: LiveData<Int>
         get() = _currentRentLevel
 
+    // Mega Edition Only (It should be set at the start)
+    var mega = false
+
     open fun getRent(level: Int): Int {
         // Check if level index is out of bounds
         return if ((level < 0) || (level >= rent.size)) {

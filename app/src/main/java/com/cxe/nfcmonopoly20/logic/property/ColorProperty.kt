@@ -36,7 +36,9 @@ class ColorProperty(
 
     override fun getRent(level: Int): Int {
         // If Property is a Set
-        return if (level == 0 && set) {
+        return if (level == 0 && megaSet) {
+            super.getRent(level) * 3
+        } else if (level == 0 && set) {
             super.getRent(level) * 2
         } else
             super.getRent(level)

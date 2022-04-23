@@ -9,6 +9,8 @@
             type="com.cxe.nfcmonopoly20.logic.property.UtilityProperty" />
 
         <import type="com.cxe.nfcmonopoly20.util.UtilityTypeToDrawable" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,9 +81,8 @@
                     android:id="@+id/utility2"
                     style="@style/property_details_small"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
                     android:text="@string/utility_2"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/utility3"
                     app:layout_constraintEnd_toEndOf="@+id/utility1"
                     app:layout_constraintStart_toStartOf="@+id/utility1"
                     app:layout_constraintTop_toBottomOf="@+id/utility1" />
@@ -90,12 +91,35 @@
                     android:id="@+id/utility2_amount"
                     style="@style/property_details_small"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
                     android:text="@string/utility_2_amount"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/utility3_amount"
                     app:layout_constraintEnd_toEndOf="@+id/utility1_amount"
                     app:layout_constraintStart_toStartOf="@+id/utility1_amount"
                     app:layout_constraintTop_toBottomOf="@+id/utility1_amount" />
+
+                <TextView
+                    android:id="@+id/utility3"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/utility_3"
+                    android:visibility="@{utilityProperty.mega ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/utility2"
+                    app:layout_constraintStart_toStartOf="@+id/utility2"
+                    app:layout_constraintTop_toBottomOf="@+id/utility2" />
+
+                <TextView
+                    android:id="@+id/utility3_amount"
+                    style="@style/property_details_small"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/utility_3_amount"
+                    android:visibility="@{utilityProperty.mega ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/utility2_amount"
+                    app:layout_constraintStart_toStartOf="@+id/utility2_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/utility2_amount" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

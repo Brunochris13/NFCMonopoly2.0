@@ -216,6 +216,10 @@ class HomeFragment : Fragment() {
 
                 // Check if property is not null
                 if (property != null) {
+                    // Set Property Mega Status
+                    property.mega = viewModel.mega
+
+                    // Add the Property to the ViewModel
                     viewModel.addProperty(property)
                 } else {
                     Log.e(LOG_TAG, "$name property returned null")

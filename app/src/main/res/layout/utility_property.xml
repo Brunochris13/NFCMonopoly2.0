@@ -11,6 +11,8 @@
         <import type="com.cxe.nfcmonopoly20.util.UtilityTypeToDrawable" />
 
         <import type="android.graphics.Typeface" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -59,7 +61,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/utility1_amount"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/utility_title" />
+                app:layout_constraintTop_toBottomOf="@+id/utility_title"
+                app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
                 android:id="@+id/utility1_amount"
@@ -71,7 +74,6 @@
                 android:typeface="@{Typeface.defaultFromStyle((utilityProperty.playerId != null &amp;&amp; !utilityProperty.mortgaged &amp;&amp; utilityProperty.currentRentLevel == 0) ? Typeface.BOLD : Typeface.NORMAL)}"
                 app:layout_constraintBottom_toTopOf="@+id/utility2_amount"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/utility1"
                 app:layout_constraintTop_toBottomOf="@+id/utility_title" />
 
@@ -79,12 +81,10 @@
                 android:id="@+id/utility2"
                 style="@style/property_details"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/utility_2"
                 android:typeface="@{Typeface.defaultFromStyle((utilityProperty.playerId != null  &amp;&amp; !utilityProperty.mortgaged &amp;&amp; utilityProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/utility3"
                 app:layout_constraintEnd_toEndOf="@+id/utility1"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/utility1"
                 app:layout_constraintTop_toBottomOf="@+id/utility1" />
 
@@ -92,14 +92,38 @@
                 android:id="@+id/utility2_amount"
                 style="@style/property_details"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/utility_2_amount"
                 android:typeface="@{Typeface.defaultFromStyle((utilityProperty.playerId != null  &amp;&amp; !utilityProperty.mortgaged &amp;&amp; utilityProperty.currentRentLevel == 1) ? Typeface.BOLD : Typeface.NORMAL)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/utility3_amount"
                 app:layout_constraintEnd_toEndOf="@+id/utility1_amount"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/utility1_amount"
                 app:layout_constraintTop_toBottomOf="@+id/utility1_amount" />
+
+            <TextView
+                android:id="@+id/utility3"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/utility_3"
+                android:typeface="@{Typeface.defaultFromStyle((utilityProperty.playerId != null  &amp;&amp; !utilityProperty.mortgaged &amp;&amp; utilityProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
+                android:visibility="@{utilityProperty.mega ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/utility2"
+                app:layout_constraintStart_toStartOf="@+id/utility2"
+                app:layout_constraintTop_toBottomOf="@+id/utility2" />
+
+            <TextView
+                android:id="@+id/utility3_amount"
+                style="@style/property_details"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/utility_3_amount"
+                android:typeface="@{Typeface.defaultFromStyle((utilityProperty.playerId != null  &amp;&amp; !utilityProperty.mortgaged &amp;&amp; utilityProperty.currentRentLevel == 2) ? Typeface.BOLD : Typeface.NORMAL)}"
+                android:visibility="@{utilityProperty.mega ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/utility2_amount"
+                app:layout_constraintStart_toStartOf="@+id/utility2_amount"
+                app:layout_constraintTop_toBottomOf="@+id/utility2_amount" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
