@@ -15,7 +15,6 @@ import com.cxe.nfcmonopoly20.databinding.FragmentHomeBinding
 import com.cxe.nfcmonopoly20.getJsonDataFromAsset
 import com.cxe.nfcmonopoly20.logic.*
 import com.cxe.nfcmonopoly20.logic.player.CardId
-import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.ColorProperty
 import com.cxe.nfcmonopoly20.logic.property.PropertyId
 import com.cxe.nfcmonopoly20.logic.property.StationProperty
@@ -36,6 +35,9 @@ class HomeFragment : Fragment() {
     // ViewModel
     private val viewModel: AppViewModel by activityViewModels()
 
+    // RecyclerViewAdapter
+    private lateinit var recyclerViewAdapter: PlayerListAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,22 +52,20 @@ class HomeFragment : Fragment() {
         // ViewModel Creation
         binding.viewModel = viewModel
 
-        // Fill up the player list
-        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD))
-        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD))
-        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD))
+        // TODO: Fill up the player list
+//        viewModel.addPlayer(Player("Christos", CardId.YELLOW_CARD))
+//        viewModel.addPlayer(Player("Fakontis", CardId.GREEN_CARD))
+//        viewModel.addPlayer(Player("Panagiotis", CardId.BLUE_CARD))
 
         // RecyclerView
         val recyclerView = binding.recyclerviewHome
-        val recyclerViewAdapter = PlayerListAdapter(viewModel.playerList, viewModel.playerMap)
+        recyclerViewAdapter = PlayerListAdapter(viewModel.playerList, viewModel.playerMap)
 
         recyclerViewAdapter.onEdit = { position ->
             val player = viewModel.playerList[position]
 
             // Open the EditPlayer dialog
             editPlayerNameDialog(player.cardId, player.name, recyclerViewAdapter, position)
-
-            recyclerViewAdapter.notifyItemChanged(position)
         }
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -113,7 +113,7 @@ class HomeFragment : Fragment() {
             }
 
             // Open the EditPlayer dialog
-            editPlayerNameDialog(cardId)
+            editPlayerNameDialog(cardId, adapter = recyclerViewAdapter)
 
         } else {
             Toast.makeText(context, "Wrong Card", Toast.LENGTH_SHORT).show()
@@ -138,9 +138,18 @@ class HomeFragment : Fragment() {
         val dialog = EditPlayerDialogFragment()
         dialog.arguments = bundle
 
-        if ((adapter != null) and (position != null)) {
-            dialog.onDismissListener = {
-                adapter?.notifyItemChanged(position!!)
+        // Check if adapter was Provided
+        if (adapter != null) {
+            // If we are editing existing Player
+            if (position != null)
+                dialog.onDismissListener = {
+                    adapter.notifyItemChanged(position)
+                }
+            else {
+                // Adding New Player
+                dialog.onDismissListener = {
+                    adapter.notifyItemInserted(viewModel.playerList.size - 1)
+                }
             }
         }
 
@@ -200,7 +209,8 @@ class HomeFragment : Fragment() {
                         )
                     }
                     "UtilityProperty" -> {
-                        val utilityType = UtilityProperty.UtilityType.valueOf(jsonObject.getString("UtilityType"))
+                        val utilityType =
+                            UtilityProperty.UtilityType.valueOf(jsonObject.getString("UtilityType"))
                         // Create Utility Property
                         UtilityProperty(
                             propertyId,
