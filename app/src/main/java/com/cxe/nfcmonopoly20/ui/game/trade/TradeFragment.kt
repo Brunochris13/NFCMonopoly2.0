@@ -96,7 +96,7 @@ class TradeFragment : Fragment() {
                 // Check if Input Text is Empty
                 if (text != "") {
                     // Trade Money
-                    tradeMoneyResult = if (!player1Pays.value!!)
+                    tradeMoneyResult = if (player1Pays.value!!)
                         viewModel.playerPaysPlayer(player1, player2, text.toInt())
                     else
                         viewModel.playerPaysPlayer(player2, player1, text.toInt())
