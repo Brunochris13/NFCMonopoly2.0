@@ -7,7 +7,7 @@ import com.cxe.nfcmonopoly20.logic.player.Player
 import com.cxe.nfcmonopoly20.logic.property.*
 
 // Constants
-const val DEBUG_MODE = true
+const val DEBUG_MODE = false
 
 const val STARTING_MONEY = 1500
 const val STARTING_MONEY_MEGA = 2500
